@@ -2,10 +2,10 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: Data Journalism
-author: Frederic Hopp
+author: Felicia Loecherbach
 logo: logo.png
 exclude_patterns:
-  [README.md, _build, Thumbs.db, .DS_Store, '**.ipynb_checkpoints']
+  [README.md, _build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -23,15 +23,14 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/fhopp/data_journalism  # Online location of your book
-  path_to_book: docs  # Optional path to your book, relative to the repository root
-  branch: master  # Which branch of the repository should be used when creating links (optional)
+  url: https://github.com/feloe/data_journalism # Online location of your book
+  path_to_book: docs # Optional path to your book, relative to the repository root
+  branch: master # Which branch of the repository should be used when creating links (optional)
 
 parse:
   myst_enable_extensions:
     - html_image
     - dollarmath
-
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
@@ -41,4 +40,3 @@ html:
   use_repository_button: true
   comments:
     hypothesis: true
-
