@@ -1,348 +1,438 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>4. Python Data Wrangling I &#8212; Data Journalism</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
-
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/04-join_and_aggregate';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="5. Python Data Wrangling II" href="05-join_and_aggregate_makedataset.html" />
     <link rel="prev" title="3. Basic Statistics" href="03-analyzing_numbers.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Data Journalism</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p class="caption">
- <span class="caption-text">
-  Course Overview
- </span>
-</p>
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Data Journalism - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Data Journalism - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Overview</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="instructors.html">
-   Instructors
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="schedule.html">
-   Schedule
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="instructors.html">Instructors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedule.html">Schedule</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Notebooks
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebooks</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01-getting_started.html">
-   1. On Jupyter Notebooks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02-accessing_data.html">
-   2. Accessing Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03-analyzing_numbers.html">
-   3. Basic Statistics
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   4. Python Data Wrangling I
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05-join_and_aggregate_makedataset.html">
-   5. Python Data Wrangling II
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06-aggregate_wozwaarde.html">
-   6. Data Aggregation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07-analyzing_text.html">
-   7. Analyzing Text
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08-visualizations.html">
-   8. Data Visualization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09-interactive_visualizations.html">
-   9. Interactive Data Visualization
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="01-getting_started.html">1. On Jupyter Notebooks</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="02-accessing_data.html">2. Accessing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-analyzing_numbers.html">3. Basic Statistics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Python Data Wrangling I</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="05-join_and_aggregate_makedataset.html">5. Python Data Wrangling II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-aggregate_wozwaarde.html">6. Data Aggregation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="07-analyzing_text.html">7. Analyzing Text</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="08-visualizations.html">8. Data Visualization</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="09-interactive_visualizations.html">9. Interactive Data Visualization</a></li>
+
+
+
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Resources
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="python.html">
-   Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="datasets.html">
-   Datasets
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/content/04-join_and_aggregate.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/fhopp/data_journalism"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/fhopp/data_journalism/issues/new?title=Issue%20on%20page%20%2Fcontent/04-join_and_aggregate.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
-</div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
+<div class="article-header-buttons">
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/fhopp/data_journalism/master?urlpath=tree/docs/content/04-join_and_aggregate.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
 
-        </div>
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   4. Python Data Wrangling I
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#your-task">
-   Your Task
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#discuss-what-type-of-join">
-   Discuss: What type of join?
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setting-an-index">
-     Setting an index
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#analyze-the-data">
-     Analyze the data
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#discuss-why-does-the-above-not-work">
-     Discuss: Why does the above not work?
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#discuss-which-aggregation-function">
-     Discuss: which aggregation function?
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#some-more-example-code-for-plotting-feel-free-to-play-around">
-       Some more example code for plotting, feel free to play around
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#discuss">
-       Discuss
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#correlational-analysis">
-     Correlational analysis
-    </a>
-   </li>
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/feloe/data_journalism" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/feloe/data_journalism/issues/new?title=Issue%20on%20page%20%2Fcontent/04-join_and_aggregate.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
   </ul>
- </li>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/04-join_and_aggregate.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>4. Python Data Wrangling I</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">4. Python Data Wrangling I</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#your-task">Your Task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#discuss-what-type-of-join">Discuss: What type of join?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-an-index">Setting an index</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyze-the-data">Analyze the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discuss-why-does-the-above-not-work">Discuss: Why does the above not work?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discuss-which-aggregation-function">Discuss: which aggregation function?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-more-example-code-for-plotting-feel-free-to-play-around">Some more example code for plotting, feel free to play around</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discuss">Discuss</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlational-analysis">Correlational analysis</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
+
+              
                 
-  <div class="section" id="python-data-wrangling-i">
-<h1>4. Python Data Wrangling I<a class="headerlink" href="#python-data-wrangling-i" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="python-data-wrangling-i">
+<h1>4. Python Data Wrangling I<a class="headerlink" href="#python-data-wrangling-i" title="Link to this heading">#</a></h1>
 <p><em>Damian Trilling and Penny Sheets</em></p>
 <p>This notebook outlines the</p>
 <ul class="simple">
@@ -379,9 +469,9 @@ did the</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="your-task">
-<h1>Your Task<a class="headerlink" href="#your-task" title="Permalink to this headline">¶</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="your-task">
+<h1>Your Task<a class="headerlink" href="#your-task" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>use methods like <code class="docutils literal notranslate"><span class="pre">.head()</span></code>, <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> and/or <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code> to get a sense of both datasets.</p></li>
 <li><p>what are the common characteristics between the datasets, what are the differences?</p></li>
@@ -706,9 +796,9 @@ Name: Regions, dtype: int64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="discuss-what-type-of-join">
-<h1>Discuss: What type of join?<a class="headerlink" href="#discuss-what-type-of-join" title="Permalink to this headline">¶</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="discuss-what-type-of-join">
+<h1>Discuss: What type of join?<a class="headerlink" href="#discuss-what-type-of-join" title="Link to this heading">#</a></h1>
 <p>Discuss with your neighbor</p>
 <ul class="simple">
 <li><p>what type of join (inner, outer, left, right) you want; and</p></li>
@@ -1881,8 +1971,8 @@ Name: Regions, dtype: int64
 <p>264 rows × 5 columns</p>
 </div></div></div>
 </div>
-<div class="section" id="setting-an-index">
-<h2>Setting an index<a class="headerlink" href="#setting-an-index" title="Permalink to this headline">¶</a></h2>
+<section id="setting-an-index">
+<h2>Setting an index<a class="headerlink" href="#setting-an-index" title="Link to this heading">#</a></h2>
 <p>While our columns have a descriptive names (headers), our rows don’t right now. They are just numbers. However, we could actually give them <em>meaningful</em> names. A nice side-effect is that you will get better plots, with meaningful axis labels later on.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1977,9 +2067,9 @@ Name: Regions, dtype: int64
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="analyze-the-data">
-<h2>Analyze the data<a class="headerlink" href="#analyze-the-data" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="analyze-the-data">
+<h2>Analyze the data<a class="headerlink" href="#analyze-the-data" title="Link to this heading">#</a></h2>
 <p>Let’s train a bit with  <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> and <code class="docutils literal notranslate"><span class="pre">.agg()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1991,7 +2081,7 @@ Name: Regions, dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f86517e5fd0&gt;
 </pre></div>
 </div>
-<img alt="../_images/04-join_and_aggregate_25_1.png" src="../_images/04-join_and_aggregate_25_1.png" />
+<img alt="../_images/13e455b5bea5fa175c97c9acd7b3c736fa05113ff3defe6d59a8b7bf0d582af1.png" src="../_images/13e455b5bea5fa175c97c9acd7b3c736fa05113ff3defe6d59a8b7bf0d582af1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2004,12 +2094,12 @@ Name: Regions, dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f864f63af28&gt;
 </pre></div>
 </div>
-<img alt="../_images/04-join_and_aggregate_26_1.png" src="../_images/04-join_and_aggregate_26_1.png" />
+<img alt="../_images/216ca42e4d2cded1e25568a0f6188aec389b468957edcb3017241742798f3847.png" src="../_images/216ca42e4d2cded1e25568a0f6188aec389b468957edcb3017241742798f3847.png" />
 </div>
 </div>
-</div>
-<div class="section" id="discuss-why-does-the-above-not-work">
-<h2>Discuss: Why does the above not work?<a class="headerlink" href="#discuss-why-does-the-above-not-work" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="discuss-why-does-the-above-not-work">
+<h2>Discuss: Why does the above not work?<a class="headerlink" href="#discuss-why-does-the-above-not-work" title="Link to this heading">#</a></h2>
 <p>OK, got it?</p>
 <p>Let’s try this instead:</p>
 <div class="cell docutils container">
@@ -2023,7 +2113,7 @@ Name: Regions, dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f864dc8c0f0&gt;
 </pre></div>
 </div>
-<img alt="../_images/04-join_and_aggregate_29_1.png" src="../_images/04-join_and_aggregate_29_1.png" />
+<img alt="../_images/9cb83e4aea19baf503b10aa8856cc8540dc36d44b74f6f07e7b7ad96e67647ee.png" src="../_images/9cb83e4aea19baf503b10aa8856cc8540dc36d44b74f6f07e7b7ad96e67647ee.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2036,18 +2126,18 @@ Name: Regions, dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f864d83e4a8&gt;
 </pre></div>
 </div>
-<img alt="../_images/04-join_and_aggregate_30_1.png" src="../_images/04-join_and_aggregate_30_1.png" />
+<img alt="../_images/5ccf2b9e4098ddefa78606660b78e437bcfe96271581e24768d987781a5dbe51.png" src="../_images/5ccf2b9e4098ddefa78606660b78e437bcfe96271581e24768d987781a5dbe51.png" />
 </div>
 </div>
-</div>
-<div class="section" id="discuss-which-aggregation-function">
-<h2>Discuss: which aggregation function?<a class="headerlink" href="#discuss-which-aggregation-function" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="discuss-which-aggregation-function">
+<h2>Discuss: which aggregation function?<a class="headerlink" href="#discuss-which-aggregation-function" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Why did we choose <code class="docutils literal notranslate"><span class="pre">np.mean</span></code>?</p></li>
 <li><p>What function should we choose for analyzing <code class="docutils literal notranslate"><span class="pre">df['LiveBornChildren_2']</span></code>? Why?</p></li>
 </ul>
-<div class="section" id="some-more-example-code-for-plotting-feel-free-to-play-around">
-<h3>Some more example code for plotting, feel free to play around<a class="headerlink" href="#some-more-example-code-for-plotting-feel-free-to-play-around" title="Permalink to this headline">¶</a></h3>
+<section id="some-more-example-code-for-plotting-feel-free-to-play-around">
+<h3>Some more example code for plotting, feel free to play around<a class="headerlink" href="#some-more-example-code-for-plotting-feel-free-to-play-around" title="Link to this heading">#</a></h3>
 <p>Pay attention to what works well and what doesn’t, and how you can use</p>
 <ul class="simple">
 <li><p>groupby and/or</p></li>
@@ -2078,7 +2168,7 @@ Zuid-Holland     AxesSubplot(0.125,0.125;0.775x0.755)
 Name: GDPVolumeChanges_1, dtype: object
 </pre></div>
 </div>
-<img alt="../_images/04-join_and_aggregate_34_1.png" src="../_images/04-join_and_aggregate_34_1.png" />
+<img alt="../_images/a95279a11e04042b0e4843df079c3330dfd28b8942b20541d2ce6f7beb0d1dfe.png" src="../_images/a95279a11e04042b0e4843df079c3330dfd28b8942b20541d2ce6f7beb0d1dfe.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2092,7 +2182,7 @@ Name: GDPVolumeChanges_1, dtype: object
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f864d69a630&gt;
 </pre></div>
 </div>
-<img alt="../_images/04-join_and_aggregate_35_1.png" src="../_images/04-join_and_aggregate_35_1.png" />
+<img alt="../_images/db710754a91bd9adad0f891ee1c64cc1e6074d681d1e7a7af72c9d387e0a3cf9.png" src="../_images/db710754a91bd9adad0f891ee1c64cc1e6074d681d1e7a7af72c9d387e0a3cf9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2118,7 +2208,7 @@ Zuid-Holland     AxesSubplot(0.125,0.125;0.775x0.755)
 Name: NetMigrationExcludingAdministrative_19, dtype: object
 </pre></div>
 </div>
-<img alt="../_images/04-join_and_aggregate_36_1.png" src="../_images/04-join_and_aggregate_36_1.png" />
+<img alt="../_images/185bcd79fed832cc9f83439f742d2b594b528f225864d633e22910d4a3135cca.png" src="../_images/185bcd79fed832cc9f83439f742d2b594b528f225864d633e22910d4a3135cca.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2132,7 +2222,7 @@ Name: NetMigrationExcludingAdministrative_19, dtype: object
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f864d5e2ba8&gt;
 </pre></div>
 </div>
-<img alt="../_images/04-join_and_aggregate_37_1.png" src="../_images/04-join_and_aggregate_37_1.png" />
+<img alt="../_images/72ec50b6fca2ed74e33e259bcdc61472a9e2e8c2d288a6c1cf1b6493e0e3aa88.png" src="../_images/72ec50b6fca2ed74e33e259bcdc61472a9e2e8c2d288a6c1cf1b6493e0e3aa88.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2220,12 +2310,12 @@ Name: Regions, Length: 264, dtype: bool
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f864d4d17b8&gt;
 </pre></div>
 </div>
-<img alt="../_images/04-join_and_aggregate_39_1.png" src="../_images/04-join_and_aggregate_39_1.png" />
+<img alt="../_images/9e38cded39384ac7e82a045866c52f3c00dc460e7b59d22f6460dd2841fcbfcb.png" src="../_images/9e38cded39384ac7e82a045866c52f3c00dc460e7b59d22f6460dd2841fcbfcb.png" />
 </div>
 </div>
-</div>
-<div class="section" id="discuss">
-<h3>Discuss<a class="headerlink" href="#discuss" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="discuss">
+<h3>Discuss<a class="headerlink" href="#discuss" title="Link to this heading">#</a></h3>
 <p>I personally find this last plot a pretty cool one. Do you agree?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2271,10 +2361,10 @@ Name: Regions, Length: 264, dtype: bool
 </table>
 </div></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="correlational-analysis">
-<h2>Correlational analysis<a class="headerlink" href="#correlational-analysis" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="correlational-analysis">
+<h2>Correlational analysis<a class="headerlink" href="#correlational-analysis" title="Link to this heading">#</a></h2>
 <p>We could also look into some bivariate plots….</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2286,7 +2376,7 @@ Name: Regions, Length: 264, dtype: bool
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f864d4d1978&gt;
 </pre></div>
 </div>
-<img alt="../_images/04-join_and_aggregate_44_1.png" src="../_images/04-join_and_aggregate_44_1.png" />
+<img alt="../_images/17b482ff7e35c12e4dcef23b6465bc211b0a2c88b4fdda27bb2d63008537f086.png" src="../_images/17b482ff7e35c12e4dcef23b6465bc211b0a2c88b4fdda27bb2d63008537f086.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2300,11 +2390,11 @@ Name: Regions, Length: 264, dtype: bool
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f864d42fb38&gt;
 </pre></div>
 </div>
-<img alt="../_images/04-join_and_aggregate_45_1.png" src="../_images/04-join_and_aggregate_45_1.png" />
+<img alt="../_images/6a27f7f47ec4b4db85a901b8a8563a71c54ddc4f417b4c123958c7415a51dcdb.png" src="../_images/6a27f7f47ec4b4db85a901b8a8563a71c54ddc4f417b4c123958c7415a51dcdb.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2318,7 +2408,7 @@ Name: Regions, Length: 264, dtype: bool
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./content"
         },
         predefinedOutput: true
@@ -2326,56 +2416,117 @@ Name: Regions, Length: 264, dtype: bool
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-        
-            
 
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="03-analyzing_numbers.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">3. Basic Statistics</p>
-            </div>
-        </a>
-    </div>
-     <div id="next">
-        <a class="right-next" href="05-join_and_aggregate_makedataset.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">5. Python Data Wrangling II</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
-</div>
-        
-        </div>
-    </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Frederic Hopp<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
-
-
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="03-analyzing_numbers.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">3. Basic Statistics</p>
       </div>
-    </div>
-  
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+    </a>
+    <a class="right-next"
+       href="05-join_and_aggregate_makedataset.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">5. Python Data Wrangling II</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">4. Python Data Wrangling I</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#your-task">Your Task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#discuss-what-type-of-join">Discuss: What type of join?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-an-index">Setting an index</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyze-the-data">Analyze the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discuss-why-does-the-above-not-work">Discuss: Why does the above not work?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discuss-which-aggregation-function">Discuss: which aggregation function?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-more-example-code-for-plotting-feel-free-to-play-around">Some more example code for plotting, feel free to play around</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discuss">Discuss</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlational-analysis">Correlational analysis</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
+  <div class="footer-item">
+    
+<p class="component-author">
+By Felicia Loecherbach
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

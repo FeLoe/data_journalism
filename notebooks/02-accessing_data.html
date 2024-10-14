@@ -1,336 +1,443 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Accessing Data &#8212; Data Journalism</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
-
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/02-accessing_data';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Basic Statistics &amp; Analyzing Numbers" href="03-analyzing_numbers.html" />
-    <link rel="prev" title="Getting started with Jupyter Notebooks" href="01-getting_started.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
         
       
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../content/intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Data Journalism</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
-   Data Journalism
-  </a>
- </li>
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Data Journalism - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Data Journalism - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../content/instructors.html">Instructors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../content/schedule.html">Schedule</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Notebooks
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01-getting_started.html">
-   Getting started with Jupyter Notebooks
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Accessing Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03-analyzing_numbers.html">
-   Basic Statistics &amp; Analyzing Numbers
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04-join_and_aggregate.html">
-   Python Data Wrangling (1)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04x-join_and_aggregate_makedataset.html">
-   Python Data Wrangling (2)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05-aggregate_wozwaarde.html">
-   Example “WOZ-waarde”
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06-analyzing_text.html">
-   Analyzing Text
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07-visualizations.html">
-   Data Visualization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08-datawrangling_recap.html">
-   Recap Data Wrangling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09-interactive_visualizations.html">
-   Interactive Data Visualization
-  </a>
- </li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../content/01-getting_started.html">1. On Jupyter Notebooks</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../content/02-accessing_data.html">2. Accessing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../content/03-analyzing_numbers.html">3. Basic Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../content/04-join_and_aggregate.html">4. Python Data Wrangling I</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../content/05-join_and_aggregate_makedataset.html">5. Python Data Wrangling II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../content/06-aggregate_wozwaarde.html">6. Data Aggregation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../content/07-analyzing_text.html">7. Analyzing Text</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../content/08-visualizations.html">8. Data Visualization</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../content/09-interactive_visualizations.html">9. Interactive Data Visualization</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../content/python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../content/datasets.html">Datasets</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/02-accessing_data.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks/02-accessing_data.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/feloe/data_journalism" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/feloe/data_journalism/issues/new?title=Issue%20on%20page%20%2Fnotebooks/02-accessing_data.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/notebooks/02-accessing_data.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/02-accessing_data.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Accessing Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#importing-modules">
-   Importing Modules
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#csv-files">
-   CSV files
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#downloading-data">
-   Downloading data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#in-case-you-work-with-google-colab-see-also-previous-notebook">
-     In case you work with google colab (see also previous notebook):
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#note-not-all-csv-files-are-the-same">
-   Note!!! Not all CSV files are the same…
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#trouble-with-your-csv-files">
-   Trouble with your CSV files?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-if-the-data-isn-t-in-csv-format-but-is-online">
-   What if the data isn’t in .csv format, but is online?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#json-files">
-   JSON files
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#playing-around-with-nested-json-data-and-extracting-meaningful-information">
-     Playing around with nested JSON data and extracting meaningful information
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#apis">
-   APIs
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#play-around-and-some-non-graded-homework">
-   Play around - and some (non-graded) homework
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-modules">Importing Modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-files">CSV files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-data">Downloading data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-case-you-work-with-google-colab-see-also-previous-notebook">In case you work with google colab (see also previous notebook):</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-not-all-csv-files-are-the-same">Note!!! Not all CSV files are the same…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trouble-with-your-csv-files">Trouble with your CSV files?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-if-the-data-isn-t-in-csv-format-but-is-online">What if the data isn’t in .csv format, but is online?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#json-files">JSON files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#playing-around-with-nested-json-data-and-extracting-meaningful-information">Playing around with nested JSON data and extracting meaningful information</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apis">APIs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#play-around-and-some-non-graded-homework">Play around - and some (non-graded) homework</a></li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
+
+              
                 
-  <div class="section" id="accessing-data">
-<h1>Accessing Data<a class="headerlink" href="#accessing-data" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="accessing-data">
+<h1>Accessing Data<a class="headerlink" href="#accessing-data" title="Link to this heading">#</a></h1>
 <p><em>Damian Trilling and Penny Sheets</em></p>
 <p>This notebook is meant to show you different ways of accessing data. Data can be available as (a) local files (on your computer), (b) remote files (somewhere else), or (c) APIs (application programming interfaces). We will show you ways for dealing with all of these.</p>
 <p>But before we do that, we need to import some modules into Jupyter that will help us find and read data.  You already know our basic module, pandas.  Let’s import it again just in case your computer cleared it during the break (or in case you’re doing this notebook again separately, after class).</p>
-<div class="section" id="importing-modules">
-<h2>Importing Modules<a class="headerlink" href="#importing-modules" title="Permalink to this headline">¶</a></h2>
+<section id="importing-modules">
+<h2>Importing Modules<a class="headerlink" href="#importing-modules" title="Link to this heading">#</a></h2>
 <p>It is a good custom to import all modules that you need at the beginning of your notebook. We’ll explain in the lesson (or in subsequent weeks) what these modules do.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -346,9 +453,9 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="csv-files">
-<h2>CSV files<a class="headerlink" href="#csv-files" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="csv-files">
+<h2>CSV files<a class="headerlink" href="#csv-files" title="Link to this heading">#</a></h2>
 <p>Remember what we did in the first part of class today, working with that Iris dataset? We used pandas to read a CSV file directly from the web and gave its descriptive statistics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -381,14 +488,14 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="downloading-data">
-<h2>Downloading data<a class="headerlink" href="#downloading-data" title="Permalink to this headline">¶</a></h2>
-<p>Probably, if you really want to analyze a dataset, you want to store it locally (=on your computer). Let’s download a file with some stock exchange ratings: <a class="reference external" href="https://raw.githubusercontent.com/damian0604/bdaca/master/ipynb/stock.csv">https://raw.githubusercontent.com/damian0604/bdaca/master/ipynb/stock.csv</a></p>
+</section>
+<section id="downloading-data">
+<h2>Downloading data<a class="headerlink" href="#downloading-data" title="Link to this heading">#</a></h2>
+<p>Probably, if you really want to analyze a dataset, you want to store it locally (=on your computer). Let’s download a file with some stock exchange ratings: https://raw.githubusercontent.com/damian0604/bdaca/master/ipynb/stock.csv</p>
 <p>Download it (file-save as or right-clicking) as “all file types” (or .csv); be sure that the extension is correct. Be sure to save it IN THE SAME FOLDER as this jupyter notebook. (Otherwise jupyter won’t find it.)</p>
-<div class="section" id="in-case-you-work-with-google-colab-see-also-previous-notebook">
-<h3>In case you work with google colab (see also previous notebook):<a class="headerlink" href="#in-case-you-work-with-google-colab-see-also-previous-notebook" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
+<section id="in-case-you-work-with-google-colab-see-also-previous-notebook">
+<h3>In case you work with google colab (see also previous notebook):<a class="headerlink" href="#in-case-you-work-with-google-colab-see-also-previous-notebook" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
 <li><p>Upload the CSV file to your Google Drive in the folder <code class="docutils literal notranslate"><span class="pre">datajournalism</span></code></p></li>
 <li><p>Mount google drive (for your convenience, the command is shown in the cell below - just remove the hashtags that “comment it out”</p></li>
 <li><p>Everywhere where we say sth like <code class="docutils literal notranslate"><span class="pre">'stock.csv'</span></code>, prefix it with <code class="docutils literal notranslate"><span class="pre">/mnt/My</span> <span class="pre">Drive/datajournalism</span></code> and write, for instance, <code class="docutils literal notranslate"><span class="pre">/mnt/My</span> <span class="pre">Drive/datajournalism/stock.csv</span></code></p></li>
@@ -401,10 +508,10 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="note-not-all-csv-files-are-the-same">
-<h2>Note!!! Not all CSV files are the same…<a class="headerlink" href="#note-not-all-csv-files-are-the-same" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="note-not-all-csv-files-are-the-same">
+<h2>Note!!! Not all CSV files are the same…<a class="headerlink" href="#note-not-all-csv-files-are-the-same" title="Link to this heading">#</a></h2>
 <p>CSV stands for Comma Seperated Value, which indicates that it consists of values (columns) seperated by commas. Just open a CSV file in an editor like Notepad or TextEdit instead of in Excel to understand what we mean.</p>
 <p>Unfortunately, there are many different dialects. For instance, sometimes, a semicolon or a tab is used instead of a comma; sometimes, the first line of a CSV file contains column headers, sometimes not) You can indicate these type of details yourself if pandas doesn’t guess correctly.</p>
 <p>Pay special attention when opening a CSV file with Excel: Excel changes the formatting! For instance, it can happen that you open a file that uses commas as seperators in Excel, and when you save it, it suddenly uses semicolons instead.</p>
@@ -437,9 +544,9 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="trouble-with-your-csv-files">
-<h2>Trouble with your CSV files?<a class="headerlink" href="#trouble-with-your-csv-files" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="trouble-with-your-csv-files">
+<h2>Trouble with your CSV files?<a class="headerlink" href="#trouble-with-your-csv-files" title="Link to this heading">#</a></h2>
 <p>For more info on how to format your ‘read_csv’ commands, or if you’re running into problems related to the comma-versus-tab-versus-semicolon issue, look at the help function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -448,9 +555,9 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="what-if-the-data-isn-t-in-csv-format-but-is-online">
-<h2>What if the data isn’t in .csv format, but is online?<a class="headerlink" href="#what-if-the-data-isn-t-in-csv-format-but-is-online" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="what-if-the-data-isn-t-in-csv-format-but-is-online">
+<h2>What if the data isn’t in .csv format, but is online?<a class="headerlink" href="#what-if-the-data-isn-t-in-csv-format-but-is-online" title="Link to this heading">#</a></h2>
 <p>There is actually a very simple, brilliant, scraping tool that allows you to grab content from tables online and turn that into a csv file.  Then you can use the tools we just used to analyze the csv file (including saving it to your computer and importing it into jupyter for analysis).  The tool is called read_html and allows you to basically put in any website URL and scrape the tables from it.  It probably won’t work with all websites (and probably not everything it scrapes is relevant/useful to you), but, it is really handy when it does work.  Let’s look, for example, at wikipedia’s page involving the premier Dutch football league.</p>
 <p>First, load the URL into your browswer in another tab to look at the original page.</p>
 <div class="cell docutils container">
@@ -499,13 +606,13 @@
 </div>
 <p>Now, see if you can go back and read in this test.csv file, have a look at the dataset.</p>
 <p>If we had more time, we would try to figure out how to rename the columns, and play around with plotting the number of times each team won, for example. (Try this at home, and see if you can do it!  Using the read help command from earlier should help you figure out how to rename columns…or when in doubt, just search online for help!)</p>
-</div>
-<div class="section" id="json-files">
-<h2>JSON files<a class="headerlink" href="#json-files" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="json-files">
+<h2>JSON files<a class="headerlink" href="#json-files" title="Link to this heading">#</a></h2>
 <p>Another type of file we frequently encounter online is the so-called “jason” file - aka, JSON. JSON files allow for nested data structures–like databases.</p>
 <p>JSON is (basically) the same as a collection of Python dicts (dictionaries–we haven’t talked about these yet in class, but you did learn about this in your coding tutorials. As a reminder, dicts are collections of key:value pairs, which means you have a category of something (key) and values within it (values)). I’ll explain this in class more. Bottom line: it’s very easy to look up things by their key, but not by their values. So, knowing our way around these dicts and how they are nested within one another - in a json file - is important.</p>
 <p>Let’s download such a file and store it in the same directory as your jupyter notebook.
-Download <a class="reference external" href="https://open.data.amsterdam.nl/EtenDrinken.json">https://open.data.amsterdam.nl/EtenDrinken.json</a> .</p>
+Download https://open.data.amsterdam.nl/EtenDrinken.json .</p>
 <p>First, see what happens if you load this link in your browser. You can get a feel for the structure of the dataset, if your browser is relatively fancy.</p>
 <p>Next: we could use pandas to put the JSON file into a table (see next command) – but as you see, because the data is <em>nested</em>, we still have dicts within some of the cells:</p>
 <div class="cell docutils container">
@@ -526,8 +633,8 @@ Download <a class="reference external" href="https://open.data.amsterdam.nl/Eten
 </div>
 </div>
 </div>
-<div class="section" id="playing-around-with-nested-json-data-and-extracting-meaningful-information">
-<h3>Playing around with nested JSON data and extracting meaningful information<a class="headerlink" href="#playing-around-with-nested-json-data-and-extracting-meaningful-information" title="Permalink to this headline">¶</a></h3>
+<section id="playing-around-with-nested-json-data-and-extracting-meaningful-information">
+<h3>Playing around with nested JSON data and extracting meaningful information<a class="headerlink" href="#playing-around-with-nested-json-data-and-extracting-meaningful-information" title="Link to this heading">#</a></h3>
 <p>NOTE!! You don’t need to be able to do all of this already, but it’s mostly important that you try to understand the logic behind these various commands. We’ll review a lot of this later on when we get to analysis, anyway.</p>
 <p>Let’s check what <code class="docutils literal notranslate"><span class="pre">eat</span></code> is and what is in there</p>
 <div class="cell docutils container">
@@ -625,13 +732,13 @@ Download <a class="reference external" href="https://open.data.amsterdam.nl/Eten
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="apis">
-<h2>APIs<a class="headerlink" href="#apis" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="apis">
+<h2>APIs<a class="headerlink" href="#apis" title="Link to this heading">#</a></h2>
 <p>Lastly, we will check out working with a JSON-based API. Some APIs that are very frequently used (e.g., the Twitter API) have an own Python <em>wrapper</em>, which means that you can do something like <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">twitter</span></code> and have some user-friendly commands. Also, many APIs require authentication (i.e., sth like a username and a password).</p>
-<p>We do not want to require all of you to get such an account for the sole purpose of this meeting. We will therefore work with a public API provided by Statistics Netherlands (CBS): <a class="reference external" href="https://opendata.cbs.nl/">https://opendata.cbs.nl/</a>.</p>
-<p>First, we go to <a class="reference external" href="https://opendata.cbs.nl/statline/portal.html?_la=en&amp;_catalog=CBS">https://opendata.cbs.nl/statline/portal.html?_la=en&amp;_catalog=CBS</a> and select a dataset. This kind of website is a great place to explore some potential datasets for your projects.  If you explore a bit, you’ll see there are a ton of datasets and a ton of APIs, as well as raw JSON files for you to download and work with.  Take this illustration just as a way to use APIs if the raw data is not also available.</p>
+<p>We do not want to require all of you to get such an account for the sole purpose of this meeting. We will therefore work with a public API provided by Statistics Netherlands (CBS): https://opendata.cbs.nl/.</p>
+<p>First, we go to https://opendata.cbs.nl/statline/portal.html?_la=en&amp;_catalog=CBS and select a dataset. This kind of website is a great place to explore some potential datasets for your projects.  If you explore a bit, you’ll see there are a ton of datasets and a ton of APIs, as well as raw JSON files for you to download and work with.  Take this illustration just as a way to use APIs if the raw data is not also available.</p>
 <p>If there is a specific URL we want to access (like this one we have chosen ahead of time), we can do so as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -726,20 +833,20 @@ Download <a class="reference external" href="https://open.data.amsterdam.nl/Eten
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="play-around-and-some-non-graded-homework">
-<h2>Play around - and some (non-graded) homework<a class="headerlink" href="#play-around-and-some-non-graded-homework" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="play-around-and-some-non-graded-homework">
+<h2>Play around - and some (non-graded) homework<a class="headerlink" href="#play-around-and-some-non-graded-homework" title="Link to this heading">#</a></h2>
 <p>The most important thing is that you start playing around. You don’t need to be able  to create beautiful plots or anything fancy, but try to get datasets into a usable format and get some insights!</p>
 <p>As an exercise after class, why don’t you try the following:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Find a webpage that has a table on it.</p></li>
 <li><p>Use the read_html scraper tool we learned above, to scrape the tables and save these to a csv file.</p></li>
 <li><p>Read the csv file back into python, and try to find some basic descriptive statistics (max, min, mean, etc) and if you can, make a simple visualization out of it (histogram or plot).</p></li>
 <li><p>Save all of this to a new notebook–code, notes if you have questions or about what you’re doing, and output.</p></li>
 </ol>
 <p>If you can do all of these things, great! If you can’t bring your questions to next class.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -753,7 +860,7 @@ Download <a class="reference external" href="https://open.data.amsterdam.nl/Eten
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true
@@ -761,56 +868,99 @@ Download <a class="reference external" href="https://open.data.amsterdam.nl/Eten
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-        
-            
 
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="01-getting_started.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Getting started with Jupyter Notebooks</p>
-            </div>
-        </a>
-    </div>
-     <div id="next">
-        <a class="right-next" href="03-analyzing_numbers.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Basic Statistics &amp; Analyzing Numbers</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
 </div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-modules">Importing Modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-files">CSV files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-data">Downloading data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-case-you-work-with-google-colab-see-also-previous-notebook">In case you work with google colab (see also previous notebook):</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-not-all-csv-files-are-the-same">Note!!! Not all CSV files are the same…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trouble-with-your-csv-files">Trouble with your CSV files?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-if-the-data-isn-t-in-csv-format-but-is-online">What if the data isn’t in .csv format, but is online?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#json-files">JSON files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#playing-around-with-nested-json-data-and-extracting-meaningful-information">Playing around with nested JSON data and extracting meaningful information</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apis">APIs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#play-around-and-some-non-graded-homework">Play around - and some (non-graded) homework</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Felicia Loecherbach
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
         
-        </div>
+
+      </main>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Damian Trilling, Penny Sheets, & Frederic Hopp<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
   </footer>
-</main>
-
-
-      </div>
-    </div>
-  
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  
   </body>
 </html>
