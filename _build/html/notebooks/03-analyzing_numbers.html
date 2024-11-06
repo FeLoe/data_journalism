@@ -1,351 +1,446 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Basic Statistics &amp; Analyzing Numbers &#8212; Data Journalism</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
-
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/03-analyzing_numbers';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Python Data Wrangling (1)" href="04-join_and_aggregate.html" />
-    <link rel="prev" title="Accessing Data" href="02-accessing_data.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
         
       
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../content/intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Data Journalism</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
-   Data Journalism
-  </a>
- </li>
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Data Journalism - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Data Journalism - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../content/instructors.html">Instructors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../content/schedule.html">Schedule</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Notebooks
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01-getting_started.html">
-   Getting started with Jupyter Notebooks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02-accessing_data.html">
-   Accessing Data
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Basic Statistics &amp; Analyzing Numbers
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04-join_and_aggregate.html">
-   Python Data Wrangling (1)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04x-join_and_aggregate_makedataset.html">
-   Python Data Wrangling (2)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05-aggregate_wozwaarde.html">
-   Example “WOZ-waarde”
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06-analyzing_text.html">
-   Analyzing Text
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07-visualizations.html">
-   Data Visualization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08-datawrangling_recap.html">
-   Recap Data Wrangling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09-interactive_visualizations.html">
-   Interactive Data Visualization
-  </a>
- </li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../content/01-getting_started.html">1. On Jupyter Notebooks</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../content/02-accessing_data.html">2. Accessing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../content/03-analyzing_numbers.html">3. Basic Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../content/04-join_and_aggregate.html">4. Python Data Wrangling I</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../content/05-join_and_aggregate_makedataset.html">5. Python Data Wrangling II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../content/06-aggregate_wozwaarde.html">6. Data Aggregation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../content/07-analyzing_text.html">7. Analyzing Text</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../content/08-visualizations.html">8. Data Visualization</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../content/09-interactive_visualizations.html">9. Interactive Data Visualization</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../content/python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../content/datasets.html">Datasets</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/03-analyzing_numbers.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks/03-analyzing_numbers.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/feloe/data_journalism" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/feloe/data_journalism/issues/new?title=Issue%20on%20page%20%2Fnotebooks/03-analyzing_numbers.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/notebooks/03-analyzing_numbers.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/03-analyzing_numbers.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Basic Statistics & Analyzing Numbers</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-our-tools-modules-libraries">
-   Import our tools/modules/libraries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#read-data-into-a-dataframe">
-   Read data into a dataframe
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#in-case-you-work-with-google-colab-see-also-first-notebook">
-   In case you work with google colab (see also first notebook):
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#explore-the-dataset">
-   Explore the dataset
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#groupby">
-   Groupby
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pop-quiz">
-   POP QUIZ!
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plots-grouped-by-variables">
-     Plots grouped by variables
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#statistical-tests-and-subsetting-datasets">
-   Statistical tests and subsetting datasets
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#t-tests">
-     T-tests
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#before-we-finish-let-s-play-around-with-some-more-graphics">
-     Before we finish, let’s play around with some more graphics
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#so">
-   So…
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#more-non-graded-homework">
-   More (non-graded) homework :)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#appendix-multivariate-statistical-analysis">
-   Appendix: Multivariate statistical analysis
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hexplots">
-   Hexplots
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-our-tools-modules-libraries">Import our tools/modules/libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-data-into-a-dataframe">Read data into a dataframe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-case-you-work-with-google-colab-see-also-first-notebook">In case you work with google colab (see also first notebook):</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-the-dataset">Explore the dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#groupby">Groupby</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pop-quiz">POP QUIZ!</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plots-grouped-by-variables">Plots grouped by variables</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-tests-and-subsetting-datasets">Statistical tests and subsetting datasets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#t-tests">T-tests</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#before-we-finish-let-s-play-around-with-some-more-graphics">Before we finish, let’s play around with some more graphics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#so">So…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-non-graded-homework">More (non-graded) homework :)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-multivariate-statistical-analysis">Appendix: Multivariate statistical analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hexplots">Hexplots</a></li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
+
+              
                 
-  <div class="section" id="basic-statistics-analyzing-numbers">
-<h1>Basic Statistics &amp; Analyzing Numbers<a class="headerlink" href="#basic-statistics-analyzing-numbers" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="basic-statistics-analyzing-numbers">
+<h1>Basic Statistics &amp; Analyzing Numbers<a class="headerlink" href="#basic-statistics-analyzing-numbers" title="Link to this heading">#</a></h1>
 <p><em>Damian Trilling and Penny Sheets</em></p>
 <p>This notebook is designed to show you some ways to use python for basic statistical analysis of numbers, and to explore some methods that go beyond <code class="docutils literal notranslate"><span class="pre">df.describe()</span></code> or <code class="docutils literal notranslate"><span class="pre">Counter()</span></code>, which we used last week. In particular, we are going to look into analyzing numerical data. Next week, we will focus on textual data.</p>
-<p>The dataset we use in this example is a subset of the data presented in Trilling, D. (2013). <em>Following the news. Patterns of online and offline news use</em>. PhD thesis, University of Amsterdam. <a class="reference external" href="http://hdl.handle.net/11245/1.394551">http://hdl.handle.net/11245/1.394551</a></p>
-<div class="section" id="import-our-tools-modules-libraries">
-<h2>Import our tools/modules/libraries<a class="headerlink" href="#import-our-tools-modules-libraries" title="Permalink to this headline">¶</a></h2>
+<p>The dataset we use in this example is a subset of the data presented in Trilling, D. (2013). <em>Following the news. Patterns of online and offline news use</em>. PhD thesis, University of Amsterdam. http://hdl.handle.net/11245/1.394551</p>
+<section id="import-our-tools-modules-libraries">
+<h2>Import our tools/modules/libraries<a class="headerlink" href="#import-our-tools-modules-libraries" title="Link to this heading">#</a></h2>
 <p>As always, we first import the tools we’ll need. Today, we’ll use pandas (usually imported as “pd”), and something called statsmodels, and something called numpy. We also use matplotlib for some visualizations. A lot of other stuff here we will need for some specific analyses later on; you don’t have to worry about all of it right now.</p>
 <p>If you want to learn more about these modules, you can look online for info.</p>
 <div class="cell docutils container">
@@ -363,16 +458,16 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="read-data-into-a-dataframe">
-<h2>Read data into a dataframe<a class="headerlink" href="#read-data-into-a-dataframe" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="read-data-into-a-dataframe">
+<h2>Read data into a dataframe<a class="headerlink" href="#read-data-into-a-dataframe" title="Link to this heading">#</a></h2>
 <p>We will read a dataset based on Trilling (2013). It contains some sociodemographic variables as well as the number of days the respondent uses a specific medium to access information about news and current affairs.</p>
-<p>You should download the dataset (with the ‘save page as’ method, making sure .txt isn’t appended to the file extension) into the same folder as this jupyter notebook: <a class="reference external" href="https://raw.githubusercontent.com/damian0604/bdaca/master/ipynb/mediause.csv">https://raw.githubusercontent.com/damian0604/bdaca/master/ipynb/mediause.csv</a></p>
+<p>You should download the dataset (with the ‘save page as’ method, making sure .txt isn’t appended to the file extension) into the same folder as this jupyter notebook: https://raw.githubusercontent.com/damian0604/bdaca/master/ipynb/mediause.csv</p>
 <p>Remember that the ‘df’ here is arbitrary; last week we used the names ‘iris’ and ‘stockdata’ and others; this week we’re going more basic and just saying ‘df’ for dataframe.</p>
-</div>
-<div class="section" id="in-case-you-work-with-google-colab-see-also-first-notebook">
-<h2>In case you work with google colab (see also first notebook):<a class="headerlink" href="#in-case-you-work-with-google-colab-see-also-first-notebook" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
+</section>
+<section id="in-case-you-work-with-google-colab-see-also-first-notebook">
+<h2>In case you work with google colab (see also first notebook):<a class="headerlink" href="#in-case-you-work-with-google-colab-see-also-first-notebook" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
 <li><p>Upload the CSV file to your Google Drive in the folder <code class="docutils literal notranslate"><span class="pre">datajournalism</span></code></p></li>
 <li><p>Mount google drive (for your convenience, the command is shown in the cell below - just remove the hashtags that “comment it out”</p></li>
 <li><p>Everywhere where we say sth like <code class="docutils literal notranslate"><span class="pre">'mediause.csv'</span></code>, prefix it with <code class="docutils literal notranslate"><span class="pre">/mnt/My</span> <span class="pre">Drive/datajournalism</span></code> and write, for instance, <code class="docutils literal notranslate"><span class="pre">/mnt/My</span> <span class="pre">Drive/datajournalism/mediause.csv</span></code></p></li>
@@ -410,9 +505,9 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="explore-the-dataset">
-<h2>Explore the dataset<a class="headerlink" href="#explore-the-dataset" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="explore-the-dataset">
+<h2>Explore the dataset<a class="headerlink" href="#explore-the-dataset" title="Link to this heading">#</a></h2>
 <p>Let’s do some descriptive statistics, using the .describe() method we saw last week. This would be important if you wanted to describe the dataset to your audience, for example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -482,9 +577,9 @@ test.value_counts<span class="o">?</span>
 </div>
 </div>
 <p>So that’s one way to start exploring a dataset generally.</p>
-</div>
-<div class="section" id="groupby">
-<h2>Groupby<a class="headerlink" href="#groupby" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="groupby">
+<h2>Groupby<a class="headerlink" href="#groupby" title="Link to this heading">#</a></h2>
 <p>Let’s say you’d like to compare the media use of men and women in the dataset. Eventually we’ll move toward statistical comparison, but for now we can start by looking at their descriptive statistics - separately for men and women.</p>
 <p>In python, this is quite easy, using the <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> method.</p>
 <p>First, we group the dataframe by the ‘gender’ variable, and then apply a method to that grouped dataframe; this is called ‘chaining’ multiple methods together.  (We saw a bit of this chaining idea last week already.)</p>
@@ -547,9 +642,9 @@ df.groupby<span class="o">?</span>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="pop-quiz">
-<h2>POP QUIZ!<a class="headerlink" href="#pop-quiz" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="pop-quiz">
+<h2>POP QUIZ!<a class="headerlink" href="#pop-quiz" title="Link to this heading">#</a></h2>
 <p>Can you integrate this plotting method in your for-loop (from above) to get a nice series of plots?  Fill in the missing line of code, below.  But keep the plt.show() command afterward, in order to display all plots.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -582,10 +677,10 @@ df.groupby<span class="o">?</span>
 </div>
 </div>
 </div>
-<div class="section" id="plots-grouped-by-variables">
-<h3>Plots grouped by variables<a class="headerlink" href="#plots-grouped-by-variables" title="Permalink to this headline">¶</a></h3>
+<section id="plots-grouped-by-variables">
+<h3>Plots grouped by variables<a class="headerlink" href="#plots-grouped-by-variables" title="Link to this heading">#</a></h3>
 <p>You can also create comparison histograms, side-by-side, for different values of a variable. For example, let’s look at the histogram of internet news use for men and women in this dataset.</p>
-<p>Here, we’re using the “by=[‘ ‘]” command to specify which grouping variable we want, and again specifying the bins and the figure size, both of which you can play around with.</p>
+<p>Here, we’re using the “by=[’ ‘]” command to specify which grouping variable we want, and again specifying the bins and the figure size, both of which you can play around with.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;internet&#39;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
@@ -593,13 +688,13 @@ df.groupby<span class="o">?</span>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="statistical-tests-and-subsetting-datasets">
-<h2>Statistical tests and subsetting datasets<a class="headerlink" href="#statistical-tests-and-subsetting-datasets" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="statistical-tests-and-subsetting-datasets">
+<h2>Statistical tests and subsetting datasets<a class="headerlink" href="#statistical-tests-and-subsetting-datasets" title="Link to this heading">#</a></h2>
 <p>Now, if we want to move onto statistical comparisons, we can run our normal, basic statistics here in python as well.  There’s no need to import your datset to SPSS to do this, if you want to know whether a specific difference is significant, for example.</p>
-<div class="section" id="t-tests">
-<h3>T-tests<a class="headerlink" href="#t-tests" title="Permalink to this headline">¶</a></h3>
+<section id="t-tests">
+<h3>T-tests<a class="headerlink" href="#t-tests" title="Link to this heading">#</a></h3>
 <p>Let’s start with a t-test, comparing the mean internet news use for men and women that we just examined in the histograms.</p>
 <p>In order to do this, we have to create two new little dataframes out of our first one - one for men, one for women.</p>
 <p>We are using the ability to filter a dataframe (e.g., <code class="docutils literal notranslate"><span class="pre">df[df['gender']==1]</span></code> to create a dataframe only for males; adding <code class="docutils literal notranslate"><span class="pre">['internet']</span></code> at the end selects only the column for internet). This can be handy to select only relevant data for your story out of a much larger dataset!</p>
@@ -667,9 +762,9 @@ df.groupby<span class="o">?</span>
 </div>
 </div>
 <p>There are obviously many more possibilities here, including running a correlation between age and mean media use, for example, or using ANOVAs if you had more than 2 groups to compare, etc.  We don’t have time to show all of this to you in class, but remember there is a ton of resources online, so you should just search away to find what you need.  If you have problems understanding specific modules or commands you find online, you can approach us during our open lab sessions with questions as to how to apply these techniques to your own data story.</p>
-</div>
-<div class="section" id="before-we-finish-let-s-play-around-with-some-more-graphics">
-<h3>Before we finish, let’s play around with some more graphics<a class="headerlink" href="#before-we-finish-let-s-play-around-with-some-more-graphics" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="before-we-finish-let-s-play-around-with-some-more-graphics">
+<h3>Before we finish, let’s play around with some more graphics<a class="headerlink" href="#before-we-finish-let-s-play-around-with-some-more-graphics" title="Link to this heading">#</a></h3>
 <p>The seaborn library (which we imported at the beginning) offers a lot of cool stuff.</p>
 <p>First, we’ll make a simple correlation matrix of the four media in this datset.</p>
 <div class="cell docutils container">
@@ -707,16 +802,16 @@ df.groupby<span class="o">?</span>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="so">
-<h2>So…<a class="headerlink" href="#so" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="so">
+<h2>So…<a class="headerlink" href="#so" title="Link to this heading">#</a></h2>
 <p>there are lots of possibilities here. Remember: google is your friend here!</p>
-</div>
-<div class="section" id="more-non-graded-homework">
-<h2>More (non-graded) homework :)<a class="headerlink" href="#more-non-graded-homework" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="more-non-graded-homework">
+<h2>More (non-graded) homework :)<a class="headerlink" href="#more-non-graded-homework" title="Link to this heading">#</a></h2>
 <p>Using the Iris dataset from last Wednesday, try the following:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Describe the dataset</p></li>
 <li><p>Find the value counts of the ‘species’ column</p></li>
 <li><p>Describe the dataset for each of the species separately.</p></li>
@@ -745,11 +840,11 @@ df.groupby<span class="o">?</span>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="appendix-multivariate-statistical-analysis">
-<h2>Appendix: Multivariate statistical analysis<a class="headerlink" href="#appendix-multivariate-statistical-analysis" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="appendix-multivariate-statistical-analysis">
+<h2>Appendix: Multivariate statistical analysis<a class="headerlink" href="#appendix-multivariate-statistical-analysis" title="Link to this heading">#</a></h2>
 <p>For those who are interested, here’s a brief bit on multivariate analyses.  Here, we’re focusing on the same comparison of internet news use between men and women, but first, let’s see whether that holds when we control for political interest.</p>
-<p>Before we can do that, we have to bring in another datset, however, and join it.  You can access this dataset and save it from the following URL: <a class="reference external" href="https://raw.githubusercontent.com/damian0604/bdaca/master/ipynb/intpol.csv">https://raw.githubusercontent.com/damian0604/bdaca/master/ipynb/intpol.csv</a></p>
+<p>Before we can do that, we have to bring in another datset, however, and join it.  You can access this dataset and save it from the following URL: https://raw.githubusercontent.com/damian0604/bdaca/master/ipynb/intpol.csv</p>
 <p>We’ll talk more about aggregating/merging datasets in a later session, so for now just go with it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -800,7 +895,7 @@ df.groupby<span class="o">?</span>
 </div>
 </div>
 <p>We can also do a test to see whether M2 is better than M1 (it is, in this case:)
-(see also <a class="reference external" href="http://www.statsmodels.org/stable/generated/statsmodels.regression.linear_model.OLSResults.compare_lr_test.html?highlight=compare_lr_test">http://www.statsmodels.org/stable/generated/statsmodels.regression.linear_model.OLSResults.compare_lr_test.html?highlight=compare_lr_test</a> )</p>
+(see also http://www.statsmodels.org/stable/generated/statsmodels.regression.linear_model.OLSResults.compare_lr_test.html?highlight=compare_lr_test )</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m2</span><span class="o">.</span><span class="n">compare_lr_test</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span>
@@ -808,9 +903,9 @@ df.groupby<span class="o">?</span>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="hexplots">
-<h2>Hexplots<a class="headerlink" href="#hexplots" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="hexplots">
+<h2>Hexplots<a class="headerlink" href="#hexplots" title="Link to this heading">#</a></h2>
 <p>We have seen scatterplots at work above. Scatterplots are a cool way to show the relationship between two variables, but they mainly work well if both variables have a lot of different values (say, the money people earn in Euros’ (and not in categories!), or the time people spent on Facebook in exact minutes). However, if we have only few possible values (such as the integers from 0 to 7, as in our examples above), the dots in the scatterplot will overlap, and an observation that only occurs one single time looks exactly like an observation that occurs 1000 times.</p>
 <p>A hexplot is very much like a scatterplot, but <em>the more observations overlap at the same (hexagon-shaped) place in the graph, the darker it gets.</em></p>
 <p>To make it even more informative, we add histograms of the two variables in the margin, so that you can immediately get an idea of the distributions. This, again, helps us to understand whether there are just a few (very old, very young) people that behave in some way (no media at all, media every day), or whether it’s a general pattern.</p>
@@ -838,8 +933,8 @@ df.groupby<span class="o">?</span>
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -853,7 +948,7 @@ df.groupby<span class="o">?</span>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true
@@ -861,56 +956,102 @@ df.groupby<span class="o">?</span>
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-        
-            
 
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="02-accessing_data.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Accessing Data</p>
-            </div>
-        </a>
-    </div>
-     <div id="next">
-        <a class="right-next" href="04-join_and_aggregate.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Python Data Wrangling (1)</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
 </div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-our-tools-modules-libraries">Import our tools/modules/libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-data-into-a-dataframe">Read data into a dataframe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-case-you-work-with-google-colab-see-also-first-notebook">In case you work with google colab (see also first notebook):</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-the-dataset">Explore the dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#groupby">Groupby</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pop-quiz">POP QUIZ!</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plots-grouped-by-variables">Plots grouped by variables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-tests-and-subsetting-datasets">Statistical tests and subsetting datasets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#t-tests">T-tests</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#before-we-finish-let-s-play-around-with-some-more-graphics">Before we finish, let’s play around with some more graphics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#so">So…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-non-graded-homework">More (non-graded) homework :)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-multivariate-statistical-analysis">Appendix: Multivariate statistical analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hexplots">Hexplots</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Felicia Loecherbach
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
         
-        </div>
+
+      </main>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Damian Trilling, Penny Sheets, & Frederic Hopp<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
   </footer>
-</main>
-
-
-      </div>
-    </div>
-  
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  
   </body>
 </html>

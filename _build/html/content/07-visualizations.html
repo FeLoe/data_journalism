@@ -1,363 +1,446 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Data Visualization &#8212; Data Journalism</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
-
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/07-visualizations';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
         
       
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Data Journalism</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p class="caption">
- <span class="caption-text">
-  Course Overview
- </span>
-</p>
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Data Journalism - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Data Journalism - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Overview</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="instructors.html">
-   Instructors
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="schedule.html">
-   Schedule
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="instructors.html">Instructors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedule.html">Schedule</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Notebooks
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebooks</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01-getting_started.html">
-   1. On Jupyter Notebooks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02-accessing_data.html">
-   2. Accessing Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03-analyzing_numbers.html">
-   3. Basic Statistics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04-join_and_aggregate.html">
-   4. Python Data Wrangling I
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04x-join_and_aggregate_makedataset.html">
-   5. Python Data Wrangling II
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09-interactive_visualizations.html">
-   Interactive Data Visualization
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="01-getting_started.html">1. On Jupyter Notebooks</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="02-accessing_data.html">2. Accessing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-analyzing_numbers.html">3. Basic Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-join_and_aggregate.html">4. Python Data Wrangling I</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="05-join_and_aggregate_makedataset.html">5. Python Data Wrangling II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-aggregate_wozwaarde.html">6. Data Aggregation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="07-analyzing_text.html">7. Analyzing Text</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="08-visualizations.html">8. Data Visualization</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="09-interactive_visualizations.html">9. Interactive Data Visualization</a></li>
+
+
+
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Resources
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="python.html">
-   Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="datasets.html">
-   Datasets
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/content/07-visualizations.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/fhopp/data_journalism"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/fhopp/data_journalism/issues/new?title=Issue%20on%20page%20%2Fcontent/07-visualizations.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/feloe/data_journalism" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/feloe/data_journalism/issues/new?title=Issue%20on%20page%20%2Fcontent/07-visualizations.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/fhopp/data_journalism/master?urlpath=tree/docs/content/07-visualizations.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/07-visualizations.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data Visualization</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Data Visualization
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#interactive-data-visualization">
-     Interactive data visualization
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#choosing-the-right-library">
-     Choosing the right library
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#preparation">
-     Preparation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-very-brief-intro-to-the-syntax-of-matplotlib-and-seaborn">
-   0. A very brief intro to the syntax of matplotlib and seaborn
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matplotlib-directly">
-     0.1 Matplotlib (directly)
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matplotlib-via-pandas">
-     0.2 Matplotlib (via pandas)
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#seaborn">
-     0.3 Seaborn
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pie-charts">
-   1. Pie charts
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bar-charts">
-   2. Bar charts
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#grouped-barplots">
-     Grouped barplots
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#point-charts">
-   3. Point charts
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#line-charts">
-   3. Line charts
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plotting-bivariate-relationships">
-   4. Plotting bivariate relationships
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#additional-statistical-plots">
-   5. Additional (statistical) plots
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#now-it-s-your-turn">
-   Now it’s your turn!
-  </a>
- </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data Visualization</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-data-visualization">Interactive data visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-right-library">Choosing the right library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation">Preparation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-very-brief-intro-to-the-syntax-of-matplotlib-and-seaborn">0. A very brief intro to the syntax of matplotlib and seaborn</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-directly">0.1 Matplotlib (directly)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-via-pandas">0.2 Matplotlib (via pandas)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn">0.3 Seaborn</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pie-charts">1. Pie charts</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-charts">2. Bar charts</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grouped-barplots">Grouped barplots</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#point-charts">3. Point charts</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#line-charts">3. Line charts</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-bivariate-relationships">4. Plotting bivariate relationships</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-statistical-plots">5. Additional (statistical) plots</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#now-it-s-your-turn">Now it’s your turn!</a></li>
 </ul>
 
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
+
+              
                 
-  <div class="section" id="data-visualization">
-<h1>Data Visualization<a class="headerlink" href="#data-visualization" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="data-visualization">
+<h1>Data Visualization<a class="headerlink" href="#data-visualization" title="Link to this heading">#</a></h1>
 <p><em>Damian Trilling and Penny Sheets</em></p>
 <p>This notebook illustrates what you should consider when making visualizations.</p>
 <p>While we will use</p>
@@ -365,8 +448,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">seaborn</span></code></p></li>
 </ul>
-<div class="section" id="interactive-data-visualization">
-<h2>Interactive data visualization<a class="headerlink" href="#interactive-data-visualization" title="Permalink to this headline">¶</a></h2>
+<section id="interactive-data-visualization">
+<h2>Interactive data visualization<a class="headerlink" href="#interactive-data-visualization" title="Link to this heading">#</a></h2>
 <p>Next week, we will explicitly talk about how to make interactive graphs.
 For instance,</p>
 <ul class="simple">
@@ -374,16 +457,16 @@ For instance,</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">pygal</span></code></p></li>
 </ul>
 <p>are quite useful for that. However, in order to do that, it’s good to have a understandig of standard, static plots first (and, of course, they are still very relevant for everything that’s printed).</p>
-</div>
-<div class="section" id="choosing-the-right-library">
-<h2>Choosing the right library<a class="headerlink" href="#choosing-the-right-library" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="choosing-the-right-library">
+<h2>Choosing the right library<a class="headerlink" href="#choosing-the-right-library" title="Link to this heading">#</a></h2>
 <p>Some background about our modules of choice:</p>
 <p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> is the standard work horse. It’s neither smart nor beautiful, but the decent option that just does its job. It is what happens under the hood if you use the <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> methods in <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, but you can also just directly feed it some lists and dictionaries as input.</p>
 <p><code class="docutils literal notranslate"><span class="pre">seaborn</span></code> offers more beautiful output, has many more options, is smarter and can produce advanced statistical plots. It is also a bit easier to use. Its a bit like <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> in R.</p>
 <p>As you will see when browsing examples on https://python-graph-gallery.com/ , both <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> are very popular, and some of the examples use one, some the other. You can do all the standard stuff (like bar charts) in either of them, and we therefore introduce you to both (after all, when googling for help, you are very likely to come accross both libraries).</p>
-</div>
-<div class="section" id="preparation">
-<h2>Preparation<a class="headerlink" href="#preparation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="preparation">
+<h2>Preparation<a class="headerlink" href="#preparation" title="Link to this heading">#</a></h2>
 <p>Import some modules, load some example datasets. (Note, these ones with ‘sns’ beforehand are datasets that come with the seaborn package.  In this case you don’t need any extra steps if you’re running CoLab.)</p>
 <p>We are going to import these datasets - two from seaborn, and one that we created in our notebooks last week - in order to use them later for the visualizations.</p>
 <div class="cell docutils container">
@@ -475,12 +558,12 @@ For instance,</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="a-very-brief-intro-to-the-syntax-of-matplotlib-and-seaborn">
-<h1>0. A very brief intro to the syntax of matplotlib and seaborn<a class="headerlink" href="#a-very-brief-intro-to-the-syntax-of-matplotlib-and-seaborn" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="matplotlib-directly">
-<h2>0.1 Matplotlib (directly)<a class="headerlink" href="#matplotlib-directly" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="a-very-brief-intro-to-the-syntax-of-matplotlib-and-seaborn">
+<h1>0. A very brief intro to the syntax of matplotlib and seaborn<a class="headerlink" href="#a-very-brief-intro-to-the-syntax-of-matplotlib-and-seaborn" title="Link to this heading">#</a></h1>
+<section id="matplotlib-directly">
+<h2>0.1 Matplotlib (directly)<a class="headerlink" href="#matplotlib-directly" title="Link to this heading">#</a></h2>
 <p>The general idea with matplotlib, if you use it directly, is to create an empty figure, and then add elements (plots, labels, titles, …) to it, and then either save or show the image.</p>
 <p><em>This is especially useful if your data are not in a pandas dataframe, but, for instance, in some lists.</em></p>
 <p>There are multiple ways of plotting things with matplotlib, but the most common one (illustrated below) is probably to just pass lists of values:</p>
@@ -516,9 +599,9 @@ For instance,</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="matplotlib-via-pandas">
-<h2>0.2 Matplotlib (via pandas)<a class="headerlink" href="#matplotlib-via-pandas" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="matplotlib-via-pandas">
+<h2>0.2 Matplotlib (via pandas)<a class="headerlink" href="#matplotlib-via-pandas" title="Link to this heading">#</a></h2>
 <p>The most useful way for you to interact with matplotlib, however, is via pandas. Pandas dataframes and series have build-in methods that call matplotlib ‘under the hood’, which makes it very easy for you to use.</p>
 <p>You essentially just add <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> to a table-like object, and it will produce a plot.
 With the <code class="docutils literal notranslate"><span class="pre">kind</span></code> argument, you can specify which type of plot you want (pie, bar, line, etc)</p>
@@ -541,9 +624,9 @@ With the <code class="docutils literal notranslate"><span class="pre">kind</span
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="seaborn">
-<h2>0.3 Seaborn<a class="headerlink" href="#seaborn" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="seaborn">
+<h2>0.3 Seaborn<a class="headerlink" href="#seaborn" title="Link to this heading">#</a></h2>
 <p>Seaborn is built on matplotlib, but uses a different grammar.
 You may find it, in fact, more intuitive, as you basically provide each seaborn function with a couple of arguments, namely</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="p">:</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">dataframe</span> <span class="k">with</span> <span class="nb">all</span> <span class="n">your</span> <span class="n">data</span>
@@ -572,10 +655,10 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 </div>
 <p>In other words, when using seaborn, we do not use the method of a pandas object (as with matplotlib, see above), but call the seaborn function directly and pass on the dataframe with the <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">=</span> <span class="pre">...</span></code> argument</p>
 <p>Let’s now move through a couple of examples for each chart type that we discussed on Monday.</p>
-</div>
-</div>
-<div class="section" id="pie-charts">
-<h1>1. Pie charts<a class="headerlink" href="#pie-charts" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="pie-charts">
+<h1>1. Pie charts<a class="headerlink" href="#pie-charts" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>proportions</p></li>
 <li><p>categorical (nominal) data</p></li>
@@ -612,9 +695,9 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 </div>
 </div>
 <p><strong>Fun fact</strong>! You cannot do a pie chart in seaborn. Probably because the authors of seaborn also think that there are very few use cases in which pie charts are a great choice ;-) . So, you need to stick with matplotlib in case you want to stick to pie charts.</p>
-</div>
-<div class="section" id="bar-charts">
-<h1>2. Bar charts<a class="headerlink" href="#bar-charts" title="Permalink to this headline">¶</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bar-charts">
+<h1>2. Bar charts<a class="headerlink" href="#bar-charts" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>counts per (discrete) category</p></li>
 <li><p>or: other statistical property (e..g, mean)  per (discrete) category</p></li>
@@ -663,8 +746,8 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 </div>
 </div>
 </div>
-<div class="section" id="grouped-barplots">
-<h2>Grouped barplots<a class="headerlink" href="#grouped-barplots" title="Permalink to this headline">¶</a></h2>
+<section id="grouped-barplots">
+<h2>Grouped barplots<a class="headerlink" href="#grouped-barplots" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
@@ -708,10 +791,10 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="point-charts">
-<h1>3. Point charts<a class="headerlink" href="#point-charts" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="point-charts">
+<h1>3. Point charts<a class="headerlink" href="#point-charts" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>similar to bar charts</p></li>
 <li><p>but: can look ‘cleaner’</p></li>
@@ -737,9 +820,9 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="line-charts">
-<h1>3. Line charts<a class="headerlink" href="#line-charts" title="Permalink to this headline">¶</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="line-charts">
+<h1>3. Line charts<a class="headerlink" href="#line-charts" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>ordered (and typically evenly spaced) values on x-axis</p></li>
 <li><p>x-axis has many (in theory: contious) measurements</p></li>
@@ -775,9 +858,9 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="plotting-bivariate-relationships">
-<h1>4. Plotting bivariate relationships<a class="headerlink" href="#plotting-bivariate-relationships" title="Permalink to this headline">¶</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="plotting-bivariate-relationships">
+<h1>4. Plotting bivariate relationships<a class="headerlink" href="#plotting-bivariate-relationships" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pandas/matplotlib</span>
@@ -821,9 +904,9 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="additional-statistical-plots">
-<h1>5. Additional (statistical) plots<a class="headerlink" href="#additional-statistical-plots" title="Permalink to this headline">¶</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="additional-statistical-plots">
+<h1>5. Additional (statistical) plots<a class="headerlink" href="#additional-statistical-plots" title="Link to this heading">#</a></h1>
 <p>Have a look at the seaborn website (http://seaborn.pydata.org/) or at the Python Graph Gallery (https://python-graph-gallery.com/) for more inspiration, including cool stuff like</p>
 <ul class="simple">
 <li><p>violin plots</p></li>
@@ -832,12 +915,12 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 <li><p>…</p></li>
 </ul>
 <p>Also, look back at our earlier notebook 03_analyzing_numbers.ipynb, and the hexplot we present at the end.</p>
-</div>
-<div class="section" id="now-it-s-your-turn">
-<h1>Now it’s your turn!<a class="headerlink" href="#now-it-s-your-turn" title="Permalink to this headline">¶</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="now-it-s-your-turn">
+<h1>Now it’s your turn!<a class="headerlink" href="#now-it-s-your-turn" title="Link to this heading">#</a></h1>
 <p><strong>Exercise</strong>: Take a dataset of you choice (preferably your own data) and try to make multiple visualisations!
 You can work together with your neighbor if you want to.</p>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -851,7 +934,7 @@ You can work together with your neighbor if you want to.</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./content"
         },
         predefinedOutput: true
@@ -859,38 +942,107 @@ You can work together with your neighbor if you want to.</p>
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-        
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
             
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data Visualization</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-data-visualization">Interactive data visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-right-library">Choosing the right library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation">Preparation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-very-brief-intro-to-the-syntax-of-matplotlib-and-seaborn">0. A very brief intro to the syntax of matplotlib and seaborn</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-directly">0.1 Matplotlib (directly)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-via-pandas">0.2 Matplotlib (via pandas)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn">0.3 Seaborn</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pie-charts">1. Pie charts</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-charts">2. Bar charts</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grouped-barplots">Grouped barplots</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#point-charts">3. Point charts</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#line-charts">3. Line charts</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-bivariate-relationships">4. Plotting bivariate relationships</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-statistical-plots">5. Additional (statistical) plots</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#now-it-s-your-turn">Now it’s your turn!</a></li>
+</ul>
 
-<div class='prev-next-bottom'>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Felicia Loecherbach
+</p>
+
+  </div>
+  
+  <div class="footer-item">
     
 
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
         
-        </div>
+
+      </main>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Frederic Hopp<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
   </footer>
-</main>
-
-
-      </div>
-    </div>
-  
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  
   </body>
 </html>

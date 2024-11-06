@@ -62,15 +62,14 @@ in class.
 
 **NEEDS UPDATE**
 
-Course materials in the form of Jupyter Notebooks are provided at XXX - they
-will be updated throughout the course, and we will announce which ones you need
-to work on. Like most Master’s courses at UvA, attendance in this course is
-mandatory; we expect you to attend each XXX you’re assigned to. If you need to
-miss a session for any reason, please do your utmost to inform us in advance.
-Please also make sure to attend the Wednesday session you are registered in; the
-numbers are balanced to ensure a maximum amount of feedback and attention for
-each student. If multiple session are missed for any reason, make-up work may be
-assigned.
+Course materials in the form of Jupyter Notebooks are provided on this website -
+they will be updated throughout the course, and we will announce which ones you
+need to work on. Like most Master’s courses at UvA, attendance in this course is
+mandatory. If you need to miss a session for any reason, please do your utmost
+to inform us in advance. Please also make sure to attend the Wednesday session
+you are registered in; the numbers are balanced to ensure a maximum amount of
+feedback and attention for each student. If multiple session are missed for any
+reason, make-up work may be assigned.
 
 Your grade comprises two elements: Individual final data journalism project
 (70%) Group data journalism tool presentation (30%)
