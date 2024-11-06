@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -439,8 +439,8 @@ document.write(`
 <li><p>(3) Enrichment</p></li>
 <li><p>(4) Analysis</p></li>
 </ul>
-<p>of two CBS datasets. We made a different notebook (<code class="docutils literal notranslate"><span class="pre">5.</span> <span class="pre">Python</span> <span class="pre">Data</span> <span class="pre">Wrangling</span> <span class="pre">II</span></code>) that helps you reconstructing how we
-did the</p>
+<p>of two CBS datasets. We made a different notebook
+(<code class="docutils literal notranslate"><span class="pre">5.</span> <span class="pre">Python</span> <span class="pre">Data</span> <span class="pre">Wrangling</span> <span class="pre">II</span></code>) that helps you reconstructing how we did the</p>
 <ul class="simple">
 <li><p>(1) Retrieval</p></li>
 <li><p>(2) Preprocessing</p></li>
@@ -456,10 +456,11 @@ did the</p>
 </div>
 </div>
 </div>
-<p>Obtain both datasets by either working through Notebook 5. or by downloading both files from here:</p>
+<p>Obtain both datasets by either working through Notebook 5. or by downloading
+both files from here:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/fhopp/data_journalism/blob/master/datasets/population.json">population.json</a></p></li>
-<li><p><a class="reference external" href="https://github.com/fhopp/data_journalism/blob/master/datasets/economy.json">economy.json</a></p></li>
+<li><p><a class="reference external" href="https://github.com/FeLoe/data_journalism/blob/master/datasets/population.json">population.json</a></p></li>
+<li><p><a class="reference external" href="https://github.com/FeLoe/data_journalism/blob/master/datasets/economy.json">economy.json</a></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -473,8 +474,10 @@ did the</p>
 <section class="tex2jax_ignore mathjax_ignore" id="your-task">
 <h1>Your Task<a class="headerlink" href="#your-task" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p>use methods like <code class="docutils literal notranslate"><span class="pre">.head()</span></code>, <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> and/or <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code> to get a sense of both datasets.</p></li>
-<li><p>what are the common characteristics between the datasets, what are the differences?</p></li>
+<li><p>use methods like <code class="docutils literal notranslate"><span class="pre">.head()</span></code>, <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> and/or <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code> to get a
+sense of both datasets.</p></li>
+<li><p>what are the common characteristics between the datasets, what are the
+differences?</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -510,45 +513,45 @@ did the</p>
       <th></th>
       <th>Regions</th>
       <th>Periods</th>
-      <th>LiveBornChildren_2</th>
-      <th>NetMigrationExcludingAdministrative_19</th>
+      <th>LiveBornChildren_3</th>
+      <th>NetMigrationIncludingAdministrative_17</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
       <td>Groningen</td>
-      <td>1960</td>
-      <td>8868.0</td>
-      <td>-1748.0</td>
+      <td>1942</td>
+      <td>8564.0</td>
+      <td>-2106.0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Groningen</td>
-      <td>1961</td>
-      <td>9062.0</td>
-      <td>-1087.0</td>
+      <td>1943</td>
+      <td>9589.0</td>
+      <td>-1201.0</td>
     </tr>
     <tr>
-      <th>10</th>
+      <th>2</th>
       <td>Groningen</td>
-      <td>1970</td>
-      <td>9774.0</td>
-      <td>196.0</td>
+      <td>1944</td>
+      <td>9802.0</td>
+      <td>-931.0</td>
     </tr>
     <tr>
-      <th>100</th>
-      <td>Friesland</td>
-      <td>2002</td>
-      <td>7987.0</td>
-      <td>2339.0</td>
+      <th>3</th>
+      <td>Groningen</td>
+      <td>1945</td>
+      <td>9872.0</td>
+      <td>-2559.0</td>
     </tr>
     <tr>
-      <th>101</th>
-      <td>Friesland</td>
-      <td>2003</td>
-      <td>7932.0</td>
-      <td>1196.0</td>
+      <th>4</th>
+      <td>Groningen</td>
+      <td>1946</td>
+      <td>12790.0</td>
+      <td>-3851.0</td>
     </tr>
   </tbody>
 </table>
@@ -598,22 +601,22 @@ did the</p>
       <td>-2.0</td>
     </tr>
     <tr>
-      <th>10</th>
+      <th>2</th>
       <td>Groningen</td>
-      <td>2006</td>
-      <td>1.1</td>
+      <td>1998</td>
+      <td>-0.9</td>
     </tr>
     <tr>
-      <th>100</th>
-      <td>Flevoland</td>
-      <td>2008</td>
-      <td>-0.8</td>
+      <th>3</th>
+      <td>Groningen</td>
+      <td>1999</td>
+      <td>-0.7</td>
     </tr>
     <tr>
-      <th>101</th>
-      <td>Flevoland</td>
-      <td>2009</td>
-      <td>-5.4</td>
+      <th>4</th>
+      <td>Groningen</td>
+      <td>2000</td>
+      <td>1.5</td>
     </tr>
   </tbody>
 </table>
@@ -626,65 +629,19 @@ did the</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2017    12
-1974    12
-1986    12
-1985    12
-1984    12
-1983    12
-1982    12
-1981    12
-1980    12
-1979    12
-1978    12
-1977    12
-1976    12
-1975    12
-1973    12
-2016    12
-1972    12
-1971    12
-1970    12
-1969    12
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Periods
+1942    12
+2003    12
+2001    12
+2000    12
+1999    12
+        ..
 1968    12
 1967    12
 1966    12
 1965    12
-1964    12
-1963    12
-1962    12
-1961    12
-1987    12
-1988    12
-1989    12
-1990    12
-2015    12
-2014    12
-2013    12
-2012    12
-2011    12
-2010    12
-2009    12
-2008    12
-2007    12
-2006    12
-2005    12
-2004    12
-2003    12
-2002    12
-2001    12
-2000    12
-1999    12
-1998    12
-1997    12
-1996    12
-1995    12
-1994    12
-1993    12
-1992    12
-1991    12
-1960    12
-Name: Periods, dtype: int64
+2023    12
+Name: count, Length: 82, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -715,58 +672,58 @@ Name: Periods, dtype: int64
     <tr style="text-align: right;">
       <th></th>
       <th>Periods</th>
-      <th>LiveBornChildren_2</th>
-      <th>NetMigrationExcludingAdministrative_19</th>
+      <th>LiveBornChildren_3</th>
+      <th>NetMigrationIncludingAdministrative_17</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>count</th>
-      <td>696.000000</td>
-      <td>670.000000</td>
-      <td>670.000000</td>
+      <td>984.000000</td>
+      <td>940.000000</td>
+      <td>940.000000</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>1988.500000</td>
-      <td>17076.928358</td>
-      <td>3086.132836</td>
+      <td>1982.500000</td>
+      <td>17684.945745</td>
+      <td>1889.707447</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>16.752708</td>
-      <td>12387.755648</td>
-      <td>5049.005650</td>
+      <td>23.681637</td>
+      <td>12854.180927</td>
+      <td>6770.561808</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>1960.000000</td>
+      <td>1942.000000</td>
       <td>3357.000000</td>
-      <td>-15648.000000</td>
+      <td>-65049.000000</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>1974.000000</td>
-      <td>6511.250000</td>
-      <td>272.000000</td>
+      <td>1962.000000</td>
+      <td>6726.750000</td>
+      <td>-975.250000</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>1988.500000</td>
-      <td>13359.000000</td>
-      <td>1784.500000</td>
+      <td>1982.500000</td>
+      <td>13541.500000</td>
+      <td>1163.500000</td>
     </tr>
     <tr>
       <th>75%</th>
       <td>2003.000000</td>
-      <td>26237.250000</td>
-      <td>4970.750000</td>
+      <td>26504.750000</td>
+      <td>3965.000000</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>2017.000000</td>
-      <td>55295.000000</td>
-      <td>31545.000000</td>
+      <td>2023.000000</td>
+      <td>69540.000000</td>
+      <td>47459.000000</td>
     </tr>
   </tbody>
 </table>
@@ -779,7 +736,8 @@ Name: Periods, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Drenthe          22
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Regions
+Drenthe          22
 Flevoland        22
 Friesland        22
 Gelderland       22
@@ -791,7 +749,7 @@ Overijssel       22
 Utrecht          22
 Zeeland          22
 Zuid-Holland     22
-Name: Regions, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -847,8 +805,8 @@ Name: Regions, dtype: int64
       <th>Regions</th>
       <th>Periods</th>
       <th>GDPVolumeChanges_1</th>
-      <th>LiveBornChildren_2</th>
-      <th>NetMigrationExcludingAdministrative_19</th>
+      <th>LiveBornChildren_3</th>
+      <th>NetMigrationIncludingAdministrative_17</th>
     </tr>
   </thead>
   <tbody>
@@ -858,7 +816,7 @@ Name: Regions, dtype: int64
       <td>1996</td>
       <td>9.3</td>
       <td>6148.0</td>
-      <td>-336.0</td>
+      <td>-616.0</td>
     </tr>
     <tr>
       <th>1</th>
@@ -866,231 +824,31 @@ Name: Regions, dtype: int64
       <td>1997</td>
       <td>-2.0</td>
       <td>6336.0</td>
-      <td>-647.0</td>
+      <td>-952.0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Groningen</td>
-      <td>2006</td>
-      <td>1.1</td>
-      <td>5838.0</td>
-      <td>65.0</td>
+      <td>1998</td>
+      <td>-0.9</td>
+      <td>6472.0</td>
+      <td>992.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Flevoland</td>
-      <td>2008</td>
-      <td>-0.8</td>
-      <td>5101.0</td>
-      <td>1984.0</td>
+      <td>Groningen</td>
+      <td>1999</td>
+      <td>-0.7</td>
+      <td>6515.0</td>
+      <td>1706.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Flevoland</td>
-      <td>2009</td>
-      <td>-5.4</td>
-      <td>5292.0</td>
-      <td>1519.0</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Flevoland</td>
-      <td>2010</td>
-      <td>3.2</td>
-      <td>5310.0</td>
-      <td>1359.0</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>Flevoland</td>
-      <td>2011</td>
-      <td>2.0</td>
-      <td>5090.0</td>
-      <td>1162.0</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Flevoland</td>
-      <td>2012</td>
-      <td>-1.0</td>
-      <td>4991.0</td>
-      <td>339.0</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>Flevoland</td>
-      <td>2013</td>
-      <td>-2.6</td>
-      <td>4687.0</td>
-      <td>-234.0</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>Flevoland</td>
-      <td>2014</td>
-      <td>3.0</td>
-      <td>4922.0</td>
-      <td>-685.0</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>Flevoland</td>
-      <td>2015</td>
-      <td>2.9</td>
-      <td>4735.0</td>
-      <td>475.0</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>Flevoland</td>
-      <td>2016</td>
-      <td>2.6</td>
-      <td>4706.0</td>
-      <td>1955.0</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>Flevoland</td>
-      <td>2017</td>
-      <td>4.2</td>
-      <td>4565.0</td>
-      <td>2045.0</td>
-    </tr>
-    <tr>
-      <th>13</th>
       <td>Groningen</td>
-      <td>2007</td>
-      <td>-2.1</td>
-      <td>5677.0</td>
-      <td>234.0</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>Gelderland</td>
-      <td>1996</td>
-      <td>2.9</td>
-      <td>23171.0</td>
-      <td>4434.0</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>Gelderland</td>
-      <td>1997</td>
-      <td>5.1</td>
-      <td>23461.0</td>
-      <td>3860.0</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>Gelderland</td>
-      <td>1998</td>
-      <td>4.3</td>
-      <td>24425.0</td>
-      <td>4213.0</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>Gelderland</td>
-      <td>1999</td>
-      <td>3.9</td>
-      <td>24508.0</td>
-      <td>5521.0</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>Gelderland</td>
       <td>2000</td>
-      <td>4.5</td>
-      <td>25370.0</td>
-      <td>7517.0</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>Gelderland</td>
-      <td>2001</td>
-      <td>2.6</td>
-      <td>24626.0</td>
-      <td>8246.0</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>Gelderland</td>
-      <td>2002</td>
-      <td>-0.6</td>
-      <td>24826.0</td>
-      <td>5530.0</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>Gelderland</td>
-      <td>2003</td>
-      <td>0.6</td>
-      <td>24271.0</td>
-      <td>2037.0</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>Gelderland</td>
-      <td>2004</td>
-      <td>0.9</td>
-      <td>23235.0</td>
-      <td>1708.0</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>Gelderland</td>
-      <td>2005</td>
-      <td>1.8</td>
-      <td>22202.0</td>
-      <td>437.0</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>Groningen</td>
-      <td>2008</td>
-      <td>8.7</td>
-      <td>5908.0</td>
-      <td>827.0</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>Gelderland</td>
-      <td>2006</td>
-      <td>5.2</td>
-      <td>22213.0</td>
-      <td>-282.0</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>Gelderland</td>
-      <td>2007</td>
-      <td>3.2</td>
-      <td>21191.0</td>
-      <td>1434.0</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>Gelderland</td>
-      <td>2008</td>
-      <td>1.8</td>
-      <td>21695.0</td>
-      <td>3614.0</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>Gelderland</td>
-      <td>2009</td>
-      <td>-2.3</td>
-      <td>21350.0</td>
-      <td>4736.0</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>Gelderland</td>
-      <td>2010</td>
-      <td>-0.2</td>
-      <td>21142.0</td>
-      <td>4866.0</td>
+      <td>1.5</td>
+      <td>6510.0</td>
+      <td>2784.0</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1101,244 +859,44 @@ Name: Regions, dtype: int64
       <td>...</td>
     </tr>
     <tr>
-      <th>234</th>
-      <td>Overijssel</td>
-      <td>2002</td>
-      <td>-0.8</td>
-      <td>14663.0</td>
-      <td>3024.0</td>
-    </tr>
-    <tr>
-      <th>235</th>
-      <td>Overijssel</td>
-      <td>2003</td>
-      <td>0.9</td>
-      <td>14857.0</td>
-      <td>1254.0</td>
-    </tr>
-    <tr>
-      <th>236</th>
-      <td>Overijssel</td>
-      <td>2004</td>
-      <td>1.4</td>
-      <td>14098.0</td>
-      <td>367.0</td>
-    </tr>
-    <tr>
-      <th>237</th>
-      <td>Overijssel</td>
-      <td>2005</td>
-      <td>2.6</td>
-      <td>13942.0</td>
-      <td>1081.0</td>
-    </tr>
-    <tr>
-      <th>238</th>
-      <td>Overijssel</td>
-      <td>2006</td>
-      <td>3.1</td>
-      <td>13667.0</td>
-      <td>275.0</td>
-    </tr>
-    <tr>
-      <th>239</th>
-      <td>Overijssel</td>
-      <td>2007</td>
-      <td>4.1</td>
-      <td>13368.0</td>
-      <td>363.0</td>
-    </tr>
-    <tr>
-      <th>240</th>
-      <td>Overijssel</td>
-      <td>2008</td>
-      <td>3.5</td>
-      <td>13411.0</td>
-      <td>1747.0</td>
-    </tr>
-    <tr>
-      <th>241</th>
-      <td>Overijssel</td>
-      <td>2009</td>
-      <td>-2.0</td>
-      <td>13260.0</td>
-      <td>1763.0</td>
-    </tr>
-    <tr>
-      <th>242</th>
-      <td>Groningen</td>
-      <td>2004</td>
-      <td>2.2</td>
-      <td>6141.0</td>
-      <td>1273.0</td>
-    </tr>
-    <tr>
-      <th>243</th>
-      <td>Overijssel</td>
-      <td>2010</td>
-      <td>-0.1</td>
-      <td>13180.0</td>
-      <td>1620.0</td>
-    </tr>
-    <tr>
-      <th>244</th>
-      <td>Overijssel</td>
-      <td>2011</td>
-      <td>3.3</td>
-      <td>12651.0</td>
-      <td>1316.0</td>
-    </tr>
-    <tr>
-      <th>245</th>
-      <td>Overijssel</td>
-      <td>2012</td>
-      <td>-3.4</td>
-      <td>12367.0</td>
-      <td>-161.0</td>
-    </tr>
-    <tr>
-      <th>246</th>
-      <td>Overijssel</td>
-      <td>2013</td>
-      <td>-1.1</td>
-      <td>12151.0</td>
-      <td>-812.0</td>
-    </tr>
-    <tr>
-      <th>247</th>
-      <td>Overijssel</td>
-      <td>2014</td>
-      <td>1.4</td>
-      <td>12092.0</td>
-      <td>-360.0</td>
-    </tr>
-    <tr>
-      <th>248</th>
-      <td>Overijssel</td>
-      <td>2015</td>
-      <td>2.8</td>
-      <td>11765.0</td>
-      <td>2694.0</td>
-    </tr>
-    <tr>
-      <th>249</th>
-      <td>Overijssel</td>
-      <td>2016</td>
-      <td>2.7</td>
-      <td>11728.0</td>
-      <td>3110.0</td>
-    </tr>
-    <tr>
-      <th>250</th>
-      <td>Overijssel</td>
-      <td>2017</td>
-      <td>3.4</td>
-      <td>11345.0</td>
-      <td>3629.0</td>
-    </tr>
-    <tr>
-      <th>251</th>
-      <td>Flevoland</td>
-      <td>1996</td>
-      <td>3.3</td>
-      <td>4170.0</td>
-      <td>6331.0</td>
-    </tr>
-    <tr>
-      <th>252</th>
-      <td>Flevoland</td>
-      <td>1997</td>
-      <td>8.2</td>
-      <td>4365.0</td>
-      <td>9135.0</td>
-    </tr>
-    <tr>
-      <th>253</th>
-      <td>Groningen</td>
-      <td>2005</td>
-      <td>-0.7</td>
-      <td>5943.0</td>
-      <td>-33.0</td>
-    </tr>
-    <tr>
-      <th>254</th>
-      <td>Flevoland</td>
-      <td>1998</td>
-      <td>7.5</td>
-      <td>4785.0</td>
-      <td>10310.0</td>
-    </tr>
-    <tr>
-      <th>255</th>
-      <td>Flevoland</td>
-      <td>1999</td>
-      <td>11.4</td>
-      <td>4933.0</td>
-      <td>7733.0</td>
-    </tr>
-    <tr>
-      <th>256</th>
-      <td>Flevoland</td>
-      <td>2000</td>
-      <td>5.3</td>
-      <td>5064.0</td>
-      <td>8728.0</td>
-    </tr>
-    <tr>
-      <th>257</th>
-      <td>Flevoland</td>
-      <td>2001</td>
-      <td>6.4</td>
-      <td>5330.0</td>
-      <td>9605.0</td>
-    </tr>
-    <tr>
-      <th>258</th>
-      <td>Flevoland</td>
-      <td>2002</td>
-      <td>2.0</td>
-      <td>5347.0</td>
-      <td>6636.0</td>
-    </tr>
-    <tr>
       <th>259</th>
-      <td>Flevoland</td>
-      <td>2003</td>
-      <td>7.0</td>
-      <td>5452.0</td>
-      <td>5849.0</td>
+      <td>Limburg</td>
+      <td>2013</td>
+      <td>-0.7</td>
+      <td>9011.0</td>
+      <td>159.0</td>
     </tr>
     <tr>
       <th>260</th>
-      <td>Flevoland</td>
-      <td>2004</td>
-      <td>3.4</td>
-      <td>5302.0</td>
-      <td>3376.0</td>
+      <td>Limburg</td>
+      <td>2014</td>
+      <td>0.2</td>
+      <td>8841.0</td>
+      <td>45.0</td>
     </tr>
     <tr>
       <th>261</th>
-      <td>Flevoland</td>
-      <td>2005</td>
-      <td>3.6</td>
-      <td>5290.0</td>
-      <td>2603.0</td>
+      <td>Limburg</td>
+      <td>2015</td>
+      <td>2.7</td>
+      <td>8739.0</td>
+      <td>1406.0</td>
     </tr>
     <tr>
       <th>262</th>
-      <td>Flevoland</td>
-      <td>2006</td>
-      <td>8.6</td>
-      <td>5179.0</td>
-      <td>1615.0</td>
+      <td>Limburg</td>
+      <td>2016</td>
+      <td>2.2</td>
+      <td>8994.0</td>
+      <td>3865.0</td>
     </tr>
     <tr>
       <th>263</th>
-      <td>Flevoland</td>
-      <td>2007</td>
-      <td>4.7</td>
-      <td>5219.0</td>
-      <td>1783.0</td>
+      <td>Limburg</td>
+      <td>2017</td>
+      <td>3.2</td>
+      <td>8821.0</td>
+      <td>2735.0</td>
     </tr>
   </tbody>
 </table>
@@ -1380,8 +938,8 @@ Name: Regions, dtype: int64
       <th></th>
       <th>Periods</th>
       <th>GDPVolumeChanges_1</th>
-      <th>LiveBornChildren_2</th>
-      <th>NetMigrationExcludingAdministrative_19</th>
+      <th>LiveBornChildren_3</th>
+      <th>NetMigrationIncludingAdministrative_17</th>
     </tr>
   </thead>
   <tbody>
@@ -1397,49 +955,49 @@ Name: Regions, dtype: int64
       <td>2006.500000</td>
       <td>1.954924</td>
       <td>15572.280303</td>
-      <td>4499.102273</td>
+      <td>2205.647727</td>
     </tr>
     <tr>
       <th>std</th>
       <td>6.356339</td>
       <td>2.875221</td>
       <td>11710.891211</td>
-      <td>5658.304660</td>
+      <td>4459.382786</td>
     </tr>
     <tr>
       <th>min</th>
       <td>1996.000000</td>
       <td>-8.300000</td>
       <td>3439.000000</td>
-      <td>-2831.000000</td>
+      <td>-16599.000000</td>
     </tr>
     <tr>
       <th>25%</th>
       <td>2001.000000</td>
       <td>0.300000</td>
       <td>5582.000000</td>
-      <td>863.750000</td>
+      <td>-143.000000</td>
     </tr>
     <tr>
       <th>50%</th>
       <td>2006.500000</td>
       <td>2.250000</td>
       <td>12096.000000</td>
-      <td>2407.000000</td>
+      <td>1328.000000</td>
     </tr>
     <tr>
       <th>75%</th>
       <td>2012.000000</td>
       <td>3.525000</td>
       <td>24250.000000</td>
-      <td>6343.250000</td>
+      <td>3514.000000</td>
     </tr>
     <tr>
       <th>max</th>
       <td>2017.000000</td>
       <td>11.400000</td>
       <td>44022.000000</td>
-      <td>31545.000000</td>
+      <td>22523.000000</td>
     </tr>
   </tbody>
 </table>
@@ -1473,8 +1031,8 @@ Name: Regions, dtype: int64
       <th>Regions</th>
       <th>Periods</th>
       <th>GDPVolumeChanges_1</th>
-      <th>LiveBornChildren_2</th>
-      <th>NetMigrationExcludingAdministrative_19</th>
+      <th>LiveBornChildren_3</th>
+      <th>NetMigrationIncludingAdministrative_17</th>
     </tr>
   </thead>
   <tbody>
@@ -1484,7 +1042,7 @@ Name: Regions, dtype: int64
       <td>1996</td>
       <td>9.3</td>
       <td>6148.0</td>
-      <td>-336.0</td>
+      <td>-616.0</td>
     </tr>
     <tr>
       <th>1</th>
@@ -1492,231 +1050,31 @@ Name: Regions, dtype: int64
       <td>1997</td>
       <td>-2.0</td>
       <td>6336.0</td>
-      <td>-647.0</td>
+      <td>-952.0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Groningen</td>
-      <td>2006</td>
-      <td>1.1</td>
-      <td>5838.0</td>
-      <td>65.0</td>
+      <td>1998</td>
+      <td>-0.9</td>
+      <td>6472.0</td>
+      <td>992.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Flevoland</td>
-      <td>2008</td>
-      <td>-0.8</td>
-      <td>5101.0</td>
-      <td>1984.0</td>
+      <td>Groningen</td>
+      <td>1999</td>
+      <td>-0.7</td>
+      <td>6515.0</td>
+      <td>1706.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Flevoland</td>
-      <td>2009</td>
-      <td>-5.4</td>
-      <td>5292.0</td>
-      <td>1519.0</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Flevoland</td>
-      <td>2010</td>
-      <td>3.2</td>
-      <td>5310.0</td>
-      <td>1359.0</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>Flevoland</td>
-      <td>2011</td>
-      <td>2.0</td>
-      <td>5090.0</td>
-      <td>1162.0</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Flevoland</td>
-      <td>2012</td>
-      <td>-1.0</td>
-      <td>4991.0</td>
-      <td>339.0</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>Flevoland</td>
-      <td>2013</td>
-      <td>-2.6</td>
-      <td>4687.0</td>
-      <td>-234.0</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>Flevoland</td>
-      <td>2014</td>
-      <td>3.0</td>
-      <td>4922.0</td>
-      <td>-685.0</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>Flevoland</td>
-      <td>2015</td>
-      <td>2.9</td>
-      <td>4735.0</td>
-      <td>475.0</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>Flevoland</td>
-      <td>2016</td>
-      <td>2.6</td>
-      <td>4706.0</td>
-      <td>1955.0</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>Flevoland</td>
-      <td>2017</td>
-      <td>4.2</td>
-      <td>4565.0</td>
-      <td>2045.0</td>
-    </tr>
-    <tr>
-      <th>13</th>
       <td>Groningen</td>
-      <td>2007</td>
-      <td>-2.1</td>
-      <td>5677.0</td>
-      <td>234.0</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>Gelderland</td>
-      <td>1996</td>
-      <td>2.9</td>
-      <td>23171.0</td>
-      <td>4434.0</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>Gelderland</td>
-      <td>1997</td>
-      <td>5.1</td>
-      <td>23461.0</td>
-      <td>3860.0</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>Gelderland</td>
-      <td>1998</td>
-      <td>4.3</td>
-      <td>24425.0</td>
-      <td>4213.0</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>Gelderland</td>
-      <td>1999</td>
-      <td>3.9</td>
-      <td>24508.0</td>
-      <td>5521.0</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>Gelderland</td>
       <td>2000</td>
-      <td>4.5</td>
-      <td>25370.0</td>
-      <td>7517.0</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>Gelderland</td>
-      <td>2001</td>
-      <td>2.6</td>
-      <td>24626.0</td>
-      <td>8246.0</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>Gelderland</td>
-      <td>2002</td>
-      <td>-0.6</td>
-      <td>24826.0</td>
-      <td>5530.0</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>Gelderland</td>
-      <td>2003</td>
-      <td>0.6</td>
-      <td>24271.0</td>
-      <td>2037.0</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>Gelderland</td>
-      <td>2004</td>
-      <td>0.9</td>
-      <td>23235.0</td>
-      <td>1708.0</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>Gelderland</td>
-      <td>2005</td>
-      <td>1.8</td>
-      <td>22202.0</td>
-      <td>437.0</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>Groningen</td>
-      <td>2008</td>
-      <td>8.7</td>
-      <td>5908.0</td>
-      <td>827.0</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>Gelderland</td>
-      <td>2006</td>
-      <td>5.2</td>
-      <td>22213.0</td>
-      <td>-282.0</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>Gelderland</td>
-      <td>2007</td>
-      <td>3.2</td>
-      <td>21191.0</td>
-      <td>1434.0</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>Gelderland</td>
-      <td>2008</td>
-      <td>1.8</td>
-      <td>21695.0</td>
-      <td>3614.0</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>Gelderland</td>
-      <td>2009</td>
-      <td>-2.3</td>
-      <td>21350.0</td>
-      <td>4736.0</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>Gelderland</td>
-      <td>2010</td>
-      <td>-0.2</td>
-      <td>21142.0</td>
-      <td>4866.0</td>
+      <td>1.5</td>
+      <td>6510.0</td>
+      <td>2784.0</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1727,244 +1085,44 @@ Name: Regions, dtype: int64
       <td>...</td>
     </tr>
     <tr>
-      <th>234</th>
-      <td>Overijssel</td>
-      <td>2002</td>
-      <td>-0.8</td>
-      <td>14663.0</td>
-      <td>3024.0</td>
-    </tr>
-    <tr>
-      <th>235</th>
-      <td>Overijssel</td>
-      <td>2003</td>
-      <td>0.9</td>
-      <td>14857.0</td>
-      <td>1254.0</td>
-    </tr>
-    <tr>
-      <th>236</th>
-      <td>Overijssel</td>
-      <td>2004</td>
-      <td>1.4</td>
-      <td>14098.0</td>
-      <td>367.0</td>
-    </tr>
-    <tr>
-      <th>237</th>
-      <td>Overijssel</td>
-      <td>2005</td>
-      <td>2.6</td>
-      <td>13942.0</td>
-      <td>1081.0</td>
-    </tr>
-    <tr>
-      <th>238</th>
-      <td>Overijssel</td>
-      <td>2006</td>
-      <td>3.1</td>
-      <td>13667.0</td>
-      <td>275.0</td>
-    </tr>
-    <tr>
-      <th>239</th>
-      <td>Overijssel</td>
-      <td>2007</td>
-      <td>4.1</td>
-      <td>13368.0</td>
-      <td>363.0</td>
-    </tr>
-    <tr>
-      <th>240</th>
-      <td>Overijssel</td>
-      <td>2008</td>
-      <td>3.5</td>
-      <td>13411.0</td>
-      <td>1747.0</td>
-    </tr>
-    <tr>
-      <th>241</th>
-      <td>Overijssel</td>
-      <td>2009</td>
-      <td>-2.0</td>
-      <td>13260.0</td>
-      <td>1763.0</td>
-    </tr>
-    <tr>
-      <th>242</th>
-      <td>Groningen</td>
-      <td>2004</td>
-      <td>2.2</td>
-      <td>6141.0</td>
-      <td>1273.0</td>
-    </tr>
-    <tr>
-      <th>243</th>
-      <td>Overijssel</td>
-      <td>2010</td>
-      <td>-0.1</td>
-      <td>13180.0</td>
-      <td>1620.0</td>
-    </tr>
-    <tr>
-      <th>244</th>
-      <td>Overijssel</td>
-      <td>2011</td>
-      <td>3.3</td>
-      <td>12651.0</td>
-      <td>1316.0</td>
-    </tr>
-    <tr>
-      <th>245</th>
-      <td>Overijssel</td>
-      <td>2012</td>
-      <td>-3.4</td>
-      <td>12367.0</td>
-      <td>-161.0</td>
-    </tr>
-    <tr>
-      <th>246</th>
-      <td>Overijssel</td>
-      <td>2013</td>
-      <td>-1.1</td>
-      <td>12151.0</td>
-      <td>-812.0</td>
-    </tr>
-    <tr>
-      <th>247</th>
-      <td>Overijssel</td>
-      <td>2014</td>
-      <td>1.4</td>
-      <td>12092.0</td>
-      <td>-360.0</td>
-    </tr>
-    <tr>
-      <th>248</th>
-      <td>Overijssel</td>
-      <td>2015</td>
-      <td>2.8</td>
-      <td>11765.0</td>
-      <td>2694.0</td>
-    </tr>
-    <tr>
-      <th>249</th>
-      <td>Overijssel</td>
-      <td>2016</td>
-      <td>2.7</td>
-      <td>11728.0</td>
-      <td>3110.0</td>
-    </tr>
-    <tr>
-      <th>250</th>
-      <td>Overijssel</td>
-      <td>2017</td>
-      <td>3.4</td>
-      <td>11345.0</td>
-      <td>3629.0</td>
-    </tr>
-    <tr>
-      <th>251</th>
-      <td>Flevoland</td>
-      <td>1996</td>
-      <td>3.3</td>
-      <td>4170.0</td>
-      <td>6331.0</td>
-    </tr>
-    <tr>
-      <th>252</th>
-      <td>Flevoland</td>
-      <td>1997</td>
-      <td>8.2</td>
-      <td>4365.0</td>
-      <td>9135.0</td>
-    </tr>
-    <tr>
-      <th>253</th>
-      <td>Groningen</td>
-      <td>2005</td>
-      <td>-0.7</td>
-      <td>5943.0</td>
-      <td>-33.0</td>
-    </tr>
-    <tr>
-      <th>254</th>
-      <td>Flevoland</td>
-      <td>1998</td>
-      <td>7.5</td>
-      <td>4785.0</td>
-      <td>10310.0</td>
-    </tr>
-    <tr>
-      <th>255</th>
-      <td>Flevoland</td>
-      <td>1999</td>
-      <td>11.4</td>
-      <td>4933.0</td>
-      <td>7733.0</td>
-    </tr>
-    <tr>
-      <th>256</th>
-      <td>Flevoland</td>
-      <td>2000</td>
-      <td>5.3</td>
-      <td>5064.0</td>
-      <td>8728.0</td>
-    </tr>
-    <tr>
-      <th>257</th>
-      <td>Flevoland</td>
-      <td>2001</td>
-      <td>6.4</td>
-      <td>5330.0</td>
-      <td>9605.0</td>
-    </tr>
-    <tr>
-      <th>258</th>
-      <td>Flevoland</td>
-      <td>2002</td>
-      <td>2.0</td>
-      <td>5347.0</td>
-      <td>6636.0</td>
-    </tr>
-    <tr>
       <th>259</th>
-      <td>Flevoland</td>
-      <td>2003</td>
-      <td>7.0</td>
-      <td>5452.0</td>
-      <td>5849.0</td>
+      <td>Limburg</td>
+      <td>2013</td>
+      <td>-0.7</td>
+      <td>9011.0</td>
+      <td>159.0</td>
     </tr>
     <tr>
       <th>260</th>
-      <td>Flevoland</td>
-      <td>2004</td>
-      <td>3.4</td>
-      <td>5302.0</td>
-      <td>3376.0</td>
+      <td>Limburg</td>
+      <td>2014</td>
+      <td>0.2</td>
+      <td>8841.0</td>
+      <td>45.0</td>
     </tr>
     <tr>
       <th>261</th>
-      <td>Flevoland</td>
-      <td>2005</td>
-      <td>3.6</td>
-      <td>5290.0</td>
-      <td>2603.0</td>
+      <td>Limburg</td>
+      <td>2015</td>
+      <td>2.7</td>
+      <td>8739.0</td>
+      <td>1406.0</td>
     </tr>
     <tr>
       <th>262</th>
-      <td>Flevoland</td>
-      <td>2006</td>
-      <td>8.6</td>
-      <td>5179.0</td>
-      <td>1615.0</td>
+      <td>Limburg</td>
+      <td>2016</td>
+      <td>2.2</td>
+      <td>8994.0</td>
+      <td>3865.0</td>
     </tr>
     <tr>
       <th>263</th>
-      <td>Flevoland</td>
-      <td>2007</td>
-      <td>4.7</td>
-      <td>5219.0</td>
-      <td>1783.0</td>
+      <td>Limburg</td>
+      <td>2017</td>
+      <td>3.2</td>
+      <td>8821.0</td>
+      <td>2735.0</td>
     </tr>
   </tbody>
 </table>
@@ -1973,7 +1131,10 @@ Name: Regions, dtype: int64
 </div>
 <section id="setting-an-index">
 <h2>Setting an index<a class="headerlink" href="#setting-an-index" title="Link to this heading">#</a></h2>
-<p>While our columns have a descriptive names (headers), our rows don’t right now. They are just numbers. However, we could actually give them <em>meaningful</em> names. A nice side-effect is that you will get better plots, with meaningful axis labels later on.</p>
+<p>While our columns have a descriptive names (headers), our rows don’t right now.
+They are just numbers. However, we could actually give them <em>meaningful</em> names.
+A nice side-effect is that you will get better plots, with meaningful axis
+labels later on.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Periods&#39;</span><span class="p">]</span>
@@ -2010,8 +1171,8 @@ Name: Regions, dtype: int64
       <th>Regions</th>
       <th>Periods</th>
       <th>GDPVolumeChanges_1</th>
-      <th>LiveBornChildren_2</th>
-      <th>NetMigrationExcludingAdministrative_19</th>
+      <th>LiveBornChildren_3</th>
+      <th>NetMigrationIncludingAdministrative_17</th>
     </tr>
     <tr>
       <th>Periods</th>
@@ -2029,7 +1190,7 @@ Name: Regions, dtype: int64
       <td>1996</td>
       <td>9.3</td>
       <td>6148.0</td>
-      <td>-336.0</td>
+      <td>-616.0</td>
     </tr>
     <tr>
       <th>1997</th>
@@ -2037,31 +1198,31 @@ Name: Regions, dtype: int64
       <td>1997</td>
       <td>-2.0</td>
       <td>6336.0</td>
-      <td>-647.0</td>
+      <td>-952.0</td>
     </tr>
     <tr>
-      <th>2006</th>
+      <th>1998</th>
       <td>Groningen</td>
-      <td>2006</td>
-      <td>1.1</td>
-      <td>5838.0</td>
-      <td>65.0</td>
+      <td>1998</td>
+      <td>-0.9</td>
+      <td>6472.0</td>
+      <td>992.0</td>
     </tr>
     <tr>
-      <th>2008</th>
-      <td>Flevoland</td>
-      <td>2008</td>
-      <td>-0.8</td>
-      <td>5101.0</td>
-      <td>1984.0</td>
+      <th>1999</th>
+      <td>Groningen</td>
+      <td>1999</td>
+      <td>-0.7</td>
+      <td>6515.0</td>
+      <td>1706.0</td>
     </tr>
     <tr>
-      <th>2009</th>
-      <td>Flevoland</td>
-      <td>2009</td>
-      <td>-5.4</td>
-      <td>5292.0</td>
-      <td>1519.0</td>
+      <th>2000</th>
+      <td>Groningen</td>
+      <td>2000</td>
+      <td>1.5</td>
+      <td>6510.0</td>
+      <td>2784.0</td>
     </tr>
   </tbody>
 </table>
@@ -2070,7 +1231,7 @@ Name: Regions, dtype: int64
 </section>
 <section id="analyze-the-data">
 <h2>Analyze the data<a class="headerlink" href="#analyze-the-data" title="Link to this heading">#</a></h2>
-<p>Let’s train a bit with  <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> and <code class="docutils literal notranslate"><span class="pre">.agg()</span></code>.</p>
+<p>Let’s train a bit with <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> and <code class="docutils literal notranslate"><span class="pre">.agg()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
@@ -2078,10 +1239,10 @@ Name: Regions, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f86517e5fd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Periods&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/13e455b5bea5fa175c97c9acd7b3c736fa05113ff3defe6d59a8b7bf0d582af1.png" src="../_images/13e455b5bea5fa175c97c9acd7b3c736fa05113ff3defe6d59a8b7bf0d582af1.png" />
+<img alt="../_images/0489c9e4e592aa56a343fe016b58047af5952c0adb12c93e172866a4543d81c7.png" src="../_images/0489c9e4e592aa56a343fe016b58047af5952c0adb12c93e172866a4543d81c7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2091,10 +1252,10 @@ Name: Regions, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f864f63af28&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Periods&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/216ca42e4d2cded1e25568a0f6188aec389b468957edcb3017241742798f3847.png" src="../_images/216ca42e4d2cded1e25568a0f6188aec389b468957edcb3017241742798f3847.png" />
+<img alt="../_images/6495022787929c89abb12cf877f1eff8f0fb34b2469352b90a46b72fc8d6fe14.png" src="../_images/6495022787929c89abb12cf877f1eff8f0fb34b2469352b90a46b72fc8d6fe14.png" />
 </div>
 </div>
 </section>
@@ -2110,23 +1271,45 @@ Name: Regions, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f864dc8c0f0&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l0/0m8rr1_910j7vgvw7jz29qgc0000gn/T/ipykernel_9408/611293225.py:2: FutureWarning: The provided callable &lt;function mean at 0x1172ebba0&gt; is currently using DataFrameGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &quot;mean&quot; instead.
+  &#39;Regions&#39;).agg(np.mean).plot(kind=&#39;bar&#39;)
 </pre></div>
 </div>
-<img alt="../_images/9cb83e4aea19baf503b10aa8856cc8540dc36d44b74f6f07e7b7ad96e67647ee.png" src="../_images/9cb83e4aea19baf503b10aa8856cc8540dc36d44b74f6f07e7b7ad96e67647ee.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Regions&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/1a5d79e5c45a5099399a8d302bdf6b0fdae64bab72dc1f3af92ec00d8e9b0d81.png" src="../_images/1a5d79e5c45a5099399a8d302bdf6b0fdae64bab72dc1f3af92ec00d8e9b0d81.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;LiveBornChildren_2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Periods&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f864d83e4a8&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Regions&#39;, &#39;Periods&#39;, &#39;GDPVolumeChanges_1&#39;, &#39;LiveBornChildren_3&#39;,
+       &#39;NetMigrationIncludingAdministrative_17&#39;],
+      dtype=&#39;object&#39;)
 </pre></div>
 </div>
-<img alt="../_images/5ccf2b9e4098ddefa78606660b78e437bcfe96271581e24768d987781a5dbe51.png" src="../_images/5ccf2b9e4098ddefa78606660b78e437bcfe96271581e24768d987781a5dbe51.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;LiveBornChildren_3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Periods&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l0/0m8rr1_910j7vgvw7jz29qgc0000gn/T/ipykernel_9408/3909273154.py:1: FutureWarning: The provided callable &lt;built-in function sum&gt; is currently using SeriesGroupBy.sum. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &quot;sum&quot; instead.
+  df[&#39;LiveBornChildren_3&#39;].groupby(&#39;Periods&#39;).agg(sum).plot()
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Periods&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/0925ac136634521f316456ff50d7522a6133896ca3fceada44a4dfb6f59ea488.png" src="../_images/0925ac136634521f316456ff50d7522a6133896ca3fceada44a4dfb6f59ea488.png" />
 </div>
 </div>
 </section>
@@ -2134,7 +1317,7 @@ Name: Regions, dtype: int64
 <h2>Discuss: which aggregation function?<a class="headerlink" href="#discuss-which-aggregation-function" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Why did we choose <code class="docutils literal notranslate"><span class="pre">np.mean</span></code>?</p></li>
-<li><p>What function should we choose for analyzing <code class="docutils literal notranslate"><span class="pre">df['LiveBornChildren_2']</span></code>? Why?</p></li>
+<li><p>What function should we choose for analyzing <code class="docutils literal notranslate"><span class="pre">df['LiveBornChildren_3']</span></code>? Why?</p></li>
 </ul>
 <section id="some-more-example-code-for-plotting-feel-free-to-play-around">
 <h3>Some more example code for plotting, feel free to play around<a class="headerlink" href="#some-more-example-code-for-plotting-feel-free-to-play-around" title="Link to this heading">#</a></h3>
@@ -2146,83 +1329,89 @@ Name: Regions, dtype: int64
 <p>to make plots clearer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Regions&#39;</span><span class="p">)[</span><span class="s1">&#39;LiveBornChildren_2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Regions&#39;</span><span class="p">)[</span><span class="s1">&#39;LiveBornChildren_3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Regions&#39;</span><span class="p">)[</span><span class="s1">&#39;GDPVolumeChanges_1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">secondary_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Regions
-Drenthe          AxesSubplot(0.125,0.125;0.775x0.755)
-Flevoland        AxesSubplot(0.125,0.125;0.775x0.755)
-Friesland        AxesSubplot(0.125,0.125;0.775x0.755)
-Gelderland       AxesSubplot(0.125,0.125;0.775x0.755)
-Groningen        AxesSubplot(0.125,0.125;0.775x0.755)
-Limburg          AxesSubplot(0.125,0.125;0.775x0.755)
-Noord-Brabant    AxesSubplot(0.125,0.125;0.775x0.755)
-Noord-Holland    AxesSubplot(0.125,0.125;0.775x0.755)
-Overijssel       AxesSubplot(0.125,0.125;0.775x0.755)
-Utrecht          AxesSubplot(0.125,0.125;0.775x0.755)
-Zeeland          AxesSubplot(0.125,0.125;0.775x0.755)
-Zuid-Holland     AxesSubplot(0.125,0.125;0.775x0.755)
+Drenthe          Axes(0.125,0.11;0.775x0.77)
+Flevoland        Axes(0.125,0.11;0.775x0.77)
+Friesland        Axes(0.125,0.11;0.775x0.77)
+Gelderland       Axes(0.125,0.11;0.775x0.77)
+Groningen        Axes(0.125,0.11;0.775x0.77)
+Limburg          Axes(0.125,0.11;0.775x0.77)
+Noord-Brabant    Axes(0.125,0.11;0.775x0.77)
+Noord-Holland    Axes(0.125,0.11;0.775x0.77)
+Overijssel       Axes(0.125,0.11;0.775x0.77)
+Utrecht          Axes(0.125,0.11;0.775x0.77)
+Zeeland          Axes(0.125,0.11;0.775x0.77)
+Zuid-Holland     Axes(0.125,0.11;0.775x0.77)
 Name: GDPVolumeChanges_1, dtype: object
 </pre></div>
 </div>
-<img alt="../_images/a95279a11e04042b0e4843df079c3330dfd28b8942b20541d2ce6f7beb0d1dfe.png" src="../_images/a95279a11e04042b0e4843df079c3330dfd28b8942b20541d2ce6f7beb0d1dfe.png" />
+<img alt="../_images/bb46688ad8d4ecb612876d4d2be782324060ca3ebf6ad9456f79e9b3f4b13681.png" src="../_images/bb46688ad8d4ecb612876d4d2be782324060ca3ebf6ad9456f79e9b3f4b13681.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)[</span><span class="s1">&#39;LiveBornChildren_2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)[</span><span class="s1">&#39;LiveBornChildren_3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)[</span><span class="s1">&#39;GDPVolumeChanges_1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">secondary_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f864d69a630&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l0/0m8rr1_910j7vgvw7jz29qgc0000gn/T/ipykernel_9408/2519802987.py:1: FutureWarning: The provided callable &lt;built-in function sum&gt; is currently using SeriesGroupBy.sum. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &quot;sum&quot; instead.
+  df.groupby(df.index)[&#39;LiveBornChildren_3&#39;].agg(sum).plot(legend = True)
+/var/folders/l0/0m8rr1_910j7vgvw7jz29qgc0000gn/T/ipykernel_9408/2519802987.py:2: FutureWarning: The provided callable &lt;function mean at 0x1172ebba0&gt; is currently using SeriesGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &quot;mean&quot; instead.
+  df.groupby(df.index)[&#39;GDPVolumeChanges_1&#39;].agg(np.mean).plot(legend=True, secondary_y=True)
 </pre></div>
 </div>
-<img alt="../_images/db710754a91bd9adad0f891ee1c64cc1e6074d681d1e7a7af72c9d387e0a3cf9.png" src="../_images/db710754a91bd9adad0f891ee1c64cc1e6074d681d1e7a7af72c9d387e0a3cf9.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../_images/a0730d1f2685fafca3c315363dfaab5e4cbb337db60e0bb93a3b2c2a6560f887.png" src="../_images/a0730d1f2685fafca3c315363dfaab5e4cbb337db60e0bb93a3b2c2a6560f887.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Regions&#39;</span><span class="p">)[</span><span class="s1">&#39;NetMigrationExcludingAdministrative_19&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span> <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Regions&#39;</span><span class="p">)[</span><span class="s1">&#39;NetMigrationIncludingAdministrative_17&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Regions
-Drenthe          AxesSubplot(0.125,0.125;0.775x0.755)
-Flevoland        AxesSubplot(0.125,0.125;0.775x0.755)
-Friesland        AxesSubplot(0.125,0.125;0.775x0.755)
-Gelderland       AxesSubplot(0.125,0.125;0.775x0.755)
-Groningen        AxesSubplot(0.125,0.125;0.775x0.755)
-Limburg          AxesSubplot(0.125,0.125;0.775x0.755)
-Noord-Brabant    AxesSubplot(0.125,0.125;0.775x0.755)
-Noord-Holland    AxesSubplot(0.125,0.125;0.775x0.755)
-Overijssel       AxesSubplot(0.125,0.125;0.775x0.755)
-Utrecht          AxesSubplot(0.125,0.125;0.775x0.755)
-Zeeland          AxesSubplot(0.125,0.125;0.775x0.755)
-Zuid-Holland     AxesSubplot(0.125,0.125;0.775x0.755)
-Name: NetMigrationExcludingAdministrative_19, dtype: object
+Drenthe          Axes(0.125,0.11;0.775x0.77)
+Flevoland        Axes(0.125,0.11;0.775x0.77)
+Friesland        Axes(0.125,0.11;0.775x0.77)
+Gelderland       Axes(0.125,0.11;0.775x0.77)
+Groningen        Axes(0.125,0.11;0.775x0.77)
+Limburg          Axes(0.125,0.11;0.775x0.77)
+Noord-Brabant    Axes(0.125,0.11;0.775x0.77)
+Noord-Holland    Axes(0.125,0.11;0.775x0.77)
+Overijssel       Axes(0.125,0.11;0.775x0.77)
+Utrecht          Axes(0.125,0.11;0.775x0.77)
+Zeeland          Axes(0.125,0.11;0.775x0.77)
+Zuid-Holland     Axes(0.125,0.11;0.775x0.77)
+Name: NetMigrationIncludingAdministrative_17, dtype: object
 </pre></div>
 </div>
-<img alt="../_images/185bcd79fed832cc9f83439f742d2b594b528f225864d633e22910d4a3135cca.png" src="../_images/185bcd79fed832cc9f83439f742d2b594b528f225864d633e22910d4a3135cca.png" />
+<img alt="../_images/010db2c08180ca651f58b88f4dcec74d35f9b3f1afb7f40c4dcbf06d207924aa.png" src="../_images/010db2c08180ca651f58b88f4dcec74d35f9b3f1afb7f40c4dcbf06d207924aa.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Regions&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Flevoland&#39;</span><span class="p">][</span><span class="s1">&#39;NetMigrationExcludingAdministrative_19&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span> <span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Regions&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Zuid-Holland&#39;</span><span class="p">][</span><span class="s1">&#39;NetMigrationExcludingAdministrative_19&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Regions&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Flevoland&#39;</span><span class="p">][</span><span class="s1">&#39;NetMigrationIncludingAdministrative_17&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Regions&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Zuid-Holland&#39;</span><span class="p">][</span><span class="s1">&#39;NetMigrationIncludingAdministrative_17&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f864d5e2ba8&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Periods&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/72ec50b6fca2ed74e33e259bcdc61472a9e2e8c2d288a6c1cf1b6493e0e3aa88.png" src="../_images/72ec50b6fca2ed74e33e259bcdc61472a9e2e8c2d288a6c1cf1b6493e0e3aa88.png" />
+<img alt="../_images/1df281d2e4fadd409c935aa7fb3d2bc5b1f548a912cac75539faf51ac7448f61.png" src="../_images/1df281d2e4fadd409c935aa7fb3d2bc5b1f548a912cac75539faf51ac7448f61.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2235,65 +1424,15 @@ Name: NetMigrationExcludingAdministrative_19, dtype: object
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Periods
 1996    False
 1997    False
-2006    False
-2008     True
-2009     True
-2010     True
-2011     True
-2012     True
-2013     True
-2014     True
-2015     True
-2016     True
-2017     True
-2007    False
-1996    False
-1997    False
 1998    False
 1999    False
 2000    False
-2001    False
-2002    False
-2003    False
-2004    False
-2005    False
-2008    False
-2006    False
-2007    False
-2008    False
-2009    False
-2010    False
         ...  
-2002    False
-2003    False
-2004    False
-2005    False
-2006    False
-2007    False
-2008    False
-2009    False
-2004    False
-2010    False
-2011    False
-2012    False
 2013    False
 2014    False
 2015    False
 2016    False
 2017    False
-1996     True
-1997     True
-2005    False
-1998     True
-1999     True
-2000     True
-2001     True
-2002     True
-2003     True
-2004     True
-2005     True
-2006     True
-2007     True
 Name: Regions, Length: 264, dtype: bool
 </pre></div>
 </div>
@@ -2301,16 +1440,22 @@ Name: Regions, Length: 264, dtype: bool
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)[</span><span class="s1">&#39;NetMigrationExcludingAdministrative_19&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)[</span><span class="s1">&#39;NetMigrationIncludingAdministrative_17&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)[</span><span class="s1">&#39;GDPVolumeChanges_1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">secondary_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f864d4d17b8&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l0/0m8rr1_910j7vgvw7jz29qgc0000gn/T/ipykernel_9408/2097540005.py:1: FutureWarning: The provided callable &lt;built-in function sum&gt; is currently using SeriesGroupBy.sum. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &quot;sum&quot; instead.
+  df.groupby(df.index)[&#39;NetMigrationIncludingAdministrative_17&#39;].agg(sum).plot(legend = True)
+/var/folders/l0/0m8rr1_910j7vgvw7jz29qgc0000gn/T/ipykernel_9408/2097540005.py:2: FutureWarning: The provided callable &lt;function mean at 0x1172ebba0&gt; is currently using SeriesGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &quot;mean&quot; instead.
+  df.groupby(df.index)[&#39;GDPVolumeChanges_1&#39;].agg(np.mean).plot(legend=True, secondary_y=True)
 </pre></div>
 </div>
-<img alt="../_images/9e38cded39384ac7e82a045866c52f3c00dc460e7b59d22f6460dd2841fcbfcb.png" src="../_images/9e38cded39384ac7e82a045866c52f3c00dc460e7b59d22f6460dd2841fcbfcb.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../_images/a4bc15f21e69c02a05a9964d313b61c8e3a607129ca96d0f0599b41594b136a6.png" src="../_images/a4bc15f21e69c02a05a9964d313b61c8e3a607129ca96d0f0599b41594b136a6.png" />
 </div>
 </div>
 </section>
@@ -2319,7 +1464,7 @@ Name: Regions, Length: 264, dtype: bool
 <p>I personally find this last plot a pretty cool one. Do you agree?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;NetMigrationExcludingAdministrative_19&#39;</span><span class="p">,</span><span class="s1">&#39;GDPVolumeChanges_1&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span> <span class="c1"># we probably should have lagged one of the variables by a year or so for this.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;NetMigrationIncludingAdministrative_17&#39;</span><span class="p">,</span><span class="s1">&#39;GDPVolumeChanges_1&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span> <span class="c1"># we probably should have lagged one of the variables by a year or so for this.</span>
 </pre></div>
 </div>
 </div>
@@ -2342,20 +1487,20 @@ Name: Regions, Length: 264, dtype: bool
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>NetMigrationExcludingAdministrative_19</th>
+      <th>NetMigrationIncludingAdministrative_17</th>
       <th>GDPVolumeChanges_1</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>NetMigrationExcludingAdministrative_19</th>
-      <td>1.000000</td>
-      <td>0.108005</td>
+      <th>NetMigrationIncludingAdministrative_17</th>
+      <td>1.00000</td>
+      <td>0.14411</td>
     </tr>
     <tr>
       <th>GDPVolumeChanges_1</th>
-      <td>0.108005</td>
-      <td>1.000000</td>
+      <td>0.14411</td>
+      <td>1.00000</td>
     </tr>
   </tbody>
 </table>
@@ -2368,29 +1513,29 @@ Name: Regions, Length: 264, dtype: bool
 <p>We could also look into some bivariate plots….</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;LiveBornChildren_2&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;GDPVolumeChanges_1&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;LiveBornChildren_3&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;GDPVolumeChanges_1&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f864d4d1978&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;GDPVolumeChanges_1&#39;, ylabel=&#39;LiveBornChildren_3&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/17b482ff7e35c12e4dcef23b6465bc211b0a2c88b4fdda27bb2d63008537f086.png" src="../_images/17b482ff7e35c12e4dcef23b6465bc211b0a2c88b4fdda27bb2d63008537f086.png" />
+<img alt="../_images/babd8f8c0d6b67979282f746ac4810ce0de0e55506354908c8fb5478d32a4644.png" src="../_images/babd8f8c0d6b67979282f746ac4810ce0de0e55506354908c8fb5478d32a4644.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;LiveBornChildren_2&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;GDPVolumeChanges_1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;LiveBornChildren_3&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;GDPVolumeChanges_1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
            <span class="n">fit_reg</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lowess</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">robust</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f864d42fb38&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x322f11100&gt;
 </pre></div>
 </div>
-<img alt="../_images/6a27f7f47ec4b4db85a901b8a8563a71c54ddc4f417b4c123958c7415a51dcdb.png" src="../_images/6a27f7f47ec4b4db85a901b8a8563a71c54ddc4f417b4c123958c7415a51dcdb.png" />
+<img alt="../_images/6fe41b979fc992701ac84da0122923bdf65094e8e45d1d3354128dc66fa2ff8b.png" src="../_images/6fe41b979fc992701ac84da0122923bdf65094e8e45d1d3354128dc66fa2ff8b.png" />
 </div>
 </div>
 </section>

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -422,13 +422,18 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="recap-data-wrangling">
 <h1>Recap Data Wrangling<a class="headerlink" href="#recap-data-wrangling" title="Link to this heading">#</a></h1>
 <p><em>Penny Sheets and Damian Trilling</em></p>
-<p>In this recap notebook, we will exercise with data wrangling techniques, using a table scraping tool that extracts tables (well, tries to) extract tables from PDF.</p>
-<p>Also have a look at this Cheat Sheet, as a nice reminder/guide to data wrangling:
-https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf</p>
+<p>In this recap notebook, we will exercise with data wrangling techniques, using a
+table scraping tool that extracts tables (well, tries to) extract tables from
+PDF.</p>
+<p>Also have a look at this Cheat Sheet, as a nice reminder/guide to data
+wrangling: https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf</p>
 <p><strong>To follow this example, you need to <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">tabula-py</span></code> first!</strong></p>
-<p>(<strong>Note:</strong> You may have to do this via your terminal window, or “anaconda prompt” on windows machines, not here in Jupyter itself, but for many of you it may work within juptyter using the code below.)</p>
-<p>Also, have a look at this PDF: http://www.ametsoc.net/sotc2017/StateoftheClimate2017_lowres.pdf
-We will try to get the table from page 113 ( Global tropical cyclone counts).</p>
+<p>(<strong>Note:</strong> You may have to do this via your terminal window, or “anaconda
+prompt” on windows machines, not here in Jupyter itself, but for many of you it
+may work within juptyter using the code below.)</p>
+<p>Also, have a look at this PDF:
+http://www.ametsoc.net/sotc2017/StateoftheClimate2017_lowres.pdf We will try to
+get the table from page 113 ( Global tropical cyclone counts).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import sys</span>
@@ -458,6 +463,12 @@ We will try to get the table from page 113 ( Global tropical cyclone counts).</p
 
 <span class="n">dfs</span> <span class="o">=</span> <span class="n">tabula</span><span class="o">.</span><span class="n">read_pdf</span><span class="p">(</span><span class="s1">&#39;http://www.ametsoc.net/sotc2017/StateoftheClimate2017_lowres.pdf&#39;</span><span class="p">,</span>  
                      <span class="n">multiple_tables</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pages</span><span class="o">=</span><span class="mi">133</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Failed to import jpype dependencies. Fallback to subprocess.
+No module named &#39;jpype&#39;
 </pre></div>
 </div>
 </div>

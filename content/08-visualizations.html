@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -450,25 +450,40 @@ document.write(`
 </ul>
 <section id="interactive-data-visualization">
 <h2>Interactive data visualization<a class="headerlink" href="#interactive-data-visualization" title="Link to this heading">#</a></h2>
-<p>Next week, we will explicitly talk about how to make interactive graphs.
-For instance,</p>
+<p>Next week, we will explicitly talk about how to make interactive graphs. For
+instance,</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">bokeh</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pygal</span></code></p></li>
 </ul>
-<p>are quite useful for that. However, in order to do that, it’s good to have a understandig of standard, static plots first (and, of course, they are still very relevant for everything that’s printed).</p>
+<p>are quite useful for that. However, in order to do that, it’s good to have a
+understandig of standard, static plots first (and, of course, they are still
+very relevant for everything that’s printed).</p>
 </section>
 <section id="choosing-the-right-library">
 <h2>Choosing the right library<a class="headerlink" href="#choosing-the-right-library" title="Link to this heading">#</a></h2>
 <p>Some background about our modules of choice:</p>
-<p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> is the standard work horse. It’s neither smart nor beautiful, but the decent option that just does its job. It is what happens under the hood if you use the <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> methods in <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, but you can also just directly feed it some lists and dictionaries as input.</p>
-<p><code class="docutils literal notranslate"><span class="pre">seaborn</span></code> offers more beautiful output, has many more options, is smarter and can produce advanced statistical plots. It is also a bit easier to use. Its a bit like <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> in R.</p>
-<p>As you will see when browsing examples on https://python-graph-gallery.com/ , both <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> are very popular, and some of the examples use one, some the other. You can do all the standard stuff (like bar charts) in either of them, and we therefore introduce you to both (after all, when googling for help, you are very likely to come accross both libraries).</p>
+<p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> is the standard work horse. It’s neither smart nor beautiful, but
+the decent option that just does its job. It is what happens under the hood if
+you use the <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> methods in <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, but you can also just directly feed
+it some lists and dictionaries as input.</p>
+<p><code class="docutils literal notranslate"><span class="pre">seaborn</span></code> offers more beautiful output, has many more options, is smarter and
+can produce advanced statistical plots. It is also a bit easier to use. Its a
+bit like <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> in R.</p>
+<p>As you will see when browsing examples on https://python-graph-gallery.com/ ,
+both <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> are very popular, and some of the examples use
+one, some the other. You can do all the standard stuff (like bar charts) in
+either of them, and we therefore introduce you to both (after all, when googling
+for help, you are very likely to come accross both libraries).</p>
 </section>
 <section id="preparation">
 <h2>Preparation<a class="headerlink" href="#preparation" title="Link to this heading">#</a></h2>
-<p>Import some modules, load some example datasets. (Note, these ones with ‘sns’ beforehand are datasets that come with the seaborn package.  In this case you don’t need any extra steps if you’re running CoLab.)</p>
-<p>We are going to import these datasets - two from seaborn, and one that we created in our notebooks last week - in order to use them later for the visualizations.</p>
+<p>Import some modules, load some example datasets. (Note, these ones with ‘sns’
+beforehand are datasets that come with the seaborn package. In this case you
+don’t need any extra steps if you’re running CoLab.)</p>
+<p>We are going to import these datasets - two from seaborn, and one that we
+created in our notebooks last week - in order to use them later for the
+visualizations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -487,6 +502,136 @@ For instance,</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>survived</th>
+      <th>pclass</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>sibsp</th>
+      <th>parch</th>
+      <th>fare</th>
+      <th>embarked</th>
+      <th>class</th>
+      <th>who</th>
+      <th>adult_male</th>
+      <th>deck</th>
+      <th>embark_town</th>
+      <th>alive</th>
+      <th>alone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>7.2500</td>
+      <td>S</td>
+      <td>Third</td>
+      <td>man</td>
+      <td>True</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>no</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>71.2833</td>
+      <td>C</td>
+      <td>First</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>C</td>
+      <td>Cherbourg</td>
+      <td>yes</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>3</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.9250</td>
+      <td>S</td>
+      <td>Third</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>yes</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>53.1000</td>
+      <td>S</td>
+      <td>First</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>C</td>
+      <td>Southampton</td>
+      <td>yes</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>8.0500</td>
+      <td>S</td>
+      <td>Third</td>
+      <td>man</td>
+      <td>True</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>no</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -494,6 +639,109 @@ For instance,</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>survived</th>
+      <th>pclass</th>
+      <th>age</th>
+      <th>sibsp</th>
+      <th>parch</th>
+      <th>fare</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>891.000000</td>
+      <td>891.000000</td>
+      <td>714.000000</td>
+      <td>891.000000</td>
+      <td>891.000000</td>
+      <td>891.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.383838</td>
+      <td>2.308642</td>
+      <td>29.699118</td>
+      <td>0.523008</td>
+      <td>0.381594</td>
+      <td>32.204208</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.486592</td>
+      <td>0.836071</td>
+      <td>14.526497</td>
+      <td>1.102743</td>
+      <td>0.806057</td>
+      <td>49.693429</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>0.420000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.000000</td>
+      <td>2.000000</td>
+      <td>20.125000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>7.910400</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.000000</td>
+      <td>3.000000</td>
+      <td>28.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>14.454200</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>1.000000</td>
+      <td>3.000000</td>
+      <td>38.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>31.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1.000000</td>
+      <td>3.000000</td>
+      <td>80.000000</td>
+      <td>8.000000</td>
+      <td>6.000000</td>
+      <td>512.329200</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -502,6 +750,88 @@ For instance,</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>sex</th>
+      <th>smoker</th>
+      <th>day</th>
+      <th>time</th>
+      <th>size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>16.99</td>
+      <td>1.01</td>
+      <td>Female</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.34</td>
+      <td>1.66</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>21.01</td>
+      <td>3.50</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>23.68</td>
+      <td>3.31</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>24.59</td>
+      <td>3.61</td>
+      <td>Female</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -509,6 +839,82 @@ For instance,</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>244.000000</td>
+      <td>244.000000</td>
+      <td>244.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>19.785943</td>
+      <td>2.998279</td>
+      <td>2.569672</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>8.902412</td>
+      <td>1.383638</td>
+      <td>0.951100</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>3.070000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>13.347500</td>
+      <td>2.000000</td>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>17.795000</td>
+      <td>2.900000</td>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>24.127500</td>
+      <td>3.562500</td>
+      <td>3.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>50.810000</td>
+      <td>10.000000</td>
+      <td>6.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -524,8 +930,84 @@ For instance,</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>wijk</th>
+      <th>stadsdeel</th>
+      <th>year</th>
+      <th>woz-waarde</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>Burgwallen-Oude Zijde</td>
+      <td>Centrum</td>
+      <td>2014</td>
+      <td>263417.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Burgwallen-Nieuwe Zijde</td>
+      <td>Centrum</td>
+      <td>2014</td>
+      <td>267895.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>Grachtengordel-West</td>
+      <td>Centrum</td>
+      <td>2014</td>
+      <td>490251.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>Grachtengordel-Zuid</td>
+      <td>Centrum</td>
+      <td>2014</td>
+      <td>469946.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>Nieuwmarkt/Lastage</td>
+      <td>Centrum</td>
+      <td>2014</td>
+      <td>295239.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-<p>It turns out that the first column of our csv file contained the index (= row number), but we don’t want that (after all, we have an index anyway and it doesn’t mean anything to us). We can delete (<code class="docutils literal notranslate"><span class="pre">drop</span></code>) this column (which is, as we see above, called “Unnamed: 0”): <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> specifies that we want to delete a row, not a column, and <code class="docutils literal notranslate"><span class="pre">inplace</span></code> specifies whether we want to directly modify the existing dataframe (i.e., override it), or whether we want to return another, new, dataframe instead.</p>
+<p>It turns out that the first column of our csv file contained the index (= row
+number), but we don’t want that (after all, we have an index anyway and it
+doesn’t mean anything to us). We can delete (<code class="docutils literal notranslate"><span class="pre">drop</span></code>) this column (which is, as
+we see above, called “Unnamed: 0”): <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> specifies that we want to delete a
+row, not a column, and <code class="docutils literal notranslate"><span class="pre">inplace</span></code> specifies whether we want to directly modify
+the existing dataframe (i.e., override it), or whether we want to return
+another, new, dataframe instead.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">woz</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -539,11 +1021,81 @@ For instance,</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>woz-waarde</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>490.000000</td>
+      <td>4.780000e+02</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>2016.000000</td>
+      <td>2.856571e+05</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.415659</td>
+      <td>1.369124e+05</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>2014.000000</td>
+      <td>7.813700e+04</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>2015.000000</td>
+      <td>1.914288e+05</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>2016.000000</td>
+      <td>2.516580e+05</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>2017.000000</td>
+      <td>3.329392e+05</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>2018.000000</td>
+      <td>1.003743e+06</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-<p>Let’s also make a dataframe in which we do not split up housing prices per “stadsdeel” (district), but just take the median (or mean) across all of them (per year). Hence, we group by year, and then aggregate by taking the median (or mean) within each of these groups:</p>
+<p>Let’s also make a dataframe in which we do not split up housing prices per
+“stadsdeel” (district), but just take the median (or mean) across all of them
+(per year). Hence, we group by year, and then aggregate by taking the median (or
+mean) within each of these groups:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">woz_simple</span> <span class="o">=</span> <span class="n">woz</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">)</span>   <span class="c1"># or np.mean, if you want to. </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">woz_simple</span> <span class="o">=</span> <span class="n">woz</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="s2">&quot;median&quot;</span><span class="p">,</span> <span class="n">numeric_only</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>   <span class="c1"># or np.mean, if you want to. </span>
 <span class="c1">#Think about reasons why it might be better to choose a mean versus a median housing price.  Revisit the &#39;statistics</span>
 <span class="c1">#for journalists&#39; reading in week 3, if you need to.</span>
 
@@ -551,6 +1103,56 @@ For instance,</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>woz-waarde</th>
+    </tr>
+    <tr>
+      <th>year</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014</th>
+      <td>219418.0</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>225086.5</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>242833.0</td>
+    </tr>
+    <tr>
+      <th>2017</th>
+      <td>288667.5</td>
+    </tr>
+    <tr>
+      <th>2018</th>
+      <td>333029.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 </section>
@@ -558,9 +1160,13 @@ For instance,</p>
 <h1>0. A very brief intro to the syntax of matplotlib and seaborn<a class="headerlink" href="#a-very-brief-intro-to-the-syntax-of-matplotlib-and-seaborn" title="Link to this heading">#</a></h1>
 <section id="matplotlib-directly">
 <h2>0.1 Matplotlib (directly)<a class="headerlink" href="#matplotlib-directly" title="Link to this heading">#</a></h2>
-<p>The general idea with matplotlib, if you use it directly, is to create an empty figure, and then add elements (plots, labels, titles, …) to it, and then either save or show the image.</p>
-<p><em>This is especially useful if your data are not in a pandas dataframe, but, for instance, in some lists.</em></p>
-<p>There are multiple ways of plotting things with matplotlib, but the most common one (illustrated below) is probably to just pass lists of values:</p>
+<p>The general idea with matplotlib, if you use it directly, is to create an empty
+figure, and then add elements (plots, labels, titles, …) to it, and then
+either save or show the image.</p>
+<p><em>This is especially useful if your data are not in a pandas dataframe, but, for
+instance, in some lists.</em></p>
+<p>There are multiple ways of plotting things with matplotlib, but the most common
+one (illustrated below) is probably to just pass lists of values:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -592,14 +1198,22 @@ For instance,</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/ddc63014ce09618deb5096af6af558590f6881502d71b583a07c86b8a4a74a37.png" src="../_images/ddc63014ce09618deb5096af6af558590f6881502d71b583a07c86b8a4a74a37.png" />
+</div>
 </div>
 </section>
 <section id="matplotlib-via-pandas">
 <h2>0.2 Matplotlib (via pandas)<a class="headerlink" href="#matplotlib-via-pandas" title="Link to this heading">#</a></h2>
-<p>The most useful way for you to interact with matplotlib, however, is via pandas. Pandas dataframes and series have build-in methods that call matplotlib ‘under the hood’, which makes it very easy for you to use.</p>
-<p>You essentially just add <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> to a table-like object, and it will produce a plot.
-With the <code class="docutils literal notranslate"><span class="pre">kind</span></code> argument, you can specify which type of plot you want (pie, bar, line, etc)</p>
-<p>The nice thing is that you still can use the native matplotlib functions presented above, for instance <code class="docutils literal notranslate"><span class="pre">plt.savefig()</span></code> if you want to save the figures to your desktop (or google drive).</p>
+<p>The most useful way for you to interact with matplotlib, however, is via pandas.
+Pandas dataframes and series have build-in methods that call matplotlib ‘under
+the hood’, which makes it very easy for you to use.</p>
+<p>You essentially just add <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> to a table-like object, and it will produce a
+plot. With the <code class="docutils literal notranslate"><span class="pre">kind</span></code> argument, you can specify which type of plot you want
+(pie, bar, line, etc)</p>
+<p>The nice thing is that you still can use the native matplotlib functions
+presented above, for instance <code class="docutils literal notranslate"><span class="pre">plt.savefig()</span></code> if you want to save the figures to
+your desktop (or google drive).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Here we plot that simple woz median value dataset, that literally only consists of years and median values.</span>
@@ -607,6 +1221,12 @@ With the <code class="docutils literal notranslate"><span class="pre">kind</span
 <span class="c1"># plt.savefig(&#39;wozplot.png&#39;)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;year&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/6c95cc1a6158688187806268e8c5dc60506fe6759b77a08df387d02fcd86e8ce.png" src="../_images/6c95cc1a6158688187806268e8c5dc60506fe6759b77a08df387d02fcd86e8ce.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -617,12 +1237,19 @@ With the <code class="docutils literal notranslate"><span class="pre">kind</span
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;day&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/820989cca0aaccca38e7b725e49da48f4a16bdeeda549e1f1c77dd3ab7d20b10.png" src="../_images/820989cca0aaccca38e7b725e49da48f4a16bdeeda549e1f1c77dd3ab7d20b10.png" />
+</div>
 </div>
 </section>
 <section id="seaborn">
 <h2>0.3 Seaborn<a class="headerlink" href="#seaborn" title="Link to this heading">#</a></h2>
-<p>Seaborn is built on matplotlib, but uses a different grammar.
-You may find it, in fact, more intuitive, as you basically provide each seaborn function with a couple of arguments, namely</p>
+<p>Seaborn is built on matplotlib, but uses a different grammar. You may find it,
+in fact, more intuitive, as you basically provide each seaborn function with a
+couple of arguments, namely</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="p">:</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">dataframe</span> <span class="k">with</span> <span class="nb">all</span> <span class="n">your</span> <span class="n">data</span>
 <span class="n">x</span>    <span class="p">:</span> <span class="n">which</span> <span class="n">column</span> <span class="n">to</span> <span class="n">plot</span> <span class="n">on</span> <span class="n">the</span> <span class="n">x</span> <span class="n">axis</span>
 <span class="n">y</span>    <span class="p">:</span> <span class="n">which</span> <span class="n">column</span> <span class="n">to</span> <span class="n">plot</span> <span class="n">on</span> <span class="n">the</span> <span class="n">y</span> <span class="n">axis</span>
@@ -630,7 +1257,7 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 <span class="n">col</span>  <span class="p">:</span> <span class="n">which</span> <span class="n">column</span> <span class="n">to</span> <span class="n">use</span> <span class="n">to</span> <span class="n">group</span> <span class="n">the</span> <span class="n">data</span> <span class="n">into</span> <span class="n">different</span> <span class="n">sub</span><span class="o">-</span><span class="n">plots</span> <span class="p">(</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
 <span class="n">style</span><span class="p">:</span> <span class="n">which</span> <span class="n">column</span> <span class="n">to</span> <span class="n">use</span> <span class="n">to</span> <span class="n">group</span> <span class="n">the</span> <span class="n">data</span> <span class="n">into</span> <span class="n">different</span> <span class="n">styles</span> <span class="n">of</span> <span class="n">the</span> <span class="n">marker</span>
 <span class="n">size</span> <span class="p">:</span> <span class="n">which</span> <span class="n">column</span> <span class="n">to</span> <span class="n">use</span> <span class="n">to</span> <span class="n">change</span> <span class="n">the</span> <span class="n">size</span> <span class="n">of</span> <span class="n">the</span> <span class="n">marker</span>
-<span class="o">...</span> 
+<span class="o">...</span>
 </pre></div>
 </div>
 <p>Look at this example:</p>
@@ -646,9 +1273,15 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/6f68894c88238a41d0dc1dda317c5eab6c70f624df497724a9aa9e98617e1fa8.png" src="../_images/6f68894c88238a41d0dc1dda317c5eab6c70f624df497724a9aa9e98617e1fa8.png" />
 </div>
-<p>In other words, when using seaborn, we do not use the method of a pandas object (as with matplotlib, see above), but call the seaborn function directly and pass on the dataframe with the <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">=</span> <span class="pre">...</span></code> argument</p>
-<p>Let’s now move through a couple of examples for each chart type that we discussed on Monday.</p>
+</div>
+<p>In other words, when using seaborn, we do not use the method of a pandas object
+(as with matplotlib, see above), but call the seaborn function directly and pass
+on the dataframe with the <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">=</span> <span class="pre">...</span></code> argument</p>
+<p>Let’s now move through a couple of examples for each chart type that we
+discussed on Monday.</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="pie-charts">
@@ -658,12 +1291,19 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 <li><p>categorical (nominal) data</p></li>
 <li><p>makes only sense if adds up to 100%</p></li>
 </ul>
-<p>Related: donut plots, possibly with subgroups (https://python-graph-gallery.com/163-donut-plot-with-subgroups/)</p>
+<p>Related: donut plots, possibly with subgroups
+(https://python-graph-gallery.com/163-donut-plot-with-subgroups/)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;smoker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;pie&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;count&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/30779b9961dc3f15d4d8917dafa188160997552ff66a6f9dcfbb12277d01c71d.png" src="../_images/30779b9961dc3f15d4d8917dafa188160997552ff66a6f9dcfbb12277d01c71d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -673,12 +1313,24 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;count&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/67b38e68bd68c3fb9e6d76dee1aece930ff435a966e986d7762588431e563dfc.png" src="../_images/67b38e68bd68c3fb9e6d76dee1aece930ff435a966e986d7762588431e563dfc.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">woz</span><span class="p">[</span><span class="s1">&#39;stadsdeel&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;pie&#39;</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;count&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/25d1cd4add4fa00cebdffdd16200e8009b745f4d53c52c80aa064765949b222b.png" src="../_images/25d1cd4add4fa00cebdffdd16200e8009b745f4d53c52c80aa064765949b222b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -687,14 +1339,23 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;count&#39;&gt;
+</pre></div>
 </div>
-<p><strong>Fun fact</strong>! You cannot do a pie chart in seaborn. Probably because the authors of seaborn also think that there are very few use cases in which pie charts are a great choice ;-) . So, you need to stick with matplotlib in case you want to stick to pie charts.</p>
+<img alt="../_images/9da6e7d3f1d7c4e254fb051a7e8477bc81037540b667cbd3eecc0efb9cb7ed72.png" src="../_images/9da6e7d3f1d7c4e254fb051a7e8477bc81037540b667cbd3eecc0efb9cb7ed72.png" />
+</div>
+</div>
+<p><strong>Fun fact</strong>! You cannot do a pie chart in seaborn. Probably because the authors
+of seaborn also think that there are very few use cases in which pie charts are
+a great choice ;-) . So, you need to stick with matplotlib in case you want to
+stick to pie charts.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="bar-charts">
 <h1>2. Bar charts<a class="headerlink" href="#bar-charts" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>counts per (discrete) category</p></li>
-<li><p>or: other statistical property (e..g, mean)  per (discrete) category</p></li>
+<li><p>or: other statistical property (e..g, mean) per (discrete) category</p></li>
 <li><p>different variations (e.g., stacked bar charts)</p></li>
 </ul>
 <div class="cell docutils container">
@@ -703,6 +1364,12 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 <span class="n">tips</span><span class="p">[</span><span class="s1">&#39;smoker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;smoker&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/99cc258ba6f0f10cb30a775ac3071a35d3497f5a2dfc2fba47ecc93552dd44f8.png" src="../_images/99cc258ba6f0f10cb30a775ac3071a35d3497f5a2dfc2fba47ecc93552dd44f8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -713,29 +1380,271 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;smoker&#39;, ylabel=&#39;count&#39;&gt;
+</pre></div>
 </div>
-<p>In the following example, we do not want to calculate counts and then plot them in a bar chart, but rather plot the (implicitly calculated) means:</p>
+<img alt="../_images/33bd6d83d2a6047aea79594c45fe9b83b21a85967995b02e21995fd2e58427fd.png" src="../_images/33bd6d83d2a6047aea79594c45fe9b83b21a85967995b02e21995fd2e58427fd.png" />
+</div>
+</div>
+<p>In the following example, we do not want to calculate counts and then plot them
+in a bar chart, but rather plot the (implicitly calculated) means:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="mi">95</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l0/0m8rr1_910j7vgvw7jz29qgc0000gn/T/ipykernel_9805/431734180.py:1: FutureWarning: 
+
+The `ci` parameter is deprecated. Use `errorbar=(&#39;ci&#39;, 95)` for the same effect.
+
+  sns.barplot(x=&quot;day&quot;, y=&quot;total_bill&quot;, data=tips, ci=95)
+</pre></div>
 </div>
-<p>But we could also do something like this ‘by hand’ in pandas (with matplotlib being called under the hood):</p>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;day&#39;, ylabel=&#39;total_bill&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/4406c14b434bcdd0e9cb4db7a87125e06b4c7342ee5a18a53bd6aa800af66c63.png" src="../_images/4406c14b434bcdd0e9cb4db7a87125e06b4c7342ee5a18a53bd6aa800af66c63.png" />
+</div>
+</div>
+<p>But we could also do something like this ‘by hand’ in pandas (with matplotlib
+being called under the hood):</p>
 <p><strong>Discuss pros and cons and applications of both approaches!</strong></p>
-<p>Try to understand the underlying logic behind them! (and then make a decision on what to use for your own purposes)</p>
+<p>Try to understand the underlying logic behind them! (and then make a decision on
+what to use for your own purposes)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;day&#39;</span><span class="p">)[</span><span class="s1">&#39;total_bill&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l0/0m8rr1_910j7vgvw7jz29qgc0000gn/T/ipykernel_9805/1636493039.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  tips.groupby(&#39;day&#39;)[&#39;total_bill&#39;].agg(&#39;mean&#39;).plot(kind=&#39;bar&#39;)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;day&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/e582afadce61c8889259873f80a54516efc5dfa1417d41bd35fc33b0f548d71a.png" src="../_images/e582afadce61c8889259873f80a54516efc5dfa1417d41bd35fc33b0f548d71a.png" />
+</div>
 </div>
 <p>As always, use the ? to get more help:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.barplot<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span>
+sns<span class=" -Color -Color-Blue">.</span>barplot<span class=" -Color -Color-Blue">(</span>
+    data<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    <span class=" -Color -Color-Blue">*,</span>
+    x<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    y<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    hue<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    order<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    hue_order<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    estimator<span class=" -Color -Color-Blue">=&#39;mean&#39;,</span>
+    errorbar<span class=" -Color -Color-Blue">=(&#39;ci&#39;,</span> <span class=" -Color -Color-Cyan">95</span><span class=" -Color -Color-Blue">),</span>
+    n_boot<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">1000</span><span class=" -Color -Color-Blue">,</span>
+    seed<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    units<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    weights<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    orient<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    color<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    palette<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    saturation<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">0.75</span><span class=" -Color -Color-Blue">,</span>
+    fill<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
+    hue_norm<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    width<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">0.8</span><span class=" -Color -Color-Blue">,</span>
+    dodge<span class=" -Color -Color-Blue">=&#39;auto&#39;,</span>
+    gap<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">,</span>
+    log_scale<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    native_scale<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
+    formatter<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    legend<span class=" -Color -Color-Blue">=&#39;auto&#39;,</span>
+    capsize<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">,</span>
+    err_kws<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    ci<span class=" -Color -Color-Blue">=&lt;</span>deprecated<span class=" -Color -Color-Blue">&gt;,</span>
+    errcolor<span class=" -Color -Color-Blue">=&lt;</span>deprecated<span class=" -Color -Color-Blue">&gt;,</span>
+    errwidth<span class=" -Color -Color-Blue">=&lt;</span>deprecated<span class=" -Color -Color-Blue">&gt;,</span>
+    ax<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    <span class=" -Color -Color-Blue">**</span>kwargs<span class=" -Color -Color-Blue">,</span>
+<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Show point estimates and errors as rectangular bars.
+
+A bar plot represents an aggregate or statistical estimate for a numeric
+variable with the height of each rectangle and indicates the uncertainty
+around that estimate using an error bar. Bar plots include 0 in the
+axis range, and they are a good choice when 0 is a meaningful value
+for the variable to take.
+
+See the :ref:`tutorial &lt;categorical_tutorial&gt;` for more information.
+
+.. note::
+    By default, this function treats one of the variables as categorical
+    and draws data at ordinal positions (0, 1, ... n) on the relevant axis.
+    As of version 0.13.0, this can be disabled by setting `native_scale=True`.
+
+
+Parameters
+----------
+data : DataFrame, Series, dict, array, or list of arrays
+    Dataset for plotting. If `x` and `y` are absent, this is
+    interpreted as wide-form. Otherwise it is expected to be long-form.    
+x, y, hue : names of variables in `data` or vector data
+    Inputs for plotting long-form data. See examples for interpretation.    
+order, hue_order : lists of strings
+    Order to plot the categorical levels in; otherwise the levels are
+    inferred from the data objects.    
+estimator : string or callable that maps vector -&gt; scalar
+    Statistical function to estimate within each categorical bin.
+errorbar : string, (string, number) tuple, callable or None
+    Name of errorbar method (either &quot;ci&quot;, &quot;pi&quot;, &quot;se&quot;, or &quot;sd&quot;), or a tuple
+    with a method name and a level parameter, or a function that maps from a
+    vector to a (min, max) interval, or None to hide errorbar. See the
+    :doc:`errorbar tutorial &lt;/tutorial/error_bars&gt;` for more information.
+
+    .. versionadded:: v0.12.0
+n_boot : int
+    Number of bootstrap samples used to compute confidence intervals.
+seed : int, `numpy.random.Generator`, or `numpy.random.RandomState`
+    Seed or random number generator for reproducible bootstrapping.
+units : name of variable in `data` or vector data
+    Identifier of sampling units; used by the errorbar function to
+    perform a multilevel bootstrap and account for repeated measures
+weights : name of variable in `data` or vector data
+    Data values or column used to compute weighted statistics.
+    Note that the use of weights may limit other statistical options.
+
+    .. versionadded:: v0.13.1    
+orient : &quot;v&quot; | &quot;h&quot; | &quot;x&quot; | &quot;y&quot;
+    Orientation of the plot (vertical or horizontal). This is usually
+    inferred based on the type of the input variables, but it can be used
+    to resolve ambiguity when both `x` and `y` are numeric or when
+    plotting wide-form data.
+
+    .. versionchanged:: v0.13.0
+        Added &#39;x&#39;/&#39;y&#39; as options, equivalent to &#39;v&#39;/&#39;h&#39;.    
+color : matplotlib color
+    Single color for the elements in the plot.    
+palette : palette name, list, or dict
+    Colors to use for the different levels of the ``hue`` variable. Should
+    be something that can be interpreted by :func:`color_palette`, or a
+    dictionary mapping hue levels to matplotlib colors.    
+saturation : float
+    Proportion of the original saturation to draw fill colors in. Large
+    patches often look better with desaturated colors, but set this to
+    `1` if you want the colors to perfectly match the input values.    
+fill : bool
+    If True, use a solid patch. Otherwise, draw as line art.
+
+    .. versionadded:: v0.13.0    
+hue_norm : tuple or :class:`matplotlib.colors.Normalize` object
+    Normalization in data units for colormap applied to the `hue`
+    variable when it is numeric. Not relevant if `hue` is categorical.
+
+    .. versionadded:: v0.12.0    
+width : float
+    Width allotted to each element on the orient axis. When `native_scale=True`,
+    it is relative to the minimum distance between two values in the native scale.    
+dodge : &quot;auto&quot; or bool
+    When hue mapping is used, whether elements should be narrowed and shifted along
+    the orient axis to eliminate overlap. If `&quot;auto&quot;`, set to `True` when the
+    orient variable is crossed with the categorical variable or `False` otherwise.
+
+    .. versionchanged:: 0.13.0
+
+        Added `&quot;auto&quot;` mode as a new default.    
+gap : float
+    Shrink on the orient axis by this factor to add a gap between dodged elements.
+
+    .. versionadded:: 0.13.0    
+log_scale : bool or number, or pair of bools or numbers
+    Set axis scale(s) to log. A single value sets the data axis for any numeric
+    axes in the plot. A pair of values sets each axis independently.
+    Numeric values are interpreted as the desired base (default 10).
+    When `None` or `False`, seaborn defers to the existing Axes scale.
+
+    .. versionadded:: v0.13.0    
+native_scale : bool
+    When True, numeric or datetime values on the categorical axis will maintain
+    their original scaling rather than being converted to fixed indices.
+
+    .. versionadded:: v0.13.0    
+formatter : callable
+    Function for converting categorical data into strings. Affects both grouping
+    and tick labels.
+
+    .. versionadded:: v0.13.0    
+legend : &quot;auto&quot;, &quot;brief&quot;, &quot;full&quot;, or False
+    How to draw the legend. If &quot;brief&quot;, numeric `hue` and `size`
+    variables will be represented with a sample of evenly spaced values.
+    If &quot;full&quot;, every group will get an entry in the legend. If &quot;auto&quot;,
+    choose between brief or full representation based on number of levels.
+    If `False`, no legend data is added and no legend is drawn.
+
+    .. versionadded:: v0.13.0    
+capsize : float
+    Width of the &quot;caps&quot; on error bars, relative to bar spacing.    
+err_kws : dict
+    Parameters of :class:`matplotlib.lines.Line2D`, for the error bar artists.
+
+    .. versionadded:: v0.13.0    
+ci : float
+    Level of the confidence interval to show, in [0, 100].
+
+    .. deprecated:: v0.12.0
+        Use `errorbar=(&quot;ci&quot;, ...)`.    
+errcolor : matplotlib color
+    Color used for the error bar lines.
+
+    .. deprecated:: 0.13.0
+        Use `err_kws={&#39;color&#39;: ...}`.    
+errwidth : float
+    Thickness of error bar lines (and caps), in points.
+
+    .. deprecated:: 0.13.0
+        Use `err_kws={&#39;linewidth&#39;: ...}`.    
+ax : matplotlib Axes
+    Axes object to draw the plot onto, otherwise uses the current Axes.    
+kwargs : key, value mappings
+    Other parameters are passed through to :class:`matplotlib.patches.Rectangle`.
+
+Returns
+-------
+ax : matplotlib Axes
+    Returns the Axes object with the plot drawn onto it.    
+
+See Also
+--------
+countplot : Show the counts of observations in each categorical bin.    
+pointplot : Show point estimates and confidence intervals using dots.    
+catplot : Combine a categorical plot with a :class:`FacetGrid`.    
+
+Notes
+-----
+
+For datasets where 0 is not a meaningful value, a :func:`pointplot` will
+allow you to focus on differences between levels of one or more categorical
+variables.
+
+It is also important to keep in mind that a bar plot shows only the mean (or
+other aggregate) value, but it is often more informative to show the
+distribution of values at each level of the categorical variables. In those
+cases, approaches such as a :func:`boxplot` or :func:`violinplot` may be
+more appropriate.
+
+Examples
+--------
+.. include:: ../docstrings/barplot.rst
+<span class=" -Color -Color-Red">File:</span>      /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/seaborn/categorical.py
+<span class=" -Color -Color-Red">Type:</span>      function
 </pre></div>
 </div>
 </div>
@@ -748,13 +1657,34 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l0/0m8rr1_910j7vgvw7jz29qgc0000gn/T/ipykernel_9805/1430271356.py:1: FutureWarning: 
+
+The `ci` parameter is deprecated. Use `errorbar=None` for the same effect.
+
+  sns.barplot(x=&quot;day&quot;, y=&quot;total_bill&quot;, hue=&quot;sex&quot;, data=tips, ci=None)
+</pre></div>
 </div>
-<p>If we want to further split up by time, we can use the <code class="docutils literal notranslate"><span class="pre">.catplot()</span></code> function instead, which is specifically designed for handling categorical data (Lunch vs Dinner, in our case). Note how closely this command resembles the one above!</p>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;day&#39;, ylabel=&#39;total_bill&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/08e9a28c5b34f291df54eb2d983c665a268bc89ffdd1e6b850fbb9b222c7273c.png" src="../_images/08e9a28c5b34f291df54eb2d983c665a268bc89ffdd1e6b850fbb9b222c7273c.png" />
+</div>
+</div>
+<p>If we want to further split up by time, we can use the <code class="docutils literal notranslate"><span class="pre">.catplot()</span></code> function
+instead, which is specifically designed for handling categorical data (Lunch vs
+Dinner, in our case). Note how closely this command resembles the one above!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x31a8e71d0&gt;
+</pre></div>
+</div>
+<img alt="../_images/abb69a3ec600bdc6866c3511b6143ede8ae512b4485c8bf574a0240b4b73ed66.png" src="../_images/abb69a3ec600bdc6866c3511b6143ede8ae512b4485c8bf574a0240b4b73ed66.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -763,10 +1693,22 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;stadsdeel&#39;, ylabel=&#39;woz-waarde&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/3228e0fa98c7991f10d0251c2d847ac99488874deb6e6503f6882cbef730167a.png" src="../_images/3228e0fa98c7991f10d0251c2d847ac99488874deb6e6503f6882cbef730167a.png" />
+</div>
 </div>
 <p>Let’s now make this a bit prettier.</p>
-<p>We first set the style for seaborn plots (note that this affects ALL following graphs you are going to plot, until you set the style to sth different or restart the kernel).</p>
-<p>We then make use of the fact that seaborn is, in fact, built upon matplotlib and can therefore plot onto a matplotlib canvas. We create such a canvas (in this case, one with one subplot, called (somewhat counter-intuitively) an axis), and then tell seaborn to plot into the subplot area <code class="docutils literal notranslate"><span class="pre">ax</span></code> that we just created. This allows us to combine multiple plots in one, and to change its size.</p>
+<p>We first set the style for seaborn plots (note that this affects ALL following
+graphs you are going to plot, until you set the style to sth different or
+restart the kernel).</p>
+<p>We then make use of the fact that seaborn is, in fact, built upon matplotlib and
+can therefore plot onto a matplotlib canvas. We create such a canvas (in this
+case, one with one subplot, called (somewhat counter-intuitively) an axis), and
+then tell seaborn to plot into the subplot area <code class="docutils literal notranslate"><span class="pre">ax</span></code> that we just created. This
+allows us to combine multiple plots in one, and to change its size.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
@@ -774,6 +1716,19 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;stadsdeel&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;woz-waarde&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">woz</span><span class="p">,</span> <span class="n">ci</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l0/0m8rr1_910j7vgvw7jz29qgc0000gn/T/ipykernel_9805/877480700.py:3: FutureWarning: 
+
+The `ci` parameter is deprecated. Use `errorbar=None` for the same effect.
+
+  sns.barplot(ax=ax, x=&quot;stadsdeel&quot;, y=&quot;woz-waarde&quot;, hue=&#39;year&#39;, data=woz, ci = None)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;stadsdeel&#39;, ylabel=&#39;woz-waarde&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/ab822dfc0fd36971e5b5804956f30ffc2701d730890472d5e2a71b42ad3e0069.png" src="../_images/ab822dfc0fd36971e5b5804956f30ffc2701d730890472d5e2a71b42ad3e0069.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -783,6 +1738,19 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;stadsdeel&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;woz-waarde&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">woz</span><span class="p">,</span> <span class="n">ci</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l0/0m8rr1_910j7vgvw7jz29qgc0000gn/T/ipykernel_9805/2764374043.py:3: FutureWarning: 
+
+The `ci` parameter is deprecated. Use `errorbar=None` for the same effect.
+
+  sns.barplot(ax=ax, y=&quot;stadsdeel&quot;, x=&quot;woz-waarde&quot;, hue=&#39;year&#39;, data=woz, ci = None, orient=&#39;h&#39;)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;woz-waarde&#39;, ylabel=&#39;stadsdeel&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/869e111941a0545a2a721dd38033890793979c1d98f4dfdf5c6905bbb1137823.png" src="../_images/869e111941a0545a2a721dd38033890793979c1d98f4dfdf5c6905bbb1137823.png" />
 </div>
 </div>
 </section>
@@ -803,6 +1771,12 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x31a69a690&gt;
+</pre></div>
+</div>
+<img alt="../_images/87d6c8bf35710e175c014de325ae2bc6c638706cfc264416ec697d80b12333e7.png" src="../_images/87d6c8bf35710e175c014de325ae2bc6c638706cfc264416ec697d80b12333e7.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -812,6 +1786,12 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
             <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;point&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">titanic</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x33650c8f0&gt;
+</pre></div>
+</div>
+<img alt="../_images/eed220ea48ef5f82e3fce63d0475c49147d8a94e300e55a25c75da5ea6982b9b.png" src="../_images/eed220ea48ef5f82e3fce63d0475c49147d8a94e300e55a25c75da5ea6982b9b.png" />
 </div>
 </div>
 </section>
@@ -828,6 +1808,12 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;year&#39;, ylabel=&#39;woz-waarde&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/5c962c9ee224bb291485398c7b48a2732f3aa95b57c9693d1408a60b2a7324ba.png" src="../_images/5c962c9ee224bb291485398c7b48a2732f3aa95b57c9693d1408a60b2a7324ba.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -835,12 +1821,31 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l0/0m8rr1_910j7vgvw7jz29qgc0000gn/T/ipykernel_9805/1754195048.py:1: FutureWarning: 
+
+The `ci` parameter is deprecated. Use `errorbar=None` for the same effect.
+
+  sns.lineplot(x=&#39;year&#39;, y=&#39;woz-waarde&#39;, data=woz ,ci=None)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;year&#39;, ylabel=&#39;woz-waarde&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/bc75133e1c85c7a923f34523421cfb29d8df9dd73ca2249d982765d4081e7796.png" src="../_images/bc75133e1c85c7a923f34523421cfb29d8df9dd73ca2249d982765d4081e7796.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;woz-waarde&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;stadsdeel&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">woz</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;year&#39;, ylabel=&#39;woz-waarde&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/945dcdd3b66db9228d98439870c5df748820cc0ae2248b4324258e2004351da7.png" src="../_images/945dcdd3b66db9228d98439870c5df748820cc0ae2248b4324258e2004351da7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -850,6 +1855,16 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 <span class="n">woz</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;stadsdeel&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l0/0m8rr1_910j7vgvw7jz29qgc0000gn/T/ipykernel_9805/1833850091.py:3: FutureWarning: The provided callable &lt;built-in function sum&gt; is currently using DataFrameGroupBy.sum. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &quot;sum&quot; instead.
+  woz.groupby([&#39;year&#39;,&#39;stadsdeel&#39;]).agg(sum).unstack().plot()
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;year&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/fb3ebe8a72d5018436e774f6885fba140174757ff79de7516128242e612b48a6.png" src="../_images/fb3ebe8a72d5018436e774f6885fba140174757ff79de7516128242e612b48a6.png" />
 </div>
 </div>
 </section>
@@ -862,6 +1877,12 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;total_bill&#39;, ylabel=&#39;tip&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/1b069241e83309d28f223209564d0a959ec29cabbbdac74246372f7bebad1ab9.png" src="../_images/1b069241e83309d28f223209564d0a959ec29cabbbdac74246372f7bebad1ab9.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -869,6 +1890,12 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 <span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;total_bill&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;tip&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x336d6bec0&gt;
+</pre></div>
+</div>
+<img alt="../_images/1fcc7df697ca151dfc089414bf1b54275023d333e73c500ca722d92ae3b775b1.png" src="../_images/1fcc7df697ca151dfc089414bf1b54275023d333e73c500ca722d92ae3b775b1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -878,6 +1905,12 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;total_bill&#39;, ylabel=&#39;tip&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/9aa29dd5cc07e39c987ed1e5a3f0cd61855188845bcd8475ee84a7a0df42b4e6.png" src="../_images/9aa29dd5cc07e39c987ed1e5a3f0cd61855188845bcd8475ee84a7a0df42b4e6.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -886,6 +1919,12 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;total_bill&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;tip&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span> <span class="n">lowess</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;total_bill&#39;, ylabel=&#39;tip&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/8f690aa0107aaa80e5f857192f1c1395cbb59c74aa5359f15d379daede160d9d.png" src="../_images/8f690aa0107aaa80e5f857192f1c1395cbb59c74aa5359f15d379daede160d9d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -897,23 +1936,30 @@ You may find it, in fact, more intuitive, as you basically provide each seaborn 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/dcfbc9371cc601561da5944babe29091c6a7c0b4f2050f09e2823d506d38636a.png" src="../_images/dcfbc9371cc601561da5944babe29091c6a7c0b4f2050f09e2823d506d38636a.png" />
+</div>
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="additional-statistical-plots">
 <h1>5. Additional (statistical) plots<a class="headerlink" href="#additional-statistical-plots" title="Link to this heading">#</a></h1>
-<p>Have a look at the seaborn website (http://seaborn.pydata.org/) or at the Python Graph Gallery (https://python-graph-gallery.com/) for more inspiration, including cool stuff like</p>
+<p>Have a look at the seaborn website (http://seaborn.pydata.org/) or at the Python
+Graph Gallery (https://python-graph-gallery.com/) for more inspiration,
+including cool stuff like</p>
 <ul class="simple">
 <li><p>violin plots</p></li>
 <li><p>kernel density plots</p></li>
 <li><p>…</p></li>
 <li><p>…</p></li>
 </ul>
-<p>Also, look back at our earlier notebook 03_analyzing_numbers.ipynb, and the hexplot we present at the end.</p>
+<p>Also, look back at our earlier notebook 03_analyzing_numbers.ipynb, and the
+hexplot we present at the end.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="now-it-s-your-turn">
 <h1>Now it’s your turn!<a class="headerlink" href="#now-it-s-your-turn" title="Link to this heading">#</a></h1>
-<p><strong>Exercise</strong>: Take a dataset of you choice (preferably your own data) and try to make multiple visualisations!
-You can work together with your neighbor if you want to.</p>
+<p><strong>Exercise</strong>: Take a dataset of you choice (preferably your own data) and try to
+make multiple visualisations! You can work together with your neighbor if you
+want to.</p>
 </section>
 
     <script type="text/x-thebe-config">

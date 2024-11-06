@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -436,26 +436,39 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="analyzing-text">
 <h1>7. Analyzing Text<a class="headerlink" href="#analyzing-text" title="Link to this heading">#</a></h1>
 <p><em>Frederic Hopp and Penny Sheets</em></p>
-<p>This notebook is meant to show you some more ways of analyzing data that go beyond methods like <code class="docutils literal notranslate"><span class="pre">df.describe()</span></code> or <code class="docutils literal notranslate"><span class="pre">Counter()</span></code> etc., which we used last week already. In particular, we are going to look into analyzing textual data.</p>
+<p>This notebook is meant to show you some more ways of analyzing data that go
+beyond methods like <code class="docutils literal notranslate"><span class="pre">df.describe()</span></code> or <code class="docutils literal notranslate"><span class="pre">Counter()</span></code> etc., which we used last week
+already. In particular, we are going to look into analyzing textual data.</p>
 <p>We will both look at <em>bottom up</em> and <em>top down</em> approaches.</p>
 <section id="download-the-data">
 <h2>Download the data<a class="headerlink" href="#download-the-data" title="Link to this heading">#</a></h2>
 <p>We will use a dataset by Schumacher et al. (2016). From the abstract:</p>
 <blockquote>
-<div><p>This paper presents EUSpeech, a new dataset of 18,403 speeches from EU leaders (i.e., heads of government in 10 member states, EU commissioners, party leaders in the European Parliament, and ECB and IMF leaders) from 2007 to 2015. These speeches vary in sentiment, topics and ideology, allowing for fine-grained, over-time comparison of representation in the EU. The member states we included are Czech Republic, France, Germany, Greece, Netherlands, Italy, Spain, United Kingdom, Poland and Portugal.</p>
+<div><p>This paper presents EUSpeech, a new dataset of 18,403 speeches from EU leaders
+(i.e., heads of government in 10 member states, EU commissioners, party
+leaders in the European Parliament, and ECB and IMF leaders) from 2007
+to 2015. These speeches vary in sentiment, topics and ideology, allowing for
+fine-grained, over-time comparison of representation in the EU. The member
+states we included are Czech Republic, France, Germany, Greece, Netherlands,
+Italy, Spain, United Kingdom, Poland and Portugal.</p>
 </div></blockquote>
-<p>Schumacher, G, Schoonvelde, M., Dahiya, T., Traber, D, &amp; de Vries, E. (2016): <em>EUSpeech: a New Dataset of EU Elite Speeches</em>. <a class="reference external" href="http://dx.doi.org/10.7910/DVN/XPCVEI">doi:10.7910/DVN/XPCVEI</a></p>
+<p>Schumacher, G, Schoonvelde, M., Dahiya, T., Traber, D, &amp; de Vries, E. (2016):
+<em>EUSpeech: a New Dataset of EU Elite Speeches</em>.
+<a class="reference external" href="http://dx.doi.org/10.7910/DVN/XPCVEI">doi:10.7910/DVN/XPCVEI</a></p>
 <p>Download and unpack the following file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">speeches_csv</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 <p>In the .tar.gz file, you find a .zip file.</p>
-<p><strong>On Windows, you may need to install a unzip program like <a class="reference external" href="https://www.7-zip.org/">7zip</a> first</strong></p>
-<p><strong>Within that archive, you find a file <code class="docutils literal notranslate"><span class="pre">Speeches_UK_Cleaned.csv</span></code>. That’s the one we need – save it in the directory in which you save your Jupyter Notebooks!</strong></p>
+<p><strong>On Windows, you may need to install a unzip program like
+<a class="reference external" href="https://www.7-zip.org/">7zip</a> first</strong></p>
+<p><strong>Within that archive, you find a file <code class="docutils literal notranslate"><span class="pre">Speeches_UK_Cleaned.csv</span></code>. That’s the one
+we need – save it in the directory in which you save your Jupyter Notebooks!</strong></p>
 </section>
 <section id="getting-started">
 <h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
-<p>It is a good custom to import all modules that you need at the beginning of your notebook.</p>
+<p>It is a good custom to import all modules that you need at the beginning of your
+notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -487,7 +500,9 @@ document.write(`
 </section>
 <section id="data-preparation">
 <h2>Data preparation<a class="headerlink" href="#data-preparation" title="Link to this heading">#</a></h2>
-<p>First of all, we will read the dataset in a Pandas Dataframe. In this case, it seems that there are no column headers (try to run it without the header-argument to see what happens!)</p>
+<p>First of all, we will read the dataset in a Pandas Dataframe. In this case, it
+seems that there are no column headers (try to run it without the
+header-argument to see what happens!)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Speeches_UK_Cleaned.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>   <span class="c1"># the first line contains already data and not column headers</span>
@@ -501,10 +516,92 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>33</th>
+      <td>PM speech on opportunity</td>
+      <td>22-06-2015</td>
+      <td>Great Britain</td>
+      <td>D. Cameron</td>
+      <td>3352</td>
+      <td>&lt;p&gt;I &lt;/p&gt;&lt;p&gt;said on the steps of Downing Stree...</td>
+      <td>said step down street may would one nation gov...</td>
+      <td>en</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>PM press conference with Enda Kenny: June 2015</td>
+      <td>18-06-2015</td>
+      <td>Great Britain</td>
+      <td>D. Cameron</td>
+      <td>2112</td>
+      <td>&lt;p&gt;Good afternoon and welcome, and it’s great ...</td>
+      <td>good afternoon welcom great welcom good friend...</td>
+      <td>en</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Magna Carta 800th anniversary: PM's speech</td>
+      <td>15-06-2015</td>
+      <td>Great Britain</td>
+      <td>D. Cameron</td>
+      <td>659</td>
+      <td>&lt;p&gt;800 years ago, on this day, King John put h...</td>
+      <td>year ago day king put seal document would chan...</td>
+      <td>en</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>G7: Statement by David Cameron and Barack Obama</td>
+      <td>08-06-2015</td>
+      <td>Great Britain</td>
+      <td>D. Cameron</td>
+      <td>623</td>
+      <td>&lt;p&gt;It is wonderful to be back with my good fri...</td>
+      <td>wonder back good friend partner cameron d like...</td>
+      <td>en</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(787, 8)
 </pre></div>
 </div>
 </div>
@@ -515,8 +612,97 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>EU Council: PM press conference</td>
+      <td>18-12-2015</td>
+      <td>Great Britain</td>
+      <td>D. Cameron</td>
+      <td>2877</td>
+      <td>&lt;p&gt;This European Council has focused on 3 issu...</td>
+      <td>european council focus issu uk renegoti migrat...</td>
+      <td>en</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>PM statement in Poland: 10 December 2015</td>
+      <td>10-12-2015</td>
+      <td>Great Britain</td>
+      <td>D. Cameron</td>
+      <td>866</td>
+      <td>&lt;p&gt;Thank you Prime Minister for welcoming me h...</td>
+      <td>thank prime minist welcom warsaw honour first ...</td>
+      <td>en</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>PM statement on talks in Romania, 9 December 2015</td>
+      <td>09-12-2015</td>
+      <td>Great Britain</td>
+      <td>D. Cameron</td>
+      <td>726</td>
+      <td>&lt;p&gt;Thank you President Iohannis for welcoming ...</td>
+      <td>thank presid iohanni welcom bucharest today pl...</td>
+      <td>en</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>PM Speech: This is a government that delivers</td>
+      <td>07-12-2015</td>
+      <td>Great Britain</td>
+      <td>D. Cameron</td>
+      <td>6211</td>
+      <td>&lt;p&gt;This is a government that delivers&lt;/p&gt;&lt;p&gt;Th...</td>
+      <td>govern deliversthank much brief introduct grea...</td>
+      <td>en</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>PM Bulgaria visit 3 December 2015: press confe...</td>
+      <td>07-12-2015</td>
+      <td>Great Britain</td>
+      <td>D. Cameron</td>
+      <td>773</td>
+      <td>&lt;p&gt;Well thank you very much Prime Minister, th...</td>
+      <td>well thank much prime minist thank boyko good ...</td>
+      <td>en</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-<p>We now probably got some sense what the columns mean, so let’s give them headers!</p>
+<p>We now probably got some sense what the columns mean, so let’s give them
+headers!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;what&#39;</span><span class="p">,</span><span class="s1">&#39;when&#39;</span><span class="p">,</span><span class="s1">&#39;country&#39;</span><span class="p">,</span><span class="s1">&#39;who&#39;</span><span class="p">,</span><span class="s1">&#39;number&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="s1">&#39;text_clean&#39;</span><span class="p">,</span><span class="s1">&#39;language&#39;</span><span class="p">]</span>
@@ -530,11 +716,102 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>what</th>
+      <th>when</th>
+      <th>country</th>
+      <th>who</th>
+      <th>number</th>
+      <th>text</th>
+      <th>text_clean</th>
+      <th>language</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>EU Council: PM press conference</td>
+      <td>18-12-2015</td>
+      <td>Great Britain</td>
+      <td>D. Cameron</td>
+      <td>2877</td>
+      <td>&lt;p&gt;This European Council has focused on 3 issu...</td>
+      <td>european council focus issu uk renegoti migrat...</td>
+      <td>en</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>PM statement in Poland: 10 December 2015</td>
+      <td>10-12-2015</td>
+      <td>Great Britain</td>
+      <td>D. Cameron</td>
+      <td>866</td>
+      <td>&lt;p&gt;Thank you Prime Minister for welcoming me h...</td>
+      <td>thank prime minist welcom warsaw honour first ...</td>
+      <td>en</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>PM statement on talks in Romania, 9 December 2015</td>
+      <td>09-12-2015</td>
+      <td>Great Britain</td>
+      <td>D. Cameron</td>
+      <td>726</td>
+      <td>&lt;p&gt;Thank you President Iohannis for welcoming ...</td>
+      <td>thank presid iohanni welcom bucharest today pl...</td>
+      <td>en</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>PM Speech: This is a government that delivers</td>
+      <td>07-12-2015</td>
+      <td>Great Britain</td>
+      <td>D. Cameron</td>
+      <td>6211</td>
+      <td>&lt;p&gt;This is a government that delivers&lt;/p&gt;&lt;p&gt;Th...</td>
+      <td>govern deliversthank much brief introduct grea...</td>
+      <td>en</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>PM Bulgaria visit 3 December 2015: press confe...</td>
+      <td>07-12-2015</td>
+      <td>Great Britain</td>
+      <td>D. Cameron</td>
+      <td>773</td>
+      <td>&lt;p&gt;Well thank you very much Prime Minister, th...</td>
+      <td>well thank much prime minist thank boyko good ...</td>
+      <td>en</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="bottom-up-analysis">
 <h2>Bottom-up analysis<a class="headerlink" href="#bottom-up-analysis" title="Link to this heading">#</a></h2>
-<p>There are several approaches to data analysis: bottom up and top down. With the former, you try to recognize patterns and describe the data; with the latter, you aim at identifying concepts you have defined in advance. Let’s start bottom-up.t</p>
+<p>There are several approaches to data analysis: bottom up and top down. With the
+former, you try to recognize patterns and describe the data; with the latter,
+you aim at identifying concepts you have defined in advance. Let’s start
+bottom-up.t</p>
 <p>I give some examples in the following lines, <em>but try out your own stuff!!</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -542,18 +819,37 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>who
+D. Cameron    493
+G. Brown      283
+T. Blair       11
+Name: count, dtype: int64
+</pre></div>
 </div>
-<p>Remember that in Python, everything is an object. Therefore, we can <em>chain</em> methods and apply the <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method to the output object of <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code> if we want to:</p>
+</div>
+</div>
+<p>Remember that in Python, everything is an object. Therefore, we can <em>chain</em>
+methods and apply the <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method to the output object of <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code>
+if we want to:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;who&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;who&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/037088d5ceb428ebf6ccd15c9d88d0c45016d6c260dce61c465645e48239d8bb.png" src="../_images/037088d5ceb428ebf6ccd15c9d88d0c45016d6c260dce61c465645e48239d8bb.png" />
+</div>
 </div>
 <section id="simple-bottom-up-approaches-to-text-analysis">
 <h3>Simple bottom-up approaches to text analysis<a class="headerlink" href="#simple-bottom-up-approaches-to-text-analysis" title="Link to this heading">#</a></h3>
-<p>Let’s get most common words. The command below basically takes all cleaned texts, joins them together with a space between them, and then splits this long string into words.</p>
+<p>Let’s get most common words. The command below basically takes all cleaned
+texts, joins them together with a space between them, and then splits this long
+string into words.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">text_clean</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
@@ -567,9 +863,33 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;peopl&#39;, 11314),
+ (&#39;think&#39;, 9209),
+ (&#39;countri&#39;, 9020),
+ (&#39;make&#39;, 6918),
+ (&#39;go&#39;, 6428),
+ (&#39;world&#39;, 6218),
+ (&#39;want&#39;, 6121),
+ (&#39;work&#39;, 6006),
+ (&#39;need&#39;, 5798),
+ (&#39;year&#39;, 5649),
+ (&#39;minist&#39;, 5467),
+ (&#39;ve&#39;, 5431),
+ (&#39;get&#39;, 5002),
+ (&#39;prime&#39;, 4976),
+ (&#39;govern&#39;, 4940),
+ (&#39;britain&#39;, 4842),
+ (&#39;one&#39;, 4713),
+ (&#39;say&#39;, 4580),
+ (&#39;also&#39;, 4541),
+ (&#39;new&#39;, 4320)]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Let’s generate a word cloud instead!</p>
-<p>More  examples at https://github.com/amueller/word_cloud</p>
+<p>More examples at https://github.com/amueller/word_cloud</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mywordcloud</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">text_clean</span><span class="p">))</span>
@@ -578,6 +898,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.5, 799.5, 399.5, -0.5)
+</pre></div>
+</div>
+<img alt="../_images/7cb17052622d89007c06f13d14e9a5b252bd2fab732bfd3be2fe232de3fd94d0.png" src="../_images/7cb17052622d89007c06f13d14e9a5b252bd2fab732bfd3be2fe232de3fd94d0.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -585,10 +911,175 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;wordcloud.wordcloud.WordCloud at 0x31b9cf170&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mywordcloud<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Type:</span>        WordCloud
+<span class=" -Color -Color-Red">String form:</span> &lt;wordcloud.wordcloud.WordCloud object at 0x31b9cf170&gt;
+<span class=" -Color -Color-Red">File:</span>        /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/wordcloud/wordcloud.py
+<span class=" -Color -Color-Red">Docstring:</span>  
+Word cloud object for generating and drawing.
+
+Parameters
+----------
+font_path : string
+    Font path to the font that will be used (OTF or TTF).
+    Defaults to DroidSansMono path on a Linux machine. If you are on
+    another OS or don&#39;t have this font, you need to adjust this path.
+
+width : int (default=400)
+    Width of the canvas.
+
+height : int (default=200)
+    Height of the canvas.
+
+prefer_horizontal : float (default=0.90)
+    The ratio of times to try horizontal fitting as opposed to vertical.
+    If prefer_horizontal &lt; 1, the algorithm will try rotating the word
+    if it doesn&#39;t fit. (There is currently no built-in way to get only
+    vertical words.)
+
+mask : nd-array or None (default=None)
+    If not None, gives a binary mask on where to draw words. If mask is not
+    None, width and height will be ignored and the shape of mask will be
+    used instead. All white (#FF or #FFFFFF) entries will be considerd
+    &quot;masked out&quot; while other entries will be free to draw on. [This
+    changed in the most recent version!]
+
+contour_width: float (default=0)
+    If mask is not None and contour_width &gt; 0, draw the mask contour.
+
+contour_color: color value (default=&quot;black&quot;)
+    Mask contour color.
+
+scale : float (default=1)
+    Scaling between computation and drawing. For large word-cloud images,
+    using scale instead of larger canvas size is significantly faster, but
+    might lead to a coarser fit for the words.
+
+min_font_size : int (default=4)
+    Smallest font size to use. Will stop when there is no more room in this
+    size.
+
+font_step : int (default=1)
+    Step size for the font. font_step &gt; 1 might speed up computation but
+    give a worse fit.
+
+max_words : number (default=200)
+    The maximum number of words.
+
+stopwords : set of strings or None
+    The words that will be eliminated. If None, the build-in STOPWORDS
+    list will be used. Ignored if using generate_from_frequencies.
+
+background_color : color value (default=&quot;black&quot;)
+    Background color for the word cloud image.
+
+max_font_size : int or None (default=None)
+    Maximum font size for the largest word. If None, height of the image is
+    used.
+
+mode : string (default=&quot;RGB&quot;)
+    Transparent background will be generated when mode is &quot;RGBA&quot; and
+    background_color is None.
+
+relative_scaling : float (default=&#39;auto&#39;)
+    Importance of relative word frequencies for font-size.  With
+    relative_scaling=0, only word-ranks are considered.  With
+    relative_scaling=1, a word that is twice as frequent will have twice
+    the size.  If you want to consider the word frequencies and not only
+    their rank, relative_scaling around .5 often looks good.
+    If &#39;auto&#39; it will be set to 0.5 unless repeat is true, in which
+    case it will be set to 0.
+
+    .. versionchanged: 2.0
+        Default is now &#39;auto&#39;.
+
+color_func : callable, default=None
+    Callable with parameters word, font_size, position, orientation,
+    font_path, random_state that returns a PIL color for each word.
+    Overwrites &quot;colormap&quot;.
+    See colormap for specifying a matplotlib colormap instead.
+    To create a word cloud with a single color, use
+    ``color_func=lambda *args, **kwargs: &quot;white&quot;``.
+    The single color can also be specified using RGB code. For example
+    ``color_func=lambda *args, **kwargs: (255,0,0)`` sets color to red.
+
+regexp : string or None (optional)
+    Regular expression to split the input text into tokens in process_text.
+    If None is specified, ``r&quot;\w[\w&#39;]+&quot;`` is used. Ignored if using
+    generate_from_frequencies.
+
+collocations : bool, default=True
+    Whether to include collocations (bigrams) of two words. Ignored if using
+    generate_from_frequencies.
+
+
+    .. versionadded: 2.0
+
+colormap : string or matplotlib colormap, default=&quot;viridis&quot;
+    Matplotlib colormap to randomly draw colors from for each word.
+    Ignored if &quot;color_func&quot; is specified.
+
+    .. versionadded: 2.0
+
+normalize_plurals : bool, default=True
+    Whether to remove trailing &#39;s&#39; from words. If True and a word
+    appears with and without a trailing &#39;s&#39;, the one with trailing &#39;s&#39;
+    is removed and its counts are added to the version without
+    trailing &#39;s&#39; -- unless the word ends with &#39;ss&#39;. Ignored if using
+    generate_from_frequencies.
+
+repeat : bool, default=False
+    Whether to repeat words and phrases until max_words or min_font_size
+    is reached.
+
+include_numbers : bool, default=False
+    Whether to include numbers as phrases or not.
+
+min_word_length : int, default=0
+    Minimum number of letters a word must have to be included.
+
+collocation_threshold: int, default=30
+    Bigrams must have a Dunning likelihood collocation score greater than this
+    parameter to be counted as bigrams. Default of 30 is arbitrary.
+
+    See Manning, C.D., Manning, C.D. and Schütze, H., 1999. Foundations of
+    Statistical Natural Language Processing. MIT press, p. 162
+    https://nlp.stanford.edu/fsnlp/promo/colloc.pdf#page=22
+
+Attributes
+----------
+``words_`` : dict of string to float
+    Word tokens with associated frequency.
+
+    .. versionchanged: 2.0
+        ``words_`` is now a dictionary
+
+``layout_`` : list of tuples ((string, float), int, (int, int), int, color))
+    Encodes the fitted word cloud. For each word, it encodes the string,
+    normalized frequency, font size, position, orientation, and color.
+    The frequencies are normalized by the most commonly occurring word.
+    The color is in the format of &#39;rgb(R, G, B).&#39;
+
+Notes
+-----
+Larger canvases make the code significantly slower. If you need a
+large word cloud, try a lower canvas size, and set the scale parameter.
+
+The algorithm might give more weight to the ranking of the words
+than their actual frequencies, depending on the ``max_font_size`` and the
+scaling heuristic.
 </pre></div>
 </div>
 </div>
@@ -607,10 +1098,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;european council focus issu uk renegoti migrat terror talk renegoti last night come back short first&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">allspeechesbycameron</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>562234
 </pre></div>
 </div>
 </div>
@@ -623,17 +1124,42 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.5, 799.5, 399.5, -0.5)
+</pre></div>
+</div>
+<img alt="../_images/304cdbdc71ccf1e7f3a1c871078c715dd6f9bdc20152c25b6c1d6927193f48b4.png" src="../_images/304cdbdc71ccf1e7f3a1c871078c715dd6f9bdc20152c25b6c1d6927193f48b4.png" />
+</div>
 </div>
 </section>
 </section>
 <section id="let-s-turn-it-around-and-look-for-specific-things-top-down">
 <h2>Let’s turn it around and look for specific things (top-down)<a class="headerlink" href="#let-s-turn-it-around-and-look-for-specific-things-top-down" title="Link to this heading">#</a></h2>
-<p>Imagine we are interested in references to <code class="docutils literal notranslate"><span class="pre">terror</span></code>. Feel free to choose any other term!</p>
-<p>We can actually use regular expressions (google for it!), so we can use <code class="docutils literal notranslate"><span class="pre">[tT]error</span></code> to allow for both upper and lower case. Or we can say <code class="docutils literal notranslate"><span class="pre">[tT]erroris[mt]</span></code>.</p>
+<p>Imagine we are interested in references to <code class="docutils literal notranslate"><span class="pre">terror</span></code>. Feel free to choose any
+other term!</p>
+<p>We can actually use regular expressions (google for it!), so we can use
+<code class="docutils literal notranslate"><span class="pre">[tT]error</span></code> to allow for both upper and lower case. Or we can say
+<code class="docutils literal notranslate"><span class="pre">[tT]erroris[mt]</span></code>.</p>
 <p>Let’s first look at it and then make a new column with it</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;[tT]error&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      7
+1      0
+2      0
+3      0
+4      2
+      ..
+782    0
+783    0
+784    0
+785    0
+786    0
+Name: text, Length: 787, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -651,10 +1177,28 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    787.000000
+mean       1.731893
+std        4.435921
+min        0.000000
+25%        0.000000
+50%        0.000000
+75%        1.000000
+max       44.000000
+Name: terrorrefs, dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;terrorrefs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>687
 </pre></div>
 </div>
 </div>
@@ -665,16 +1209,109 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>what            Permanent Link to Press conference in Islamabad
+when                                                 14-12-2008
+country                                           Great Britain
+who                                                    G. Brown
+number                                                     2954
+text          &lt;p&gt;Transcript of a press conference given by t...
+text_clean    transcript press confer given prime minist mr ...
+language                                                     en
+terrorrefs                                                   44
+Name: 687, dtype: object
+</pre></div>
+</div>
+</div>
 </div>
 <section id="making-comparisons">
 <h3>Making comparisons<a class="headerlink" href="#making-comparisons" title="Link to this heading">#</a></h3>
-<p>Of course, it would be cool to get some idea whether this differs between some groups of speeches. For this, we can use subsetting (see last week) and repeat the analysis three times, or we can use <code class="docutils literal notranslate"><span class="pre">.groupby</span></code>:</p>
+<p>Of course, it would be cool to get some idea whether this differs between some
+groups of speeches. For this, we can use subsetting (see last week) and repeat
+the analysis three times, or we can use <code class="docutils literal notranslate"><span class="pre">.groupby</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;who&#39;</span><span class="p">)[</span><span class="s1">&#39;terrorrefs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>who</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>D. Cameron</th>
+      <td>493.0</td>
+      <td>1.511156</td>
+      <td>3.382520</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>25.0</td>
+    </tr>
+    <tr>
+      <th>G. Brown</th>
+      <td>283.0</td>
+      <td>2.109541</td>
+      <td>5.842375</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>44.0</td>
+    </tr>
+    <tr>
+      <th>T. Blair</th>
+      <td>11.0</td>
+      <td>1.909091</td>
+      <td>3.832872</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>11.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -682,8 +1319,18 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>who
+D. Cameron    745
+G. Brown      597
+T. Blair       21
+Name: terrorrefs, dtype: int64
+</pre></div>
 </div>
-<p>Instead of counting the number of all references to terror, let’s count the number of speeches that have at least one reference:</p>
+</div>
+</div>
+<p>Instead of counting the number of all references to terror, let’s count the
+number of speeches that have at least one reference:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;terrorrefsdummy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;terrorrefs&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span>
@@ -692,6 +1339,185 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>what</th>
+      <th>when</th>
+      <th>country</th>
+      <th>who</th>
+      <th>number</th>
+      <th>text</th>
+      <th>text_clean</th>
+      <th>language</th>
+      <th>terrorrefs</th>
+      <th>terrorrefsdummy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>EU Council: PM press conference</td>
+      <td>18-12-2015</td>
+      <td>Great Britain</td>
+      <td>D. Cameron</td>
+      <td>2877</td>
+      <td>&lt;p&gt;This European Council has focused on 3 issu...</td>
+      <td>european council focus issu uk renegoti migrat...</td>
+      <td>en</td>
+      <td>7</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>PM statement in Poland: 10 December 2015</td>
+      <td>10-12-2015</td>
+      <td>Great Britain</td>
+      <td>D. Cameron</td>
+      <td>866</td>
+      <td>&lt;p&gt;Thank you Prime Minister for welcoming me h...</td>
+      <td>thank prime minist welcom warsaw honour first ...</td>
+      <td>en</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>PM statement on talks in Romania, 9 December 2015</td>
+      <td>09-12-2015</td>
+      <td>Great Britain</td>
+      <td>D. Cameron</td>
+      <td>726</td>
+      <td>&lt;p&gt;Thank you President Iohannis for welcoming ...</td>
+      <td>thank presid iohanni welcom bucharest today pl...</td>
+      <td>en</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>PM Speech: This is a government that delivers</td>
+      <td>07-12-2015</td>
+      <td>Great Britain</td>
+      <td>D. Cameron</td>
+      <td>6211</td>
+      <td>&lt;p&gt;This is a government that delivers&lt;/p&gt;&lt;p&gt;Th...</td>
+      <td>govern deliversthank much brief introduct grea...</td>
+      <td>en</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>PM Bulgaria visit 3 December 2015: press confe...</td>
+      <td>07-12-2015</td>
+      <td>Great Britain</td>
+      <td>D. Cameron</td>
+      <td>773</td>
+      <td>&lt;p&gt;Well thank you very much Prime Minister, th...</td>
+      <td>well thank much prime minist thank boyko good ...</td>
+      <td>en</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>782</th>
+      <td>Permanent Link to My UK Competition - Transcript</td>
+      <td>03-04-2007</td>
+      <td>Great Britain</td>
+      <td>T. Blair</td>
+      <td>369</td>
+      <td>&lt;p&gt;The My UK competition, which was run by Blu...</td>
+      <td>uk competit run blue peter down street invit v...</td>
+      <td>en</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>783</th>
+      <td>Permanent Link to Blue Peter - Transcript</td>
+      <td>03-04-2007</td>
+      <td>Great Britain</td>
+      <td>T. Blair</td>
+      <td>1358</td>
+      <td>&lt;p&gt;As part of a special BBC-Downing Street com...</td>
+      <td>part special bbcdown street competit blue pete...</td>
+      <td>en</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>784</th>
+      <td>Permanent Link to Catherine Tate - Transcript</td>
+      <td>03-04-2007</td>
+      <td>Great Britain</td>
+      <td>T. Blair</td>
+      <td>669</td>
+      <td>&lt;p&gt;Tony Blair has to deal with stroppy teenage...</td>
+      <td>toni blair deal stroppi teenag lauren better k...</td>
+      <td>en</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>785</th>
+      <td>Permanent Link to Our Nation’s Future - the Ro...</td>
+      <td>30-03-2007</td>
+      <td>Great Britain</td>
+      <td>T. Blair</td>
+      <td>3964</td>
+      <td>&lt;p&gt;30 March 2007&lt;/p&gt;&lt;p&gt;The PM focused on the c...</td>
+      <td>march pm focus chang natur work way economi ev...</td>
+      <td>en</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>786</th>
+      <td>Permanent Link to Press conference with Ishaq ...</td>
+      <td>25-03-2007</td>
+      <td>Great Britain</td>
+      <td>T. Blair</td>
+      <td>1466</td>
+      <td>&lt;p&gt;25 March 2007&lt;/p&gt;&lt;p&gt;The Prime Minister has ...</td>
+      <td>march prime minist given press confer eu th an...</td>
+      <td>en</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>787 rows × 10 columns</p>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -699,8 +1525,19 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>who
+D. Cameron    161
+G. Brown       86
+T. Blair        4
+Name: terrorrefsdummy, dtype: int64
+</pre></div>
 </div>
-<p>In the following lines, you find a quick preview of what we will do a bit more on Wednesday: joining tables. Remember that the output generated above can be seen as just another object, which we can turn into a dataframe:</p>
+</div>
+</div>
+<p>In the following lines, you find a quick preview of what we will do a bit more
+on Wednesday: joining tables. Remember that the output generated above can be
+seen as just another object, which we can turn into a dataframe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">terrorspeeches</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;who&#39;</span><span class="p">)[</span><span class="s1">&#39;terrorrefsdummy&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -716,6 +1553,48 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>terrorrefsdummy</th>
+    </tr>
+    <tr>
+      <th>who</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>D. Cameron</th>
+      <td>161</td>
+    </tr>
+    <tr>
+      <th>G. Brown</th>
+      <td>86</td>
+    </tr>
+    <tr>
+      <th>T. Blair</th>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -724,6 +1603,48 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>who</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>D. Cameron</th>
+      <td>493</td>
+    </tr>
+    <tr>
+      <th>G. Brown</th>
+      <td>283</td>
+    </tr>
+    <tr>
+      <th>T. Blair</th>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -731,6 +1652,53 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>terrorrefsdummy</th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>who</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>D. Cameron</th>
+      <td>161</td>
+      <td>493</td>
+    </tr>
+    <tr>
+      <th>G. Brown</th>
+      <td>86</td>
+      <td>283</td>
+    </tr>
+    <tr>
+      <th>T. Blair</th>
+      <td>4</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -746,6 +1714,53 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>speeches about terror</th>
+      <th>total speeches</th>
+    </tr>
+    <tr>
+      <th>who</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>D. Cameron</th>
+      <td>161</td>
+      <td>493</td>
+    </tr>
+    <tr>
+      <th>G. Brown</th>
+      <td>86</td>
+      <td>283</td>
+    </tr>
+    <tr>
+      <th>T. Blair</th>
+      <td>4</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -760,12 +1775,70 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>speeches about terror</th>
+      <th>total speeches</th>
+      <th>ratio</th>
+    </tr>
+    <tr>
+      <th>who</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>D. Cameron</th>
+      <td>161</td>
+      <td>493</td>
+      <td>0.326572</td>
+    </tr>
+    <tr>
+      <th>G. Brown</th>
+      <td>86</td>
+      <td>283</td>
+      <td>0.303887</td>
+    </tr>
+    <tr>
+      <th>T. Blair</th>
+      <td>4</td>
+      <td>11</td>
+      <td>0.363636</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span><span class="p">[[</span><span class="s1">&#39;speeches about terror&#39;</span><span class="p">,</span> <span class="s1">&#39;total speeches&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;who&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/5ef97250c839fbc41cf27faff30d237abb6b312392adea6bff12761a00c56ecb.png" src="../_images/5ef97250c839fbc41cf27faff30d237abb6b312392adea6bff12761a00c56ecb.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -774,15 +1847,39 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;who&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/2d6768e22012d24ec2a695eaaa7af5401c6663bc6185faeabc28656589f9af94.png" src="../_images/2d6768e22012d24ec2a695eaaa7af5401c6663bc6185faeabc28656589f9af94.png" />
+</div>
 </div>
 </section>
 </section>
 <section id="going-in-depth">
 <h2>Going in-depth<a class="headerlink" href="#going-in-depth" title="Link to this heading">#</a></h2>
-<p>We created new columns above to indicate whether a speech was about terrorism or not. We can now reuse this to actually read such a speech.</p>
+<p>We created new columns above to indicate whether a speech was about terrorism or
+not. We can now reuse this to actually read such a speech.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;terrorrefsdummy&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;what&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>what
+Transcript: Speech at the University of Nottingham, Malaysia            3
+Permanent Link to Press conference with President Zardari               2
+Permanent Link to Question and answer session at New York University    2
+Permanent Link to Statement on European Council meeting                 2
+Permanent Link to Speech and Q and A in Scotland                        2
+                                                                       ..
+PM&#39;s closing remarks at NATO Summit Chicago                             1
+David Cameron with the Prime Minister of Malaysia                       1
+Prime Minister in Malaysia                                              1
+Transcript: PM speech in Indonesia                                      1
+Permanent Link to April monthly press conference                        1
+Name: count, Length: 245, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -793,10 +1890,63 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>what</th>
+      <th>when</th>
+      <th>country</th>
+      <th>who</th>
+      <th>number</th>
+      <th>text</th>
+      <th>text_clean</th>
+      <th>language</th>
+      <th>terrorrefs</th>
+      <th>terrorrefsdummy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>17</th>
+      <td>PM's speech to the Jamaican Parliament</td>
+      <td>30-09-2015</td>
+      <td>Great Britain</td>
+      <td>D. Cameron</td>
+      <td>2456</td>
+      <td>&lt;p&gt;Mr Speaker, Mr President. Honourable Member...</td>
+      <td>mr speaker mr presid honour member hous let fi...</td>
+      <td>en</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;what&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;PM&#39;s speech to the Jamaican Parliament&quot;</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">cat</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;&lt;p&gt;Mr Speaker, Mr President. Honourable Members of both Houses.&lt;/p&gt;&lt;p&gt;Let me first thank the Most Honourable Prime Minister and the Most Honourable Leader of the Opposition for their kind words of welcome. To be invited here to address this joint sitting of Parliament is a great honour. It’s also a genuine pleasure.&lt;/p&gt;&lt;p&gt;This place feels instantly familiar. These benches, the mace in front of us, the atmosphere - there is much about this place that reminds me of home. Although so far, it looks far better behaved. But this familiarity is about much more than just bricks and mortar – it is a warm reminder of the strong democratic and parliamentary links that bind us together.&lt;/p&gt;&lt;p&gt;And the strong links that bind the UK, not just to Jamaica, but to the whole Commonwealth Caribbean.&lt;/p&gt;&lt;p&gt;I’ve come to the Caribbean – and to Jamaica in particular – to celebrate these extraordinary ties.&lt;/p&gt;&lt;p&gt;When the world faced despotism and evil in two World Wars, British and Jamaican soldiers, and soldiers from all over the Caribbean, served together – and died together – in the cause of freedom.&lt;/p&gt;&lt;p&gt;When the United Kingdom was tired and indebted after the ravages of Total War, hundreds of thousands from the Commonwealth Caribbean made their way to our shores, helping to build and energise our great public services like the NHS.&lt;/p&gt;&lt;p&gt;People with links to the Caribbean have made an enormous contribution to the United Kingdom in terms of public, creative and sporting life. From public servants like Baroness Amos and Baroness Scotland; broadcasters like Sir Trevor McDonald; comedians like Sir Lenny Henry to writers like Sir V.S. Naipaul – people of Caribbean heritage have enriched our national life beyond measure.&lt;/p&gt;&lt;p&gt;But it’s not just the stars and celebrities that I want to say “thank you” to today. I want to put on record the gratitude I feel towards everyone who enjoys links to the Caribbean, and who has contributed so much to our national life.&lt;/p&gt;&lt;p&gt;And it’s no surprise that many of the icons of Jamaican and Caribbean popular culture are as well-loved in the UK as they are here – the sporting prowess of Usain Bolt or Chris Gayle, the music of Bob Marley and the colourful joy of the Notting Hill Carnival.&lt;/p&gt;&lt;p&gt;Our cultural exchange hasn’t only been one-way, of course. We brought you the game of cricket, though, over the years, particularly perhaps when I was a little younger, you’ve more than returned the favour by teaching us a thing or two about fast bowling and big hitting!&lt;/p&gt;&lt;p&gt;Our links stay strong to this day – and are economic as well as cultural. The UK is the number one export destination for much of the Caribbean. Last year, UK exports to the region totalled more than £1 billion. And every year, 800,000 Brits visit the region to come and see relatives, or simply enjoy the extraordinary natural blessings of your beautiful islands.&lt;/p&gt;&lt;p&gt;So we are bound together by the ties of history, of language, of culture. In the case of the British Overseas Territories of this region, our links are even closer – we are bound together by the ties of nationhood and citizenship. And I believe that the close links between the UK and the Caribbean are something to give thanks for – particularly as we celebrate the reign of our longest ever serving monarch, who has served our nations so loyally.&lt;/p&gt;&lt;p&gt;While there is much indeed to celebrate about our past, it would be wrong to do so while ignoring the most painful aspects of it – a period which should never be forgotten, and from which history has drawn the bitterest of lessons. Slavery was and is abhorrent in all its forms. It has no place whatsoever in any civilised society, and Britain is proud to have eventually led the way in its abolition.&lt;/p&gt;&lt;p&gt;That the Caribbean has emerged from the long, dark shadow it cast is testament to the resilience and spirit of its people. I acknowledge that these wounds run very deep indeed. But I do hope that, as friends who have gone through so much together since those darkest of times, we can move on from this painful legacy and continue to build for the future.&lt;/p&gt;&lt;p&gt;Now my reason for wanting to come here is because of the future. I’m here because we have common aspirations and interests that we can meet better by working more closely together. I passionately believe that our relationship now is more important than it’s ever been – for both of us.&lt;/p&gt;&lt;p&gt;I’m serious about the need to strengthen the bonds between the UK and the Caribbean. That’s why my government changed the UK’s Air Passenger Duty rules, to end the unfair penalty that hit people travelling to and from the Caribbean. And I’ve come here today not just with words of friendship but with a real down-payment on Britain’s commitment to you.&lt;/p&gt;&lt;p&gt;Today I can announce a major new package of British investment in this region.&lt;/p&gt;&lt;p&gt;£360 million in new financial commitments, including a &lt;/p&gt;&lt;p&gt;£300 million much-needed infrastructure fund across the Caribbean&lt;/p&gt;&lt;p&gt;. I am launching a new UK-Caribbean Infrastructure Partnership to build real, tangible things that will make a difference for people across the Caribbean. Roads. Bridges. Ports. Critical economic infrastructure that will set the foundations for growth and prosperity, and in turn reduce poverty while helping the region become more resilient to the risks of climate change.&lt;/p&gt;&lt;p&gt;Just think what this could deliver – hundreds of kilometres of roads to link-up vital markets, bridges to unite remote communities, new energy projects to power growth and vital sea defences to protect coastal communities.&lt;/p&gt;&lt;p&gt;Let me be clear. This £300 million is not soft loans. Not tied aid. It is cash grants. It is up to you in this room and in the region to decide how best to spend it on the things that your country needs most. I’m confident that this support will make a decisive difference to the economic future of this region. &lt;/p&gt;&lt;p&gt;Today I can also announce £30 million for new programmes to help attract investment and improve governance and £30 million to help make your hospitals more resilient to natural disasters. We need to make sure that if a hurricane strikes, crucial health centres can remain operational to treat the wounded.&lt;/p&gt;&lt;p&gt;Together, this represents more than a quadrupling of Britain’s support. It will make us the largest donor to the region. It will create jobs and save lives. And you can take it – literally – as a concrete statement of my commitment to the Caribbean.&lt;/p&gt;&lt;p&gt;Now I want us to seize opportunities together. We’re all in a global race to see success, jobs and prosperity for our nations and our people. The dynamism and energy of globalisation is creating new opportunities for prosperity but also tough new competitive pressures. Countries around the world are trying to work out how to build more, to make more, to sell more. In the UK, the hard work of the British people, and the difficult but correct choices of my government, have put our economy back on the path to growth. But we can never be complacent. Every country in the world needs to seek out new sources of trade, investment and growth.&lt;/p&gt;&lt;p&gt;That’s why I’ve visited far-flung destinations across the world to bang the drum for British business and boost trade. My government set a bold target of exporting £1 trillion by 2020. To achieve this, we need to build markets worldwide. And that must include here, in the Caribbean. And to be honest, given the strengths of our bonds, I think that our economic ties and cooperation should be much closer still. This would benefit both of us.&lt;/p&gt;&lt;p&gt;And I’m delighted to announce today that UK Export Finance, our export credit agency, is boosting its support for the region. This will help British exporters to sell to the Caribbean with confidence – and help local firms take advantage of new opportunities. That’s a good step in the right direction. But it’s only a first step. So let us commit here today to work hard for even closer economic ties between our countries.&lt;/p&gt;&lt;p&gt;And as well as seizing opportunities together, we must both face up to big global challenges together as well. We face common security threats like drug-running, crime, gangs. Inevitably, the close links between the UK and Jamaica mean that criminal activity here also has reverberations in the UK - and vice versa. Our crime can affect you.&lt;/p&gt;&lt;p&gt;That is why I have been so impressed by the work of successive Jamaican governments and what you have done to tackle crime, corruption and international criminal links.  And I’m determined to support you every step of the way. Britain has been working hand-in-hand with Jamaica on counter-narcotics. And we will continue to do so. The fight against drug traffickers and violent criminals is a relentless one. But is a fight that the UK and Jamaica do well together, and of which we can both be proud.&lt;/p&gt;&lt;p&gt;Now we also face common threats from climate change and natural disasters. Many of the small islands here are uniquely vulnerable and will pay a heavy price if dangerous climate change increases floods and tropical storms. The UK is doing its bit to help. Yesterday I had the privilege of meeting the men and women of the Royal Fleet Auxiliary Ship Lyme Bay. Just a few weeks ago, they were saving lives and distributing aid in Dominica, which was struck recently by such a terrible storm.&lt;/p&gt;&lt;p&gt;This ship represents not just a concrete example of the UK’s commitment to Dominica and the whole region but also the global reach and capacity of the UK’s armed forces and what a force for good in the world they can be.&lt;/p&gt;&lt;p&gt;But protecting the people of the Caribbean – and the whole world – from risks like this will take global action. That’s why I’m actively working at the highest level for a successful deal on climate change later this year.&lt;/p&gt;&lt;p&gt;At the weekend I announced a significant boost to the UK’s climate finance which I believe demonstrates our sincerity. In the next 5 years we will spend 9 billion US dollars to help the poorest countries adapt to a changing climate.&lt;/p&gt;&lt;p&gt;We’re putting our money where our mouth is – and we hope this money can help unlock a global climate deal.&lt;/p&gt;&lt;p&gt;And – given the vulnerability of small island states that face the risk of devastation from climate change – a fair proportion of this money should be spent, I hope it will be spent, right here, supporting some of the UK’s oldest friends to prepare for the future. When I met Caribbean leaders just a few days ago at the United Nations General Assembly, they made clear to me directly just how vital a climate deal is to them.&lt;/p&gt;&lt;p&gt;So I pledge to work in partnership with them, and other like-minded states, to secure a bold and ambitious deal in Paris later this year.&lt;/p&gt;&lt;p&gt;Jamaica, the UK and the Caribbean also face a common threat of corruption – something I’ve made a massive personal priority to combat.&lt;/p&gt;&lt;p&gt;Next year, we’ll hold a major Summit to tackle this issue in London. If we’re to beat corruption, we need transparency. I’ve taken the lead by pledging much more transparency over property and company ownership in the UK so that terrorists, the tax-avoiders, the money launderers and the criminals have nowhere to hide their ill-gotten gains.&lt;/p&gt;&lt;p&gt;Some of the British Crown Dependences and Overseas Territories are making progress in this direction. And others, frankly, are not moving anywhere near fast enough.&lt;/p&gt;&lt;p&gt;I say to them all today – including those in this region – if we want to break the business model of people stealing money and hiding it in places where it can’t be seen: transparency is the answer.&lt;/p&gt;&lt;p&gt;Now, I know that we’re not the only show in town.&lt;/p&gt;&lt;p&gt;Jamaica and the Caribbean are important partners for other countries, as well as the UK. Some countries in the Americas, and further afield, have increased their presence here in recent times. That is good and right. And I know you have choices.&lt;/p&gt;&lt;p&gt;Indeed, in recent years, some people here have asked whether Britain remains as committed and interested in this region as we once were.&lt;/p&gt;&lt;p&gt;Well today I want to answer that in the clearest terms possible. I hope this visit, and the concrete support I’ve announced, will ensure that no-one should have reason to question the UK’s commitment to the Caribbean in future.&lt;/p&gt;&lt;p&gt;My commitment to a full-on re-engagement here is absolute. And, ultimately, the reason for this is about so much more than trade and assistance.&lt;/p&gt;&lt;p&gt;I passionately believe that the UK should remain the partner of choice for the Commonwealth Caribbean - now and into the future.&lt;/p&gt;&lt;p&gt;Why? Above all because of  our shared values. Democracy – the idea that power flows from the people. The rule of law – the idea that no-one, however powerful, is bigger than the rules we all make in this place, or in my Parliament. Free speech – the idea that we all have a right to be heard.  And human rights – the idea that the dignity of every individual must be respected.&lt;/p&gt;&lt;p&gt;You believe in these things.  We believe in these things. Not everyone who beats a path to your door takes the same view. Those values are what I would call part of what I call the Golden Thread of conditions that leads to prosperity and a flourishing economy.&lt;/p&gt;&lt;p&gt;These are values that have stood us both well. And we both believe this. They are not an add-on to the economic success we want. They are essential to the economic success we seek. An open society supports an open economy. And an open economy is what underpins lasting prosperity. These values help build societies where innovation and creativity can flourish, where investors can take risks, where fortunes are made by coming up with new ways to fulfil people’s needs, rather than through cronyism and corruption.&lt;/p&gt;&lt;p&gt;So I want us to stand up for these values, shoulder to shoulder, at home and around the world. Respecting, without exception, the human rights of everyone. Standing up for a rules-based international system. And standing up for the rights of small islands, including the Falklands, to enjoy the self-determination that has been so hard won here in the Caribbean.&lt;/p&gt;&lt;p&gt;So I say let us do this together. Invest together. Grow together. Support development together. Tackle climate change together. If we do this now – as I passionately believe that we should – then we can keep our partnership strong now and for the next 100 years to come.&lt;/p&gt;&#39;
 </pre></div>
 </div>
 </div>
@@ -814,12 +1964,19 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;words&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/c7cd143f071e43f9b1679710a932debe0331b7fee421dba42d5f65185ffc9494.png" src="../_images/c7cd143f071e43f9b1679710a932debe0331b7fee421dba42d5f65185ffc9494.png" />
+</div>
 </div>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="non-graded-homework">
 <h1>(Non-graded) homework<a class="headerlink" href="#non-graded-homework" title="Link to this heading">#</a></h1>
-<p>Download the whole EU Speech dataset (see beginning of the notebook) and analyze one of the sub-datasets that you are interested in.</p>
+<p>Download the whole EU Speech dataset (see beginning of the notebook) and analyze
+one of the sub-datasets that you are interested in.</p>
 <p>Think about both bottom-up and top-down approaches!</p>
 </section>
 

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -429,8 +429,8 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="python-data-wrangling-ii">
 <h1>5. Python Data Wrangling II<a class="headerlink" href="#python-data-wrangling-ii" title="Link to this heading">#</a></h1>
 <p><em>Frederic Hopp and Penny Sheets</em></p>
-<p>This notebook outlines the retrieval and preprocessing steps we did to construct the files for our examples.
-Thus, this notebook contains the steps</p>
+<p>This notebook outlines the retrieval and preprocessing steps we did to construct
+the files for our examples. Thus, this notebook contains the steps</p>
 <ul class="simple">
 <li><p>(1) Retrieval</p></li>
 <li><p>(2) Preprocessing,</p></li>
@@ -452,8 +452,8 @@ https://opendata.cbs.nl/statline/portal.html?_la=en&amp;_catalog=CBS&amp;tableId
 <li><p>Sex: only total (1/3)</p></li>
 <li><p>Regions: all provinces (12/1237)</p></li>
 </ul>
-<p>This should give you 732 rows and result in the file</p>
-<p><code class="docutils literal notranslate"><span class="pre">37259eng_UntypedDataSet_15112021_100104.csv</span></code></p>
+<p>This should give you 984 rows and result in the file</p>
+<p><code class="docutils literal notranslate"><span class="pre">37259eng_UntypedDataSet_06112024_174233.csv</span></code></p>
 <p>Also download the metadata for later reference.</p>
 </section>
 <section id="economic-data">
@@ -467,7 +467,7 @@ https://opendata.cbs.nl/statline/portal.html?_la=en&amp;_catalog=CBS&amp;tableId
 <li><p>Regions: all provinces (12/77)</p></li>
 </ul>
 <p>This should give you 264 rows and result in the file</p>
-<p><code class="docutils literal notranslate"><span class="pre">82800ENG_UntypedDataSet_15112021_101225.csv</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">82800ENG_UntypedDataSet_06112024_174453.csv</span></code></p>
 <p>Also download the metadata for later reference.</p>
 </section>
 </section>
@@ -485,7 +485,7 @@ https://opendata.cbs.nl/statline/portal.html?_la=en&amp;_catalog=CBS&amp;tableId
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">population</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;37259eng_UntypedDataSet_15112021_100104.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">population</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;37259eng_UntypedDataSet_06112024_174233.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -496,11 +496,94 @@ https://opendata.cbs.nl/statline/portal.html?_la=en&amp;_catalog=CBS&amp;tableId
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>Sex</th>
+      <th>Regions</th>
+      <th>Periods</th>
+      <th>LiveBornChildren_3</th>
+      <th>NetMigrationIncludingAdministrative_17</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>410</td>
+      <td>T001038</td>
+      <td>PV20</td>
+      <td>1942JJ00</td>
+      <td>8564.0</td>
+      <td>-2106.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>411</td>
+      <td>T001038</td>
+      <td>PV20</td>
+      <td>1943JJ00</td>
+      <td>9589.0</td>
+      <td>-1201.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>412</td>
+      <td>T001038</td>
+      <td>PV20</td>
+      <td>1944JJ00</td>
+      <td>9802.0</td>
+      <td>-931.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>413</td>
+      <td>T001038</td>
+      <td>PV20</td>
+      <td>1945JJ00</td>
+      <td>9872.0</td>
+      <td>-2559.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>414</td>
+      <td>T001038</td>
+      <td>PV20</td>
+      <td>1946JJ00</td>
+      <td>12790.0</td>
+      <td>-3851.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>We first remove all columns that are not necessary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">population</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sex
+T001038    984
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -518,11 +601,123 @@ https://opendata.cbs.nl/statline/portal.html?_la=en&amp;_catalog=CBS&amp;tableId
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Regions</th>
+      <th>Periods</th>
+      <th>LiveBornChildren_3</th>
+      <th>NetMigrationIncludingAdministrative_17</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>PV20</td>
+      <td>1942JJ00</td>
+      <td>8564.0</td>
+      <td>-2106.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>PV20</td>
+      <td>1943JJ00</td>
+      <td>9589.0</td>
+      <td>-1201.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>PV20</td>
+      <td>1944JJ00</td>
+      <td>9802.0</td>
+      <td>-931.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>PV20</td>
+      <td>1945JJ00</td>
+      <td>9872.0</td>
+      <td>-2559.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>PV20</td>
+      <td>1946JJ00</td>
+      <td>12790.0</td>
+      <td>-3851.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>979</th>
+      <td>PV31</td>
+      <td>2019JJ00</td>
+      <td>8668.0</td>
+      <td>4450.0</td>
+    </tr>
+    <tr>
+      <th>980</th>
+      <td>PV31</td>
+      <td>2020JJ00</td>
+      <td>8652.0</td>
+      <td>3691.0</td>
+    </tr>
+    <tr>
+      <th>981</th>
+      <td>PV31</td>
+      <td>2021JJ00</td>
+      <td>9435.0</td>
+      <td>6985.0</td>
+    </tr>
+    <tr>
+      <th>982</th>
+      <td>PV31</td>
+      <td>2022JJ00</td>
+      <td>8923.0</td>
+      <td>14195.0</td>
+    </tr>
+    <tr>
+      <th>983</th>
+      <td>PV31</td>
+      <td>2023JJ00</td>
+      <td>8781.0</td>
+      <td>9375.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>984 rows × 4 columns</p>
+</div></div></div>
 </div>
 <p>The values of the column Regions contain weird spaces at the end:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">population</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;PV20  &#39;
 </pre></div>
 </div>
 </div>
@@ -535,7 +730,9 @@ https://opendata.cbs.nl/statline/portal.html?_la=en&amp;_catalog=CBS&amp;tableId
 </div>
 </div>
 </div>
-<p>By having a look at the metadata (using CTRL-F for looking for PV20), we can find out what the province codes actually mean. Let’s recode that by using a dict to map the keys to more meaningful values.</p>
+<p>By having a look at the metadata (using CTRL-F for looking for PV20), we can
+find out what the province codes actually mean. Let’s recode that by using a
+dict to map the keys to more meaningful values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">provinces</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;PV20&quot;</span><span class="p">:</span><span class="s2">&quot;Groningen&quot;</span><span class="p">,</span>
@@ -567,8 +764,75 @@ https://opendata.cbs.nl/statline/portal.html?_la=en&amp;_catalog=CBS&amp;tableId
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Regions</th>
+      <th>Periods</th>
+      <th>LiveBornChildren_3</th>
+      <th>NetMigrationIncludingAdministrative_17</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Groningen</td>
+      <td>1942JJ00</td>
+      <td>8564.0</td>
+      <td>-2106.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Groningen</td>
+      <td>1943JJ00</td>
+      <td>9589.0</td>
+      <td>-1201.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Groningen</td>
+      <td>1944JJ00</td>
+      <td>9802.0</td>
+      <td>-931.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Groningen</td>
+      <td>1945JJ00</td>
+      <td>9872.0</td>
+      <td>-2559.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Groningen</td>
+      <td>1946JJ00</td>
+      <td>12790.0</td>
+      <td>-3851.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-<p>Let’s also represent the Period in a better way. It’s a string now, and only the first four digits are meaningful. Let’s convert these to an integer. Alternatively, we could opt to convert it to a date (a so-called datetime object).</p>
+<p>Let’s also represent the Period in a better way. It’s a string now, and only the
+first four digits are meaningful. Let’s convert these to an integer.
+Alternatively, we could opt to convert it to a date (a so-called datetime
+object).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">population</span><span class="p">[</span><span class="s1">&#39;Periods&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">population</span><span class="p">[</span><span class="s1">&#39;Periods&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">[:</span><span class="mi">4</span><span class="p">]))</span>
@@ -582,6 +846,70 @@ https://opendata.cbs.nl/statline/portal.html?_la=en&amp;_catalog=CBS&amp;tableId
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Regions</th>
+      <th>Periods</th>
+      <th>LiveBornChildren_3</th>
+      <th>NetMigrationIncludingAdministrative_17</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Groningen</td>
+      <td>1942</td>
+      <td>8564.0</td>
+      <td>-2106.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Groningen</td>
+      <td>1943</td>
+      <td>9589.0</td>
+      <td>-1201.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Groningen</td>
+      <td>1944</td>
+      <td>9802.0</td>
+      <td>-931.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Groningen</td>
+      <td>1945</td>
+      <td>9872.0</td>
+      <td>-2559.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Groningen</td>
+      <td>1946</td>
+      <td>12790.0</td>
+      <td>-3851.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Let’s save this:</p>
 <div class="cell docutils container">
@@ -598,7 +926,7 @@ https://opendata.cbs.nl/statline/portal.html?_la=en&amp;_catalog=CBS&amp;tableId
 <p>We just do exactly the same for our economic dataset</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">economy</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;82800ENG_UntypedDataSet_15112021_101225.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">economy</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;82800ENG_UntypedDataSet_06112024_174453.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -609,11 +937,137 @@ https://opendata.cbs.nl/statline/portal.html?_la=en&amp;_catalog=CBS&amp;tableId
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>EconomicSectorsSIC2008</th>
+      <th>Regions</th>
+      <th>Periods</th>
+      <th>GDPVolumeChanges_1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>132</td>
+      <td>T001081</td>
+      <td>PV20</td>
+      <td>1996JJ00</td>
+      <td>9.3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>133</td>
+      <td>T001081</td>
+      <td>PV20</td>
+      <td>1997JJ00</td>
+      <td>-2.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>134</td>
+      <td>T001081</td>
+      <td>PV20</td>
+      <td>1998JJ00</td>
+      <td>-0.9</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>135</td>
+      <td>T001081</td>
+      <td>PV20</td>
+      <td>1999JJ00</td>
+      <td>-0.7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>136</td>
+      <td>T001081</td>
+      <td>PV20</td>
+      <td>2000JJ00</td>
+      <td>1.5</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>259</th>
+      <td>391</td>
+      <td>T001081</td>
+      <td>PV31</td>
+      <td>2013JJ00</td>
+      <td>-0.7</td>
+    </tr>
+    <tr>
+      <th>260</th>
+      <td>392</td>
+      <td>T001081</td>
+      <td>PV31</td>
+      <td>2014JJ00</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>261</th>
+      <td>393</td>
+      <td>T001081</td>
+      <td>PV31</td>
+      <td>2015JJ00</td>
+      <td>2.7</td>
+    </tr>
+    <tr>
+      <th>262</th>
+      <td>394</td>
+      <td>T001081</td>
+      <td>PV31</td>
+      <td>2016JJ00</td>
+      <td>2.2</td>
+    </tr>
+    <tr>
+      <th>263</th>
+      <td>395</td>
+      <td>T001081</td>
+      <td>PV31</td>
+      <td>2017JJ00</td>
+      <td>3.2</td>
+    </tr>
+  </tbody>
+</table>
+<p>264 rows × 5 columns</p>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We only downloaded the total, so we can safely delete:</span>
 <span class="n">economy</span><span class="p">[</span><span class="s1">&#39;EconomicSectorsSIC2008&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>EconomicSectorsSIC2008
+T001081       264
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -646,6 +1100,64 @@ https://opendata.cbs.nl/statline/portal.html?_la=en&amp;_catalog=CBS&amp;tableId
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Regions</th>
+      <th>Periods</th>
+      <th>GDPVolumeChanges_1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Groningen</td>
+      <td>1996</td>
+      <td>9.3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Groningen</td>
+      <td>1997</td>
+      <td>-2.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Groningen</td>
+      <td>1998</td>
+      <td>-0.9</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Groningen</td>
+      <td>1999</td>
+      <td>-0.7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Groningen</td>
+      <td>2000</td>
+      <td>1.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
