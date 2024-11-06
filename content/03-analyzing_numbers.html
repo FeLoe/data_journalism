@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -58,6 +58,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/03-analyzing_numbers';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -436,11 +438,21 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="basic-statistics">
 <h1>3. Basic Statistics<a class="headerlink" href="#basic-statistics" title="Link to this heading">#</a></h1>
 <p><em>Damian Trilling and Penny Sheets</em></p>
-<p>This notebook is designed to show you some ways to use python for basic statistical analysis of numbers, and to explore some methods that go beyond <code class="docutils literal notranslate"><span class="pre">df.describe()</span></code> or <code class="docutils literal notranslate"><span class="pre">Counter()</span></code>, which we used last week. In particular, we are going to look into analyzing numerical data. Next week, we will focus on textual data.</p>
-<p>The dataset we use in this example is a subset of the data presented in Trilling, D. (2013). <em>Following the news. Patterns of online and offline news use</em>. PhD thesis, University of Amsterdam. http://hdl.handle.net/11245/1.394551</p>
+<p>This notebook is designed to show you some ways to use python for basic
+statistical analysis of numbers, and to explore some methods that go beyond
+<code class="docutils literal notranslate"><span class="pre">df.describe()</span></code> or <code class="docutils literal notranslate"><span class="pre">Counter()</span></code>, which we used last week. In particular, we are
+going to look into analyzing numerical data. Next week, we will focus on textual
+data.</p>
+<p>The dataset we use in this example is a subset of the data presented in
+Trilling, D. (2013). <em>Following the news. Patterns of online and offline news
+use</em>. PhD thesis, University of Amsterdam. http://hdl.handle.net/11245/1.394551</p>
 <section id="import-our-tools-modules-libraries">
 <h2>Import our tools/modules/libraries<a class="headerlink" href="#import-our-tools-modules-libraries" title="Link to this heading">#</a></h2>
-<p>As always, we first import the tools we’ll need. Today, we’ll use pandas (usually imported as “pd”), and something called statsmodels, and something called numpy. We also use matplotlib for some visualizations. A lot of other stuff here we will need for some specific analyses later on; you don’t have to worry about all of it right now.</p>
+<p>As always, we first import the tools we’ll need. Today, we’ll use pandas
+(usually imported as “pd”), and something called statsmodels, and something
+called numpy. We also use matplotlib for some visualizations. A lot of other
+stuff here we will need for some specific analyses later on; you don’t have to
+worry about all of it right now.</p>
 <p>If you want to learn more about these modules, you can look online for info.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -460,9 +472,16 @@ document.write(`
 </section>
 <section id="read-data-into-a-dataframe">
 <h2>Read data into a dataframe<a class="headerlink" href="#read-data-into-a-dataframe" title="Link to this heading">#</a></h2>
-<p>We will read a dataset based on Trilling (2013). It contains some sociodemographic variables as well as the number of days the respondent uses a specific medium to access information about news and current affairs.</p>
-<p>You should download the dataset (with the ‘save page as’ method, making sure .txt isn’t appended to the file extension) into the same folder as this jupyter notebook: https://raw.githubusercontent.com/damian0604/bdaca/master/ipynb/mediause.csv</p>
-<p>Remember that the ‘df’ here is arbitrary; last week we used the names ‘iris’ and ‘stockdata’ and others; this week we’re going more basic and just saying ‘df’ for dataframe.</p>
+<p>We will read a dataset based on Trilling (2013). It contains some
+sociodemographic variables as well as the number of days the respondent uses a
+specific medium to access information about news and current affairs.</p>
+<p>You should download the dataset (with the ‘save page as’ method, making sure
+.txt isn’t appended to the file extension) into the same folder as this jupyter
+notebook:
+https://raw.githubusercontent.com/damian0604/bdaca/master/ipynb/mediause.csv</p>
+<p>Remember that the ‘df’ here is arbitrary; last week we used the names ‘iris’ and
+‘stockdata’ and others; this week we’re going more basic and just saying ‘df’
+for dataframe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df = pd.read_csv(&#39;mediause.csv&#39;) # if you downloaded and stored the file locally </span>
@@ -471,7 +490,9 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Using the .keys() method is way to find out what the columns are in your dataframe. Sometimes they have nice labels already, and sometimes they don’t.  In this case, we’re in luck.</p>
+<p>Using the .keys() method is way to find out what the columns are in your
+dataframe. Sometimes they have nice labels already, and sometimes they don’t. In
+this case, we’re in luck.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
@@ -484,7 +505,9 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Remember that for a dataframe or object in python, you can simply type its name in a code cell and python will display it as best it can. (In this case, it works well.)</p>
+<p>Remember that for a dataframe or object in python, you can simply type its name
+in a code cell and python will display it as best it can. (In this case, it
+works well.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
@@ -638,7 +661,9 @@ document.write(`
 </section>
 <section id="explore-the-dataset">
 <h2>Explore the dataset<a class="headerlink" href="#explore-the-dataset" title="Link to this heading">#</a></h2>
-<p>Let’s do some descriptive statistics, using the .describe() method we saw last week. This would be important if you wanted to describe the dataset to your audience, for example.</p>
+<p>Let’s do some descriptive statistics, using the .describe() method we saw last
+week. This would be important if you wanted to describe the dataset to your
+audience, for example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -758,8 +783,13 @@ document.write(`
 </table>
 </div></div></div>
 </div>
-<p>If you want to find out how many possible values there are for a specific variable, you can use the <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code> method. In this case, you select the dataframe (which we’ve called <code class="docutils literal notranslate"><span class="pre">df</span></code>), select the column/variable you want to examine, and then apply the method.</p>
-<p>The output shows us that there are two values - 0 and 1 - for the ‘gender’ variable. It gives us how many instances (aka frequencies) of each of these values exist in the dataset.</p>
+<p>If you want to find out how many possible values there are for a specific
+variable, you can use the <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code> method. In this case, you select the
+dataframe (which we’ve called <code class="docutils literal notranslate"><span class="pre">df</span></code>), select the column/variable you want to
+examine, and then apply the method.</p>
+<p>The output shows us that there are two values - 0 and 1 - for the ‘gender’
+variable. It gives us how many instances (aka frequencies) of each of these
+values exist in the dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -767,9 +797,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    1079
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gender
+0    1079
 1    1002
-Name: gender, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -785,14 +816,15 @@ Name: gender, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.0    667
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>education
+4.0    667
 2.0    323
 5.0    178
 6.0    396
 3.0    214
 7.0    219
 1.0     68
-Name: education, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -804,14 +836,15 @@ Name: education, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.0    667
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>education
+4.0    667
 6.0    396
 2.0    323
 7.0    219
 3.0    214
 5.0    178
 1.0     68
-Name: education, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -824,14 +857,15 @@ Name: education, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0     68
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>education
+1.0     68
 2.0    323
 3.0    214
 4.0    667
 5.0    178
 6.0    396
 7.0    219
-Name: education, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -848,14 +882,14 @@ test.value_counts<span class="o">?</span>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span>
 test<span class=" -Color -Color-Blue">.</span>value_counts<span class=" -Color -Color-Blue">(</span>
     normalize<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
     sort<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
     ascending<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
     bins<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
     dropna<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
-<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">-&gt;</span> <span class=" -Color -Color-Blue">&#39;Series&#39;</span>
 <span class=" -Color -Color-Red">Docstring:</span>
 Return a Series containing counts of unique values.
 
@@ -869,7 +903,7 @@ normalize : bool, default False
     If True then the object returned will contain the relative
     frequencies of the unique values.
 sort : bool, default True
-    Sort by frequencies.
+    Sort by frequencies when True. Preserve the order of the data when False.
 ascending : bool, default False
     Sort in ascending order.
 bins : int, optional
@@ -896,7 +930,7 @@ Examples
 1.0    1
 2.0    1
 4.0    1
-dtype: int64
+Name: count, dtype: int64
 
 With `normalize` set to `True`, returns the relative frequency by
 dividing all values by the sum of values.
@@ -907,7 +941,7 @@ dividing all values by the sum of values.
 1.0    0.2
 2.0    0.2
 4.0    0.2
-dtype: float64
+Name: proportion, dtype: float64
 
 **bins**
 
@@ -920,7 +954,7 @@ number of half-open bins.
 (0.996, 2.0]    2
 (2.0, 3.0]      2
 (3.0, 4.0]      1
-dtype: int64
+Name: count, dtype: int64
 
 **dropna**
 
@@ -932,14 +966,17 @@ With `dropna` set to `False` we can also see NaN index values.
 2.0    1
 4.0    1
 NaN    1
-dtype: int64
-<span class=" -Color -Color-Red">File:</span>      ~/opt/anaconda3/envs/dj21/lib/python3.7/site-packages/pandas/core/base.py
+Name: count, dtype: int64
+<span class=" -Color -Color-Red">File:</span>      /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/base.py
 <span class=" -Color -Color-Red">Type:</span>      method
 </pre></div>
 </div>
 </div>
 </div>
-<p>You can also display value counts for multiple variables at once, to get an overview of your data.  In this case, use a loop to replicate commands for each of the four media types. We’ll do this next, but we’ll also set a few specifications so that it prints out nicely.</p>
+<p>You can also display value counts for multiple variables at once, to get an
+overview of your data. In this case, use a loop to replicate commands for each
+of the four media types. We’ll do this next, but we’ll also set a few
+specifications so that it prints out nicely.</p>
 <p>See if you can figure out what each of these print commands is doing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -953,6 +990,7 @@ dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RADIO
+radio
 0    0.292167
 7    0.199904
 5    0.169149
@@ -961,10 +999,11 @@ dtype: int64
 2    0.066314
 6    0.058145
 1    0.055742
-Name: radio, dtype: float64
+Name: proportion, dtype: float64
 -------------------------------------------
 
 NEWSPAPER
+newspaper
 0    0.356559
 6    0.252763
 7    0.126862
@@ -973,10 +1012,11 @@ NEWSPAPER
 5    0.055262
 3    0.038443
 4    0.027871
-Name: newspaper, dtype: float64
+Name: proportion, dtype: float64
 -------------------------------------------
 
 TV
+tv
 7    0.271024
 5    0.149447
 0    0.143681
@@ -985,10 +1025,11 @@ TV
 3    0.082653
 2    0.074003
 1    0.071600
-Name: tv, dtype: float64
+Name: proportion, dtype: float64
 -------------------------------------------
 
 INTERNET
+internet
 0    0.389716
 7    0.197021
 1    0.090822
@@ -997,7 +1038,7 @@ INTERNET
 5    0.069678
 4    0.049976
 6    0.047093
-Name: internet, dtype: float64
+Name: proportion, dtype: float64
 -------------------------------------------
 </pre></div>
 </div>
@@ -1007,9 +1048,13 @@ Name: internet, dtype: float64
 </section>
 <section id="groupby">
 <h2>Groupby<a class="headerlink" href="#groupby" title="Link to this heading">#</a></h2>
-<p>Let’s say you’d like to compare the media use of men and women in the dataset. Eventually we’ll move toward statistical comparison, but for now we can start by looking at their descriptive statistics - separately for men and women.</p>
+<p>Let’s say you’d like to compare the media use of men and women in the dataset.
+Eventually we’ll move toward statistical comparison, but for now we can start by
+looking at their descriptive statistics - separately for men and women.</p>
 <p>In python, this is quite easy, using the <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> method.</p>
-<p>First, we group the dataframe by the ‘gender’ variable, and then apply a method to that grouped dataframe; this is called ‘chaining’ multiple methods together.  (We saw a bit of this chaining idea last week already.)</p>
+<p>First, we group the dataframe by the ‘gender’ variable, and then apply a method
+to that grouped dataframe; this is called ‘chaining’ multiple methods together.
+(We saw a bit of this chaining idea last week already.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;gender&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -1148,7 +1193,11 @@ Name: internet, dtype: float64
 <p>2 rows × 48 columns</p>
 </div></div></div>
 </div>
-<p>Sometimes in this case, it’s more useful to transpose the dataset, making columns into rows and vice versa.  This display will then be much easier to look at.  In this case, we use a .T at the end, after the describe() method.  This doesn’t change the dataframe in any way, just displays it differently for you here.</p>
+<p>Sometimes in this case, it’s more useful to transpose the dataset, making
+columns into rows and vice versa. This display will then be much easier to look
+at. In this case, we use a .T at the end, after the describe() method. This
+doesn’t change the dataframe in any way, just displays it differently for you
+here.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;gender&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
@@ -1446,16 +1495,15 @@ df.groupby<span class="o">?</span>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span>
 df<span class=" -Color -Color-Blue">.</span>groupby<span class=" -Color -Color-Blue">(</span>
     by<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
-    axis<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;Axis&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">,</span>
-    level<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;Level | None&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    axis<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;Axis | lib.NoDefault&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Blue">&lt;</span>no_default<span class=" -Color -Color-Blue">&gt;,</span>
+    level<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;IndexLabel | None&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
     as_index<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
     sort<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
     group_keys<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
-    squeeze<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool | lib.NoDefault&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Blue">&lt;</span>no_default<span class=" -Color -Color-Blue">&gt;,</span>
-    observed<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
+    observed<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool | lib.NoDefault&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Blue">&lt;</span>no_default<span class=" -Color -Color-Blue">&gt;,</span>
     dropna<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
 <span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">-&gt;</span> <span class=" -Color -Color-Blue">&#39;DataFrameGroupBy&#39;</span>
 <span class=" -Color -Color-Red">Docstring:</span>
@@ -1468,50 +1516,89 @@ groups.
 
 Parameters
 ----------
-by : mapping, function, label, or list of labels
+by : mapping, function, label, pd.Grouper or list of such
     Used to determine the groups for the groupby.
     If ``by`` is a function, it&#39;s called on each value of the object&#39;s
     index. If a dict or Series is passed, the Series or dict VALUES
     will be used to determine the groups (the Series&#39; values are first
-    aligned; see ``.align()`` method). If an ndarray is passed, the
-    values are used as-is to determine the groups. A label or list of
-    labels may be passed to group by the columns in ``self``. Notice
-    that a tuple is interpreted as a (single) key.
+    aligned; see ``.align()`` method). If a list or ndarray of length
+    equal to the selected axis is passed (see the `groupby user guide
+    &lt;https://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#splitting-an-object-into-groups&gt;`_),
+    the values are used as-is to determine the groups. A label or list
+    of labels may be passed to group by the columns in ``self``.
+    Notice that a tuple is interpreted as a (single) key.
 axis : {0 or &#39;index&#39;, 1 or &#39;columns&#39;}, default 0
-    Split along rows (0) or columns (1).
+    Split along rows (0) or columns (1). For `Series` this parameter
+    is unused and defaults to 0.
+
+    .. deprecated:: 2.1.0
+
+        Will be removed and behave like axis=0 in a future version.
+        For ``axis=1``, do ``frame.T.groupby(...)`` instead.
+
 level : int, level name, or sequence of such, default None
     If the axis is a MultiIndex (hierarchical), group by a particular
-    level or levels.
+    level or levels. Do not specify both ``by`` and ``level``.
 as_index : bool, default True
-    For aggregated output, return object with group labels as the
+    Return object with group labels as the
     index. Only relevant for DataFrame input. as_index=False is
-    effectively &quot;SQL-style&quot; grouped output.
+    effectively &quot;SQL-style&quot; grouped output. This argument has no effect
+    on filtrations (see the `filtrations in the user guide
+    &lt;https://pandas.pydata.org/docs/dev/user_guide/groupby.html#filtration&gt;`_),
+    such as ``head()``, ``tail()``, ``nth()`` and in transformations
+    (see the `transformations in the user guide
+    &lt;https://pandas.pydata.org/docs/dev/user_guide/groupby.html#transformation&gt;`_).
 sort : bool, default True
     Sort group keys. Get better performance by turning this off.
     Note this does not influence the order of observations within each
-    group. Groupby preserves the order of rows within each group.
-group_keys : bool, default True
-    When calling apply, add group keys to index to identify pieces.
-squeeze : bool, default False
-    Reduce the dimensionality of the return type if possible,
-    otherwise return a consistent type.
+    group. Groupby preserves the order of rows within each group. If False,
+    the groups will appear in the same order as they did in the original DataFrame.
+    This argument has no effect on filtrations (see the `filtrations in the user guide
+    &lt;https://pandas.pydata.org/docs/dev/user_guide/groupby.html#filtration&gt;`_),
+    such as ``head()``, ``tail()``, ``nth()`` and in transformations
+    (see the `transformations in the user guide
+    &lt;https://pandas.pydata.org/docs/dev/user_guide/groupby.html#transformation&gt;`_).
 
-    .. deprecated:: 1.1.0
+    .. versionchanged:: 2.0.0
+
+        Specifying ``sort=False`` with an ordered categorical grouper will no
+        longer sort the values.
+
+group_keys : bool, default True
+    When calling apply and the ``by`` argument produces a like-indexed
+    (i.e. :ref:`a transform &lt;groupby.transform&gt;`) result, add group keys to
+    index to identify pieces. By default group keys are not included
+    when the result&#39;s index (and column) labels match the inputs, and
+    are included otherwise.
+
+    .. versionchanged:: 1.5.0
+
+       Warns that ``group_keys`` will no longer be ignored when the
+       result from ``apply`` is a like-indexed Series or DataFrame.
+       Specify ``group_keys`` explicitly to include the group keys or
+       not.
+
+    .. versionchanged:: 2.0.0
+
+       ``group_keys`` now defaults to ``True``.
 
 observed : bool, default False
     This only applies if any of the groupers are Categoricals.
     If True: only show observed values for categorical groupers.
     If False: show all values for categorical groupers.
+
+    .. deprecated:: 2.1.0
+
+        The default value will change to True in a future version of pandas.
+
 dropna : bool, default True
     If True, and if group keys contain NA values, NA values together
     with row/column will be dropped.
-    If False, NA values will also be treated as the key in groups
-
-    .. versionadded:: 1.1.0
+    If False, NA values will also be treated as the key in groups.
 
 Returns
 -------
-DataFrameGroupBy
+pandas.api.typing.DataFrameGroupBy
     Returns a groupby object that contains information about the groups.
 
 See Also
@@ -1522,7 +1609,9 @@ resample : Convenience method for frequency conversion and resampling
 Notes
 -----
 See the `user guide
-&lt;https://pandas.pydata.org/pandas-docs/stable/groupby.html&gt;`__ for more.
+&lt;https://pandas.pydata.org/pandas-docs/stable/groupby.html&gt;`__ for more
+detailed usage and examples, including splitting an object into groups,
+iterating through groups, selecting a group, aggregation, and more.
 
 Examples
 --------
@@ -1570,7 +1659,7 @@ Captive      210.0
 Wild         185.0
 
 We can also choose to include NA in group keys or not by setting
-`dropna` parameter, the default setting is `True`:
+`dropna` parameter, the default setting is `True`.
 
 &gt;&gt;&gt; l = [[1, 2, 3], [1, None, 4], [2, 1, 3], [1, 2, 2]]
 &gt;&gt;&gt; df = pd.DataFrame(l, columns=[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;])
@@ -1603,13 +1692,37 @@ a
 a   13.0   13.0
 b   12.3  123.0
 NaN 12.3   33.0
-<span class=" -Color -Color-Red">File:</span>      ~/opt/anaconda3/envs/dj21/lib/python3.7/site-packages/pandas/core/frame.py
+
+When using ``.apply()``, use ``group_keys`` to include or exclude the
+group keys. The ``group_keys`` argument defaults to ``True`` (include).
+
+&gt;&gt;&gt; df = pd.DataFrame({&#39;Animal&#39;: [&#39;Falcon&#39;, &#39;Falcon&#39;,
+...                               &#39;Parrot&#39;, &#39;Parrot&#39;],
+...                    &#39;Max Speed&#39;: [380., 370., 24., 26.]})
+&gt;&gt;&gt; df.groupby(&quot;Animal&quot;, group_keys=True)[[&#39;Max Speed&#39;]].apply(lambda x: x)
+          Max Speed
+Animal
+Falcon 0      380.0
+       1      370.0
+Parrot 2       24.0
+       3       26.0
+
+&gt;&gt;&gt; df.groupby(&quot;Animal&quot;, group_keys=False)[[&#39;Max Speed&#39;]].apply(lambda x: x)
+   Max Speed
+0      380.0
+1      370.0
+2       24.0
+3       26.0
+<span class=" -Color -Color-Red">File:</span>      /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/frame.py
 <span class=" -Color -Color-Red">Type:</span>      method
 </pre></div>
 </div>
 </div>
 </div>
-<p>And, as we did last week, you can plot a simple histogram of the distribution of a variable across the dataset. So if you want to look at how ‘radio’ (as in, how many days per week a person uses radio) is distributed among your sample, e.g., you can use a histogram.</p>
+<p>And, as we did last week, you can plot a simple histogram of the distribution of
+a variable across the dataset. So if you want to look at how ‘radio’ (as in, how
+many days per week a person uses radio) is distributed among your sample, e.g.,
+you can use a histogram.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Here, &#39;bins&#39; refers to how many bars we want, essentially. If you don&#39;t specify, python/pandas will guess based</span>
@@ -1620,10 +1733,10 @@ NaN 12.3   33.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../_images/21a67b221df886907ae7007bf0f1168ac120e023ab886795ebae0eda129e9700.png" src="../_images/21a67b221df886907ae7007bf0f1168ac120e023ab886795ebae0eda129e9700.png" />
+<img alt="../_images/0dcdd4e8e5ffe26b12716aef89a040baf1322ece27741f7a3544d99439d5c7c0.png" src="../_images/0dcdd4e8e5ffe26b12716aef89a040baf1322ece27741f7a3544d99439d5c7c0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1633,8 +1746,13 @@ NaN 12.3   33.0
 </div>
 </div>
 </div>
-<p>One of the modules we imported above helps us to make prettier plots (but no, it’s not called “pretty plot” like “pretty print”). Here we can plot the value counts for internet news use in a bar chart, again sorted by the index.</p>
-<p>In particular, the histogram above is very good for continous variables, that we want to ‘bin’ into fewer bins (=bars). But if we only have a small number of discrete values (like here: the integers from 0 to 7), then the alignment of the labels above may be more confusing.</p>
+<p>One of the modules we imported above helps us to make prettier plots (but no,
+it’s not called “pretty plot” like “pretty print”). Here we can plot the value
+counts for internet news use in a bar chart, again sorted by the index.</p>
+<p>In particular, the histogram above is very good for continous variables, that we
+want to ‘bin’ into fewer bins (=bars). But if we only have a small number of
+discrete values (like here: the integers from 0 to 7), then the alignment of the
+labels above may be more confusing.</p>
 <p>Let’s try to use <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> to make a bar chart:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1643,16 +1761,18 @@ NaN 12.3   33.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;internet&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/810f3da5960dd3f72c48ee31b5011028495b9bdd02299b23144fbd45fc24e9fa.png" src="../_images/810f3da5960dd3f72c48ee31b5011028495b9bdd02299b23144fbd45fc24e9fa.png" />
+<img alt="../_images/9cd3a6248132ffefc68ac7feb15aa52bf7e47145c3da7a9d6561d5b7c5a8fcc3.png" src="../_images/9cd3a6248132ffefc68ac7feb15aa52bf7e47145c3da7a9d6561d5b7c5a8fcc3.png" />
 </div>
 </div>
 </section>
 <section id="pop-quiz">
 <h2>POP QUIZ!<a class="headerlink" href="#pop-quiz" title="Link to this heading">#</a></h2>
-<p>Can you integrate this plotting method in your for-loop (from above) to get a nice series of plots?  Fill in the missing line of code, below.  But keep the plt.show() command afterward, in order to display all plots.</p>
+<p>Can you integrate this plotting method in your for-loop (from above) to get a
+nice series of plots? Fill in the missing line of code, below. But keep the
+plt.show() command afterward, in order to display all plots.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">medium</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;radio&#39;</span><span class="p">,</span><span class="s1">&#39;newspaper&#39;</span><span class="p">,</span><span class="s1">&#39;tv&#39;</span><span class="p">,</span><span class="s1">&#39;internet&#39;</span><span class="p">]:</span>
@@ -1666,6 +1786,7 @@ NaN 12.3   33.0
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RADIO
+radio
 0    0.292167
 7    0.199904
 5    0.169149
@@ -1674,10 +1795,11 @@ NaN 12.3   33.0
 2    0.066314
 6    0.058145
 1    0.055742
-Name: radio, dtype: float64
+Name: proportion, dtype: float64
 -------------------------------------------
 
 NEWSPAPER
+newspaper
 0    0.356559
 6    0.252763
 7    0.126862
@@ -1686,10 +1808,11 @@ NEWSPAPER
 5    0.055262
 3    0.038443
 4    0.027871
-Name: newspaper, dtype: float64
+Name: proportion, dtype: float64
 -------------------------------------------
 
 TV
+tv
 7    0.271024
 5    0.149447
 0    0.143681
@@ -1698,10 +1821,11 @@ TV
 3    0.082653
 2    0.074003
 1    0.071600
-Name: tv, dtype: float64
+Name: proportion, dtype: float64
 -------------------------------------------
 
 INTERNET
+internet
 0    0.389716
 7    0.197021
 1    0.090822
@@ -1710,14 +1834,19 @@ INTERNET
 5    0.069678
 4    0.049976
 6    0.047093
-Name: internet, dtype: float64
+Name: proportion, dtype: float64
 -------------------------------------------
 </pre></div>
 </div>
 </div>
 </div>
-<p>And instead of (or in addition to) the plt.show(), you can also save these plots to your folder on your computer. These are very high quality images then, that could be used in a piece (if you provided appropriate axis titles, etc.), and you can specify the figure size and DPI.</p>
-<p>Note here we’ve added a ‘figsize’ specification to the end of the plot method in your missing line of code. You can play around with different figure sizes to see what happens, if you display them here using plt.show().</p>
+<p>And instead of (or in addition to) the plt.show(), you can also save these plots
+to your folder on your computer. These are very high quality images then, that
+could be used in a piece (if you provided appropriate axis titles, etc.), and
+you can specify the figure size and DPI.</p>
+<p>Note here we’ve added a ‘figsize’ specification to the end of the plot method in
+your missing line of code. You can play around with different figure sizes to
+see what happens, if you display them here using plt.show().</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">medium</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;radio&#39;</span><span class="p">,</span><span class="s1">&#39;newspaper&#39;</span><span class="p">,</span><span class="s1">&#39;tv&#39;</span><span class="p">,</span><span class="s1">&#39;internet&#39;</span><span class="p">]:</span>
@@ -1736,6 +1865,7 @@ Name: internet, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RADIO
+radio
 0    0.292167
 7    0.199904
 5    0.169149
@@ -1744,14 +1874,15 @@ Name: internet, dtype: float64
 2    0.066314
 6    0.058145
 1    0.055742
-Name: radio, dtype: float64
+Name: proportion, dtype: float64
 -------------------------------------------
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NEWSPAPER
+newspaper
 0    0.356559
 6    0.252763
 7    0.126862
@@ -1760,14 +1891,15 @@ Name: radio, dtype: float64
 5    0.055262
 3    0.038443
 4    0.027871
-Name: newspaper, dtype: float64
+Name: proportion, dtype: float64
 -------------------------------------------
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TV
+tv
 7    0.271024
 5    0.149447
 0    0.143681
@@ -1776,14 +1908,15 @@ Name: newspaper, dtype: float64
 3    0.082653
 2    0.074003
 1    0.071600
-Name: tv, dtype: float64
+Name: proportion, dtype: float64
 -------------------------------------------
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INTERNET
+internet
 0    0.389716
 7    0.197021
 1    0.090822
@@ -1792,19 +1925,23 @@ Name: tv, dtype: float64
 5    0.069678
 4    0.049976
 6    0.047093
-Name: internet, dtype: float64
+Name: proportion, dtype: float64
 -------------------------------------------
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <section id="plots-grouped-by-variables">
 <h3>Plots grouped by variables<a class="headerlink" href="#plots-grouped-by-variables" title="Link to this heading">#</a></h3>
-<p>You can also create comparison histograms, side-by-side, for different values of a variable. For example, let’s look at the histogram of internet news use for men and women in this dataset.</p>
-<p>Here, we’re using the “by=[’ ‘]” command to specify which grouping variable we want, and again specifying the bins and the figure size, both of which you can play around with.</p>
+<p>You can also create comparison histograms, side-by-side, for different values of
+a variable. For example, let’s look at the histogram of internet news use for
+men and women in this dataset.</p>
+<p>Here, we’re using the “by=[’ ‘]” command to specify which grouping variable we
+want, and again specifying the bins and the figure size, both of which you can
+play around with.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;internet&#39;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
@@ -1812,23 +1949,31 @@ Name: internet, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&lt;AxesSubplot:title={&#39;center&#39;:&#39;0&#39;}&gt;,
-       &lt;AxesSubplot:title={&#39;center&#39;:&#39;1&#39;}&gt;], dtype=object)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&lt;Axes: title={&#39;center&#39;: &#39;(0,)&#39;}&gt;, &lt;Axes: title={&#39;center&#39;: &#39;(1,)&#39;}&gt;],
+      dtype=object)
 </pre></div>
 </div>
-<img alt="../_images/4017d2a691c50884a4470c0683b6236303b8f5cf4c4fab335aebfc37855610e8.png" src="../_images/4017d2a691c50884a4470c0683b6236303b8f5cf4c4fab335aebfc37855610e8.png" />
+<img alt="../_images/c3fcfd913ec31cdd33984a022c9ad94e43967dc119f17733fdba7af51a596072.png" src="../_images/c3fcfd913ec31cdd33984a022c9ad94e43967dc119f17733fdba7af51a596072.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="statistical-tests-and-subsetting-datasets">
 <h2>Statistical tests and subsetting datasets<a class="headerlink" href="#statistical-tests-and-subsetting-datasets" title="Link to this heading">#</a></h2>
-<p>Now, if we want to move onto statistical comparisons, we can run our normal, basic statistics here in python as well.  There’s no need to import your datset to SPSS to do this, if you want to know whether a specific difference is significant, for example.</p>
+<p>Now, if we want to move onto statistical comparisons, we can run our normal,
+basic statistics here in python as well. There’s no need to import your datset
+to SPSS to do this, if you want to know whether a specific difference is
+significant, for example.</p>
 <section id="t-tests">
 <h3>T-tests<a class="headerlink" href="#t-tests" title="Link to this heading">#</a></h3>
-<p>Let’s start with a t-test, comparing the mean internet news use for men and women that we just examined in the histograms.</p>
-<p>In order to do this, we have to create two new little dataframes out of our first one - one for men, one for women.</p>
-<p>We are using the ability to filter a dataframe (e.g., <code class="docutils literal notranslate"><span class="pre">df[df['gender']==1]</span></code> to create a dataframe only for males; adding <code class="docutils literal notranslate"><span class="pre">['internet']</span></code> at the end selects only the column for internet). This can be handy to select only relevant data for your story out of a much larger dataset!</p>
+<p>Let’s start with a t-test, comparing the mean internet news use for men and
+women that we just examined in the histograms.</p>
+<p>In order to do this, we have to create two new little dataframes out of our
+first one - one for men, one for women.</p>
+<p>We are using the ability to filter a dataframe (e.g., <code class="docutils literal notranslate"><span class="pre">df[df['gender']==1]</span></code> to
+create a dataframe only for males; adding <code class="docutils literal notranslate"><span class="pre">['internet']</span></code> at the end selects only
+the column for internet). This can be handy to select only relevant data for
+your story out of a much larger dataset!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">males_internet</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;internet&#39;</span><span class="p">]</span>
@@ -1837,7 +1982,9 @@ Name: internet, dtype: float64
 </div>
 </div>
 </div>
-<p>Each of these new dataframes can then be described and explored as we do with any pandas dataframe, and using <code class="docutils literal notranslate"><span class="pre">.describe()</span></code>, remember, gives us the mean score (handy for our t-test!).</p>
+<p>Each of these new dataframes can then be described and explored as we do with
+any pandas dataframe, and using <code class="docutils literal notranslate"><span class="pre">.describe()</span></code>, remember, gives us the mean score
+(handy for our t-test!).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">males_internet</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -1878,8 +2025,12 @@ Name: internet, dtype: float64
 </div>
 </div>
 </div>
-<p>We see the male mean is 3.02, and the female mean is 2.37.  But we don’t know if, based on the sample, this is a significant difference.  We don’t want to make misleading claims in our story!  So, run a t-test.  (Specifically, an independent samples t-test.)</p>
-<p>The results return the test statistic, p-value, and the degrees of freedom (in that order).</p>
+<p>We see the male mean is 3.02, and the female mean is 2.37. But we don’t know if,
+based on the sample, this is a significant difference. We don’t want to make
+misleading claims in our story! So, run a t-test. (Specifically, an independent
+samples t-test.)</p>
+<p>The results return the test statistic, p-value, and the degrees of freedom (in
+that order).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">males_internet</span><span class="p">,</span><span class="n">females_internet</span><span class="p">)</span>
@@ -1887,15 +2038,19 @@ Name: internet, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5.363006854632657, 9.094061516694626e-08, 2079.0)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5.363006854632647, 9.09406151669508e-08, 2079.0)
 </pre></div>
 </div>
 </div>
 </div>
-<p>We see that males use the internet significantly more often than females (that e-08 means the p-value is REALLY tiny).</p>
-<p>We could also do some pretty-printing if we wanted to, to display this more nicely for ourselves.</p>
-<p>The “._f” specification is how many decimal places; the integer before the colon is the position of the output from the default t-test command.</p>
-<p>And again, here we see the use of “.format()” as a method to input something from the ongoing calculation.</p>
+<p>We see that males use the internet significantly more often than females (that
+e-08 means the p-value is REALLY tiny).</p>
+<p>We could also do some pretty-printing if we wanted to, to display this more
+nicely for ourselves.</p>
+<p>The “._f” specification is how many decimal places; the integer before the
+colon is the position of the output from the default t-test command.</p>
+<p>And again, here we see the use of “.format()” as a method to input something
+from the ongoing calculation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">ttest_ind</span><span class="p">(</span><span class="n">males_internet</span><span class="p">,</span><span class="n">females_internet</span><span class="p">)</span>
@@ -1909,7 +2064,10 @@ Name: internet, dtype: float64
 </div>
 </div>
 </div>
-<p>Let’s look into some continous variables. First of all, let us create one: We make a subset of our dataframe that contains only the media variables, apply the <code class="docutils literal notranslate"><span class="pre">.mean()</span></code> method to it (<code class="docutils literal notranslate"><span class="pre">axis</span> <span class="pre">=</span> <span class="pre">1</span></code> means that we want to apply it row-wise), and then we assign the result of this to a new colum in the original dataframe.</p>
+<p>Let’s look into some continous variables. First of all, let us create one: We
+make a subset of our dataframe that contains only the media variables, apply the
+<code class="docutils literal notranslate"><span class="pre">.mean()</span></code> method to it (<code class="docutils literal notranslate"><span class="pre">axis</span> <span class="pre">=</span> <span class="pre">1</span></code> means that we want to apply it row-wise), and
+then we assign the result of this to a new colum in the original dataframe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;meanmedia&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;radio&#39;</span><span class="p">,</span><span class="s1">&#39;internet&#39;</span><span class="p">,</span><span class="s1">&#39;newspaper&#39;</span><span class="p">,</span><span class="s1">&#39;tv&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1928,17 +2086,25 @@ Name: internet, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;age&#39;, ylabel=&#39;meanmedia&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;age&#39;, ylabel=&#39;meanmedia&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/5918fe8941ce552fab8d7b370170679c352bffc3f9b9ca8bf177a8047700e298.png" src="../_images/5918fe8941ce552fab8d7b370170679c352bffc3f9b9ca8bf177a8047700e298.png" />
+<img alt="../_images/27a6102640cc8b463e8176046005bed9cc2ec5cc51ae6889c6e5904c0f45d808.png" src="../_images/27a6102640cc8b463e8176046005bed9cc2ec5cc51ae6889c6e5904c0f45d808.png" />
 </div>
 </div>
-<p>There are obviously many more possibilities here, including running a correlation between age and mean media use, for example, or using ANOVAs if you had more than 2 groups to compare, etc.  We don’t have time to show all of this to you in class, but remember there is a ton of resources online, so you should just search away to find what you need.  If you have problems understanding specific modules or commands you find online, you can approach us during our open lab sessions with questions as to how to apply these techniques to your own data story.</p>
+<p>There are obviously many more possibilities here, including running a
+correlation between age and mean media use, for example, or using ANOVAs if you
+had more than 2 groups to compare, etc. We don’t have time to show all of this
+to you in class, but remember there is a ton of resources online, so you should
+just search away to find what you need. If you have problems understanding
+specific modules or commands you find online, you can approach us during our
+open lab sessions with questions as to how to apply these techniques to your own
+data story.</p>
 </section>
 <section id="before-we-finish-let-s-play-around-with-some-more-graphics">
 <h3>Before we finish, let’s play around with some more graphics<a class="headerlink" href="#before-we-finish-let-s-play-around-with-some-more-graphics" title="Link to this heading">#</a></h3>
-<p>The seaborn library (which we imported at the beginning) offers a lot of cool stuff.</p>
+<p>The seaborn library (which we imported at the beginning) offers a lot of cool
+stuff.</p>
 <p>First, we’ll make a simple correlation matrix of the four media in this datset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2011,7 +2177,8 @@ Name: internet, dtype: float64
 </table>
 </div></div></div>
 </div>
-<p>But think of ways that are more useful to display this to audiences, who may not want to deal with a correlation matrix.  Heatmaps are one way to do this:</p>
+<p>But think of ways that are more useful to display this to audiences, who may not
+want to deal with a correlation matrix. Heatmaps are one way to do this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corrmatrix</span><span class="p">)</span>
@@ -2019,18 +2186,23 @@ Name: internet, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../_images/a99803f45c2f74b5723df476f2874edecebe0fa0ffada99fb97935f02e6e8ad4.png" src="../_images/a99803f45c2f74b5723df476f2874edecebe0fa0ffada99fb97935f02e6e8ad4.png" />
+<img alt="../_images/d5ca943bed7cf57b8734f63cb2bdb24b26b5e0a3ea433d1377826faedefbca21.png" src="../_images/d5ca943bed7cf57b8734f63cb2bdb24b26b5e0a3ea433d1377826faedefbca21.png" />
 </div>
 </div>
-<p>This looks okay, but is a bit redundant, so it would be great if we could sort of ‘white out’ the unnecessary (replicated) top triangle of the chart, and use colors that are more intuitive - usually darker means a stronger relationship in a heat map, right?</p>
-<p>Here, note that even Damian (EVEN DAMIAN!) can’t reproduce all of this out of his head.  But if you look around online, or use what we show you here and adapt it, you can do a lot of amazing graphics stuff.</p>
+<p>This looks okay, but is a bit redundant, so it would be great if we could sort
+of ‘white out’ the unnecessary (replicated) top triangle of the chart, and use
+colors that are more intuitive - usually darker means a stronger relationship in
+a heat map, right?</p>
+<p>Here, note that hardly anyone can reproduce all of this out of his head. But if
+you look around online, or use what we show you here and adapt it, you can do a
+lot of amazing graphics stuff.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">corrmatrix</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">corrmatrix</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool_</span><span class="p">)</span>
 <span class="n">mask</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">triu_indices_from</span><span class="p">(</span><span class="n">mask</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">light_palette</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corrmatrix</span><span class="p">,</span><span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mf">.2</span><span class="p">)</span>
@@ -2038,15 +2210,10 @@ Name: internet, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/fhopp/opt/anaconda3/envs/dj21/lib/python3.7/site-packages/ipykernel_launcher.py:2: DeprecationWarning: `np.bool` is a deprecated alias for the builtin `bool`. To silence this warning, use `bool` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.bool_` here.
-Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
-  
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
-</pre></div>
-</div>
-<img alt="../_images/1d90d8ff59ef46e4e0a4ef7f01e8acc595934fffd46e4f7a444441d61d1c847c.png" src="../_images/1d90d8ff59ef46e4e0a4ef7f01e8acc595934fffd46e4f7a444441d61d1c847c.png" />
+<img alt="../_images/7f78adfb76b9c580caa65d6065dc2e2eb382150a04692514a686df1c90cbdee8.png" src="../_images/7f78adfb76b9c580caa65d6065dc2e2eb382150a04692514a686df1c90cbdee8.png" />
 </div>
 </div>
 </section>
@@ -2065,7 +2232,11 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 <li><p>Transpose the output for this previous command.</p></li>
 <li><p>Create side-by-side histograms of petal length for each species.</p></li>
 </ol>
-<p>Regardless whether you were able to do that, here’s a really cool graphic to show you. In this case, we’re plotting petal width by petal length, with a different color for each species.  This also uses the seaborn library (indicated by sns).  Because of the nature of this dataset and the values within it, it works quite well.)</p>
+<p>Regardless whether you were able to do that, here’s a really cool graphic to
+show you. In this case, we’re plotting petal width by petal length, with a
+different color for each species. This also uses the seaborn library (indicated
+by sns). Because of the nature of this dataset and the values within it, it
+works quite well.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv&#39;</span><span class="p">)</span>
@@ -2312,13 +2483,12 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&lt;AxesSubplot:title={&#39;center&#39;:&#39;setosa&#39;}&gt;,
-        &lt;AxesSubplot:title={&#39;center&#39;:&#39;versicolor&#39;}&gt;],
-       [&lt;AxesSubplot:title={&#39;center&#39;:&#39;virginica&#39;}&gt;, &lt;AxesSubplot:&gt;]],
-      dtype=object)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&lt;Axes: title={&#39;center&#39;: &#39;(setosa,)&#39;}&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;(versicolor,)&#39;}&gt;],
+       [&lt;Axes: title={&#39;center&#39;: &#39;(virginica,)&#39;}&gt;, &lt;Axes: &gt;]], dtype=object)
 </pre></div>
 </div>
-<img alt="../_images/7870570d9777c4b3a9311e9a0fdd1d2e90caf1e545f2291beea3d7fbfe603701.png" src="../_images/7870570d9777c4b3a9311e9a0fdd1d2e90caf1e545f2291beea3d7fbfe603701.png" />
+<img alt="../_images/07e4480a9dcfa10f9859e0f2100bdafc28382b67d41168ea3ae5be5759a8e313.png" src="../_images/07e4480a9dcfa10f9859e0f2100bdafc28382b67d41168ea3ae5be5759a8e313.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2328,18 +2498,24 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;petal_width&#39;, ylabel=&#39;petal_length&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;petal_width&#39;, ylabel=&#39;petal_length&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/09d3949bd524cf380165920497a40aec9da3f59e821350c96bbf9ec88c6e02c5.png" src="../_images/09d3949bd524cf380165920497a40aec9da3f59e821350c96bbf9ec88c6e02c5.png" />
+<img alt="../_images/9d9b392b10581cfa9618e248b158d705bff7249aed84a67fb9f524b748b727e3.png" src="../_images/9d9b392b10581cfa9618e248b158d705bff7249aed84a67fb9f524b748b727e3.png" />
 </div>
 </div>
 </section>
 <section id="appendix-multivariate-statistical-analysis">
 <h2>Appendix: Multivariate statistical analysis<a class="headerlink" href="#appendix-multivariate-statistical-analysis" title="Link to this heading">#</a></h2>
-<p>For those who are interested, here’s a brief bit on multivariate analyses.  Here, we’re focusing on the same comparison of internet news use between men and women, but first, let’s see whether that holds when we control for political interest.</p>
-<p>Before we can do that, we have to bring in another datset, however, and join it.  You can access this dataset and save it from the following URL: https://raw.githubusercontent.com/damian0604/bdaca/master/ipynb/intpol.csv</p>
-<p>We’ll talk more about aggregating/merging datasets in a later session, so for now just go with it.</p>
+<p>For those who are interested, here’s a brief bit on multivariate analyses. Here,
+we’re focusing on the same comparison of internet news use between men and
+women, but first, let’s see whether that holds when we control for political
+interest.</p>
+<p>Before we can do that, we have to bring in another datset, however, and join it.
+You can access this dataset and save it from the following URL:
+https://raw.githubusercontent.com/damian0604/bdaca/master/ipynb/intpol.csv</p>
+<p>We’ll talk more about aggregating/merging datasets in a later session, so for
+now just go with it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># intpol=pd.read_csv(&#39;intpol.csv&#39;) # if you stored it locally </span>
@@ -2529,7 +2705,9 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 <p>2081 rows × 9 columns</p>
 </div></div></div>
 </div>
-<p>Let’s do an OLS regression. In order to do so, we need to define a model and then run it. When defining the model, you create the equation in the following manner:</p>
+<p>Let’s do an OLS regression. In order to do so, we need to define a model and
+then run it. When defining the model, you create the equation in the following
+manner:</p>
 <ul class="simple">
 <li><p>First you include your dependent variable, followed by the ~ sign</p></li>
 <li><p>Then you include the independent variables (separated by the + sign)</p></li>
@@ -2560,10 +2738,10 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   63.91</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Fri, 05 Nov 2021</td> <th>  Prob (F-statistic):</th> <td>1.65e-39</td>
+  <th>Date:</th>             <td>Wed, 06 Nov 2024</td> <th>  Prob (F-statistic):</th> <td>1.65e-39</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>11:19:47</td>     <th>  Log-Likelihood:    </th> <td> -4951.8</td>
+  <th>Time:</th>                 <td>17:29:58</td>     <th>  Log-Likelihood:    </th> <td> -4951.8</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  2065</td>      <th>  AIC:               </th> <td>   9912.</td>
@@ -2630,10 +2808,10 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   57.45</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Fri, 05 Nov 2021</td> <th>  Prob (F-statistic):</th> <td>5.12e-46</td>
+  <th>Date:</th>             <td>Wed, 06 Nov 2024</td> <th>  Prob (F-statistic):</th> <td>5.12e-46</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>11:19:47</td>     <th>  Log-Likelihood:    </th> <td> -4934.5</td>
+  <th>Time:</th>                 <td>17:30:01</td>     <th>  Log-Likelihood:    </th> <td> -4934.5</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  2065</td>      <th>  AIC:               </th> <td>   9879.</td>
@@ -2684,7 +2862,9 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 </table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
 </div>
 <p>We can also do a test to see whether M2 is better than M1 (it is, in this case:)
-(see also http://www.statsmodels.org/stable/generated/statsmodels.regression.linear_model.OLSResults.compare_lr_test.html?highlight=compare_lr_test )</p>
+(see also
+http://www.statsmodels.org/stable/generated/statsmodels.regression.linear_model.OLSResults.compare_lr_test.html?highlight=compare_lr_test
+)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m2</span><span class="o">.</span><span class="n">compare_lr_test</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span>
@@ -2700,25 +2880,33 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 </section>
 <section id="hexplots">
 <h2>Hexplots<a class="headerlink" href="#hexplots" title="Link to this heading">#</a></h2>
-<p>We have seen scatterplots at work above. Scatterplots are a cool way to show the relationship between two variables, but they mainly work well if both variables have a lot of different values (say, the money people earn in Euros’ (and not in categories!), or the time people spent on Facebook in exact minutes). However, if we have only few possible values (such as the integers from 0 to 7, as in our examples above), the dots in the scatterplot will overlap, and an observation that only occurs one single time looks exactly like an observation that occurs 1000 times.</p>
-<p>A hexplot is very much like a scatterplot, but <em>the more observations overlap at the same (hexagon-shaped) place in the graph, the darker it gets.</em></p>
-<p>To make it even more informative, we add histograms of the two variables in the margin, so that you can immediately get an idea of the distributions. This, again, helps us to understand whether there are just a few (very old, very young) people that behave in some way (no media at all, media every day), or whether it’s a general pattern.</p>
+<p>We have seen scatterplots at work above. Scatterplots are a cool way to show the
+relationship between two variables, but they mainly work well if both variables
+have a lot of different values (say, the money people earn in Euros’ (and not in
+categories!), or the time people spent on Facebook in exact minutes). However,
+if we have only few possible values (such as the integers from 0 to 7, as in our
+examples above), the dots in the scatterplot will overlap, and an observation
+that only occurs one single time looks exactly like an observation that occurs
+1000 times.</p>
+<p>A hexplot is very much like a scatterplot, but <em>the more observations overlap at
+the same (hexagon-shaped) place in the graph, the darker it gets.</em></p>
+<p>To make it even more informative, we add histograms of the two variables in the
+margin, so that you can immediately get an idea of the distributions. This,
+again, helps us to understand whether there are just a few (very old, very
+young) people that behave in some way (no media at all, media every day), or
+whether it’s a general pattern.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">combined</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> <span class="n">combined</span><span class="p">[</span><span class="s1">&#39;meanmedia&#39;</span><span class="p">]</span> <span class="p">,</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;meanmedia&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">combined</span><span class="p">,</span> 
               <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;hex&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#4CB391&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/fhopp/opt/anaconda3/envs/dj21/lib/python3.7/site-packages/seaborn/_decorators.py:43: FutureWarning: Pass the following variables as keyword args: x, y. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
-  FutureWarning
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x325418fe0&gt;
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fae60212f90&gt;
-</pre></div>
-</div>
-<img alt="../_images/6e02473ebf6f77a0b2df411d716027c5ede8b61e9b3f048c0c7504359e66f6de.png" src="../_images/6e02473ebf6f77a0b2df411d716027c5ede8b61e9b3f048c0c7504359e66f6de.png" />
+<img alt="../_images/692d265d367c3921f57e33ce61f4805717847d5d277953c32c430b2ba8bafb72.png" src="../_images/692d265d367c3921f57e33ce61f4805717847d5d277953c32c430b2ba8bafb72.png" />
 </div>
 </div>
 </section>
